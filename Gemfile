@@ -16,4 +16,5 @@ gem 'bourbon'
 gem 'foursquare2'
 gem 'mapbox-rails'
 gem 'yahoo_weatherman'
+gem 'oauth2'
 
