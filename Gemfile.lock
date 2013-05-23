@@ -29,6 +29,9 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bourbon (3.1.6)
+      sass (>= 3.2.0)
+      thor
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -40,6 +43,15 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
+    foursquare2 (1.9.7)
+      faraday (~> 0.8)
+      faraday_middleware (>= 0.8)
+      hashie (>= 1.0, < 3.0.0)
+    hashie (2.0.5)
     hike (1.2.2)
     i18n (0.6.1)
     journey (1.0.4)
@@ -50,8 +62,11 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mapbox-rails (1.0.3)
     mime-types (1.23)
     multi_json (1.7.3)
+    multipart-post (1.2.0)
+    nokogiri (1.5.9)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -98,14 +113,20 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    yahoo_weatherman (2.0.0)
+      nokogiri
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon
   coffee-rails (~> 3.2.1)
+  foursquare2
   jquery-rails
+  mapbox-rails
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  yahoo_weatherman
