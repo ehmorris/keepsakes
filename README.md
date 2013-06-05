@@ -9,3 +9,5 @@ Journal
 [OAuth](https://github.com/intridea/oauth2)
 
 Pictures ??? Instagram / twitter / facebook
+
+Music ??? Rdio API
