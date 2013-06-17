@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require mapbox.js
-//= require map.js
+//= require maps.js
 //
 //= require_tree .
