@@ -1,5 +1,5 @@
 $ ->
-  geojson_array = {}
+  geojson_array = $('#map').data('geojson')
 
   map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag')
                 .setView([42.348, -71.085], 14)

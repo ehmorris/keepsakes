@@ -1,4 +1,4 @@
-module MovesAPI
+module MovesAuth
   def moves_client
     OAuth2::Client.new(
       ENV['MOVES_CLIENT_ID'],
@@ -17,7 +17,7 @@ module MovesAPI
 
   def moves_access_token
     OAuth2::AccessToken.new(
-      client,
+      moves_client,
       session[:access_token],
       :refresh_token => session[:refresh_token])
   end

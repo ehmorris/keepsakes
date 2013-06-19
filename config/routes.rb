@@ -1,6 +1,6 @@
 Journal::Application.routes.draw do
-  root :to => 'maps#index', :id => 'map'
+  root :to => 'maps#index'
 
-  match '/auth/moves/callback/:code' => 'moves#callback'
+  match '/auth/moves/callback' => 'moves#callback'
   match '/moves/logout' => 'moves#destroy'
 end

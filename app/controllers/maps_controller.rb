@@ -1,12 +1,12 @@
 class MapsController < ApplicationController
-  include MovesAPI
+  include MovesAuth
   
   def index
     if session[:access_token].nil?
       @moves_authorize_uri = moves_client.auth_code.authorize_url(
         :redirect_uri => moves_redirect_uri,
         :scope => 'activity location')
-       render :signin
+      render 'maps/signin'
     else
       storyline_day = params['date'] || Date.today
       storyline_json = moves_access_token.get(
