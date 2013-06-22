@@ -1,6 +1,7 @@
 class MapsController < ApplicationController
   include MovesAuth
-  
+  include Maps
+
   def index
     if session[:access_token].nil?
       @moves_authorize_uri = moves_client.auth_code.authorize_url(
@@ -10,39 +11,30 @@ class MapsController < ApplicationController
     else
       storyline_day = params['date'] || Date.today
       storyline_json = moves_access_token.get(
-        "/api/v1/user/storyline/daily/#{storyline_day}?trackPoints=true").parsed
+        "/api/v1/user/storyline/daily/#{storyline_day}?trackPoints=true")
+        .parsed
 
-      @geojson = []
+      geohash = []
 
       # coordinates here are in longitude, latitude order because
       # x, y is the standard for GeoJSON and many formats
-      storyline_json.each do |date|
-        date['segments'].each do |segment|
-          if segment['type'] == 'place'
-            lon = segment['place']['location']['lon']
-            lat = segment['place']['location']['lat']
-            @geojson.push({'type' => 'Point', 'coordinates' => [lon, lat]})
-          elsif segment['type'] == 'move'
-            segment['activities'].each do |activity|
-              activity['trackPoints'].each_with_index do |trackpoint, i|
-                if activity['trackPoints'][i + 1]
-                  beginning_lon = trackpoint['lon']
-                  beginning_lat = trackpoint['lat']
-                  end_lon = activity['trackPoints'][i + 1]['lon']
-                  end_lat = activity['trackPoints'][i + 1]['lat']
-                  @geojson.push(
-                    {'type' => 'LineString',
-                     'coordinates' => [
-                       [beginning_lon, beginning_lat],
-                       [end_lon, end_lat]]})
-                end
+      storyline_json.first['segments'].each do |segment|
+        if segment['type'] == 'place'
+          geohash.push(place_to_geodata_point(segment))
+        elsif segment['type'] == 'move'
+          segment['activities'].each do |activity|
+            activity['trackPoints'].each_with_index do |trackpoint, i|
+              unless activity['trackPoints'][i + 1].nil?
+                geohash.push(trackpoints_to_geodata_line(
+                  trackpoint,
+                  activity['trackPoints'][i + 1]))
               end
             end
           end
         end
       end
 
-      @geojson = @geojson.to_json
+      @geojson = geohash.to_json
     end
   end
 end
