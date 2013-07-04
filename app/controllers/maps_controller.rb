@@ -15,27 +15,7 @@ class MapsController < ApplicationController
         .parsed
         .first
 
-      # coordinates here are in longitude, latitude order because x, y is the
-      # standard for GeoJSON
-      geodata_hash = []
-      storyline_json['segments'].each do |segment|
-        if segment['type'] == 'place'
-          geodata_hash.push(place_to_geodata_point(segment))
-        elsif segment['type'] == 'move'
-          segment['activities'].each do |activity|
-            activity['trackPoints'].each_with_index do |trackpoint, i|
-              unless activity['trackPoints'][i + 1].nil?
-                geodata_hash.push(
-                  trackpoints_to_geodata_line(
-                    trackpoint,
-                    activity['trackPoints'][i + 1]))
-              end
-            end
-          end
-        end
-      end
-
-      @geodata_json = geodata_hash.to_json
+      @geodata_json = storyline_to_geodata(storyline_json)
     end
   end
 end
