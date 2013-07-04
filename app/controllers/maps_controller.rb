@@ -13,28 +13,29 @@ class MapsController < ApplicationController
       storyline_json = moves_access_token.get(
         "/api/v1/user/storyline/daily/#{storyline_day}?trackPoints=true")
         .parsed
+        .first
 
-      geohash = []
-
-      # coordinates here are in longitude, latitude order because
-      # x, y is the standard for GeoJSON and many formats
-      storyline_json.first['segments'].each do |segment|
+      # coordinates here are in longitude, latitude order because x, y is the
+      # standard for GeoJSON
+      geodata_hash = []
+      storyline_json['segments'].each do |segment|
         if segment['type'] == 'place'
-          geohash.push(place_to_geodata_point(segment))
+          geodata_hash.push(place_to_geodata_point(segment))
         elsif segment['type'] == 'move'
           segment['activities'].each do |activity|
             activity['trackPoints'].each_with_index do |trackpoint, i|
               unless activity['trackPoints'][i + 1].nil?
-                geohash.push(trackpoints_to_geodata_line(
-                  trackpoint,
-                  activity['trackPoints'][i + 1]))
+                geodata_hash.push(
+                  trackpoints_to_geodata_line(
+                    trackpoint,
+                    activity['trackPoints'][i + 1]))
               end
             end
           end
         end
       end
 
-      @geojson = geohash.to_json
+      @geodata_json = geodata_hash.to_json
     end
   end
 end

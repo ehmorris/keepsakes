@@ -2,8 +2,9 @@ module Maps
   def place_to_geodata_point(segment)
     lon = segment['place']['location']['lon']
     lat = segment['place']['location']['lat']
+    title = segment['place']['name']
 
-    {'type' => 'Point', 'coordinates' => [lon, lat]}
+    {'type' => 'Point', 'coordinates' => [lon, lat], 'title' => title}
   end
 
   def trackpoints_to_geodata_line(trackpoint_1, trackpoint_2)
