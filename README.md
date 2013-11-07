@@ -16,6 +16,6 @@ Plane-ar navigation scheme i.e. you zoom into a location to recieve details on i
 
 Maybe something like swath summaries could allow someone to find interesting seasons more easily, when faced with 10+ years of daily entries: summarize a summer in a few sentences, a school semester, etc.
 
-Z-index navigation: [Orchestra](http://play.lso.co.uk/#/Ravels-Bolero/orchestra) + [Hover States](http://hoverstat.es/posts/lso-play/)
+Z-index navigation: [Orchestra](http://play.lso.co.uk/#/Ravels-Bolero/orchestra) + [Hover States](http://hoverstat.es/posts/lso-play/) & [Zoom thumbnail groups](http://hoverstat.es/posts/jake-dinos-chapman/)
 
 On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)
