@@ -2,11 +2,15 @@ $ ->
   geodata_json = $('#map').data('geojson')
 
   map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag')
-                .setView([42.348, -71.085], 14)
 
+  geodata_json_feature_set = []
   $.each geodata_json, ->
-    L.mapbox.markerLayer({
+    geodata_json_feature_set.push({
       type: 'Feature',
       geometry: this,
       properties: {'title': this.title}
-    }).addTo map
+    })
+
+  marker_layer = L.mapbox.markerLayer(geodata_json_feature_set).addTo map
+
+  map.fitBounds marker_layer.getBounds()

@@ -1,5 +1,5 @@
 # Dayview
-### Displays QS information in one, explorable interface.
+### Displays QS information in one explorable interface.
 
 #### Potential sources of information
 * [Location | Foursquare](https://github.com/mattmueller/foursquare2)
@@ -13,7 +13,7 @@
 #### Resources
 * [OAuth](https://github.com/intridea/oauth2)
 
-### Ideas
+#### Ideas
 * Plane-ar navigation scheme i.e. you zoom into a location to recieve details on it (average time spent there, number of times visited, usual incoming path, etc.) rather than clicking "how long do i usually spend here." Think Iron Man HUD. Zooming in makes the previous content zoom close to you, like you're speeding past it, in perspective with the map.
 * Maybe something like swath summaries could allow someone to find interesting seasons more easily, when faced with 10+ years of daily entries: summarize a summer in a few sentences, a school semester, etc.
 * On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)
