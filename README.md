@@ -1,6 +1,8 @@
 # Dayview
 ### Displays QS information in one explorable interface.
 
+[![Code Climate](https://codeclimate.com/github/ehmorris/dayview.png)](https://codeclimate.com/github/ehmorris/dayview)
+
 #### Potential sources of information
 * [Location | Foursquare](https://github.com/mattmueller/foursquare2)
 * [Location | Moves](https://dev.moves-app.com)
