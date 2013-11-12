@@ -12,16 +12,16 @@ class MapsController < ApplicationController
       if params['from'] and params['to']
         storyline_from = Date.parse(params['from'])
         storyline_to = Date.parse(params['to'])
-        storyline_json_alldays = []
+        storyline_hash_alldays = [get_storyline_day_hash(storyline_from.to_s)]
         storyline_from.upto(storyline_to) do |day|
-          storyline_json = get_storyline_day_json(day.to_s)
-          storyline_json_alldays = storyline_json_alldays.concat(storyline_json)
+          storyline_hash = get_storyline_day_hash(day.to_s)
+          storyline_hash_alldays.push(storyline_hash)
         end
-        @geodata_json = storyline_to_geodata(storyline_json_alldays)
+        @geodata_json = storyline_to_geodata storyline_hash_alldays.join
       else
         storyline_day = params['date'] || Date.today
-        storyline_json = get_storyline_day_json(storyline_day)
-        @geodata_json = storyline_to_geodata(storyline_json)
+        storyline_hash = get_storyline_day_hash(storyline_day)
+        @geodata_json = storyline_to_geodata(storyline_hash)
       end
     end
   end

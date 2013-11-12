@@ -22,7 +22,7 @@ module Moves
       :refresh_token => session[:refresh_token])
   end
 
-  def get_storyline_day_json(storyline_day)
+  def get_storyline_day_hash(storyline_day)
     storyline_json = moves_access_token.get(
       "/api/v1/user/storyline/daily/#{storyline_day}?trackPoints=true")
       .parsed
