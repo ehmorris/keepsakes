@@ -1,5 +1,5 @@
 class MovesController < ApplicationController
-  include MovesAuth
+  include Moves
 
   def callback
     new_token = moves_client.auth_code.get_token(
