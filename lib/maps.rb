@@ -20,9 +20,9 @@ module Maps
       [end_lon, end_lat]]}
   end
 
-  def storyline_to_geodata(storyline_segments_json)
+  def storyline_to_geodata(storyline_segments_hash)
     geodata_hash = []
-    storyline_segments_json.each do |segment|
+    storyline_segments_hash.each do |segment|
       if segment['type'] == 'place'
         geodata_hash.push(place_to_geodata_point(segment))
       elsif segment['type'] == 'move'
