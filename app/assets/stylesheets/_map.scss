@@ -1,0 +1,20 @@
+.map {
+  @include position(absolute, 3rem 0 0px 0);
+  width: 100%;
+  z-index: 1;
+}
+
+.help {
+  background: rgba(0, 0, 0, .7);
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  padding: 1rem;
+  @include position(absolute, 6rem 3rem 0 0);
+  width: 320px;
+  z-index: 2;
+
+  a {
+    color: #fff;
+  }
+}

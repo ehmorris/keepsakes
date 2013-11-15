@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.flash {
+  background: rbga(255, 255, 0, .2);
+  height: 3rem;
+  line-height: 3rem;
+  @include position(absolute, 3rem 0 0 0);
+  white-space: no-wrap;
+  width: 100%;
+  z-index: 3;
+}
+
+nav {
+  background: #222;
+  color: #fff;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  z-index: 2;
+
+  span {
+    margin: 0 1rem 0 0;
+  }
+
+  a {
+    color: #fff;
+  }
+}
