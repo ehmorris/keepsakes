@@ -6,4 +6,18 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
+    - if signed_in?
+      %span
+        Signed in as
+        = current_user.email
+      %span
+        = link_to 'Sign out', sign_out_path, :method => :delete
+    - else
+      = link_to 'Sign in', sign_in_path
+
+    #flash
+      - flash.each do |key, value|
+        %div{ class: "flash #{key}" }
+          = value
+
     = yield

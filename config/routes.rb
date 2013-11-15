@@ -1,5 +1,24 @@
 Journal::Application.routes.draw do
-  root :to => 'maps#index'
+  root :to => 'users#edit'
+
+  resources :passwords,
+    :controller => 'clearance/passwords',
+    :only       => [:new, :create]
+
+  resource  :session,
+    :controller => 'clearance/sessions',
+    :only       => [:create, :destroy]
+
+  resources :users, :controller => 'users' do
+    resource :password,
+      :controller => 'clearance/passwords',
+      :only       => [:create, :edit, :update]
+  end
+
+  resources :maps,
+    :only => [:index]
+
+  match 'account'  => 'users#edit'
 
   match '/auth/moves/callback' => 'moves#callback'
   match '/moves/logout' => 'moves#destroy'
