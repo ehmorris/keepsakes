@@ -1,7 +1,7 @@
 class UsersController < Clearance::UsersController
   include Moves
 
-  before_filter :authorize
+  before_filter :authorize, only: [:edit]
 
   def edit
     @user = current_user
