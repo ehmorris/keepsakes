@@ -1,16 +1,9 @@
-#clearance.password-reset
-  %h2
-    = t '.title'
-
-  %p
-    = t '.description'
+.clearance.password-reset
+  %h2 Change your password
+  %p Your password has been reset, choose a new password below.
 
   = form_for :password_reset,
-      :url => user_password_path(@user, :token => @user.confirmation_token),
-      :html => { :method => :put } do |form|
-    .password-field
-      = form.label :password
-      = form.password_field :password
-
-    .submit-field
-      = form.submit
+    :url => user_password_path(@user, :token => @user.confirmation_token),
+    :html => { :method => :put } do |form|
+    = form.password_field :password, placeholder: 'password'
+    = form.submit

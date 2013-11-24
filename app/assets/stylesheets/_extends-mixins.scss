@@ -1,0 +1,33 @@
+%button {
+  background: #fff;
+  border: 0;
+  box-sizing: border-box;
+  color: #000;
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+%pseudo-complete-check {
+  &:before {
+    background: url(check.svg) $positive-color center center no-repeat;
+    background-size: .9rem;
+    border-radius: 100%;
+    box-sizing: border-box;
+    color: #fff;
+    content: '';
+    display: block;
+    height: 1.5rem;
+    @include position(absolute, 0 0 0 0px);
+    text-align: center;
+    width: 1.5rem;
+  }
+}
+
+@mixin content-box {
+  margin: 10% auto 0 auto;
+  position: relative;
+  width: 320px;
+  z-index: 2;
+}

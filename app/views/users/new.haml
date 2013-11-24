@@ -1,11 +1,6 @@
-#clearance.sign-up
+.clearance.sign-up
   %h2 Sign up
+  = render :partial => '/users/form'
 
-  = form_for @user do |form|
-    = render :partial => '/users/form', :object => form
-
-    .submit-field
-      = form.submit
-
-    .other-links
-      = link_to t('.sign_in'), sign_in_path
+  .other-links
+    = link_to t('.sign_in'), sign_in_path

@@ -1,0 +1,27 @@
+.authorized-apps {
+  @include content-box;
+
+  .app-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      line-height: 1.5rem;
+      padding: 1rem 1rem 1rem 2rem;
+
+      &.complete {
+        @extend %pseudo-complete-check;
+      }
+    }
+
+    a {
+      display: block;
+    }
+  }
+
+  .view-map {
+    @extend %button;
+  }
+}

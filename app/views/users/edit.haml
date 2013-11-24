@@ -1,4 +1,11 @@
-- if current_user.moves_access_token.nil?
-  = link_to 'Authorize Dayview to read your Moves data', @moves_authorize_uri
-- else
-  = link_to 'View the map', maps_path
+.intro-map
+.authorized-apps
+  %ul.app-list
+    - if current_user.moves_access_token.nil?
+      %li
+        = link_to 'Authorize Dayview to read your Moves data', @moves_authorize_uri
+    - else
+      %li.complete Authorize Moves
+
+  - if current_user.moves_access_token
+    = link_to 'View the map', maps_path, class: 'view-map'

@@ -1,5 +1,7 @@
-#clearance.sign-in
-  %h2
-    = t '.title'
-
+.clearance.sign-in
+  %h2 Sign in
   = render :partial => '/sessions/form'
+
+  .other-links
+    = link_to t('.sign_up'), sign_up_path
+    = link_to t('.forgot_password'), new_password_path

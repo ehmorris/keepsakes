@@ -1,14 +1,7 @@
-#clearance.password-reset
-  %h2
-    = t '.title'
-
-  %p
-    = t '.description'
+.clearance.password-reset
+  %h2 Reset password
+  %p Enter your email to be emailed a link to reset your password.
 
   = form_for :password, :url => passwords_path do |form|
-    .text-field
-      = form.label :email
-      = form.text_field :email, :type => 'email'
-
-    .submit-field
-      = form.submit
+    = form.text_field :email, type: 'email', placeholder: 'email'
+    = form.submit

@@ -6,16 +6,10 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %nav
-      - if signed_in?
-        %span
-          Signed in as
-          = link_to account_path do
-            = current_user.email
-        %span
-          = link_to 'Sign out', sign_out_path, :method => :delete
-      - else
-        = link_to 'Sign in', sign_in_path
+    - if signed_in?
+      %nav
+        = link_to 'Account', account_path
+        = link_to '&#8998'.html_safe, sign_out_path, class: 'signout', title: 'Sign out', method: :delete
 
     #flash
       - flash.each do |key, value|

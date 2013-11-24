@@ -1,0 +1,13 @@
+@include keyframes(map-intro) {
+  0% {
+    opacity: 0;
+    @include transform(scale3D(1.1, 1.1, 1));
+    z-index: 1;
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(scale3D(1, 1, 1));
+    z-index: 1;
+  }
+}

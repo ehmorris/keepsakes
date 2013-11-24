@@ -1,31 +1,51 @@
+html {
+  background: $building-color;
+}
+
 body {
   margin: 0;
   padding: 0;
 }
 
 .flash {
-  background: rbga(255, 255, 0, .2);
+  background: rgba(255, 255, 255, .5);
   height: 3rem;
   line-height: 3rem;
-  @include position(absolute, 3rem 0 0 0);
+  @include position(absolute, 0px 0 0 0);
+  text-align: center;
   white-space: no-wrap;
   width: 100%;
   z-index: 3;
 }
 
+.intro-map {
+  @include animation(map-intro 1s);
+  @include animation-fill-mode(backwards);
+  background: url('anonymous-map.png');
+  background-size: cover;
+  @include position(absolute, 0px 0px 0px 0px);
+  @include transform(scale3D(1, 1, 1));
+  z-index: 1;
+}
+
 nav {
+  @include content-box;
   background: #222;
+  box-sizing: border-box;
   color: #fff;
   height: 3rem;
   line-height: 3rem;
+  margin: 0 0 0 -160px;
   padding: 0 1rem;
-  z-index: 2;
-
-  span {
-    margin: 0 1rem 0 0;
-  }
+  @include position(fixed, 0 0 2rem 50%);
 
   a {
     color: #fff;
+    text-decoration: none;
+  }
+
+  .signout {
+    color: $negative-color;
+    float: right;
   }
 }

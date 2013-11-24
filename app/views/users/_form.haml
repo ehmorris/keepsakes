@@ -1,7 +1,4 @@
-.text-field
-  = form.label :email
-  = form.text_field :email, :type => 'email'
-
-.password-field
-  = form.label :password
-  = form.password_field :password
+= form_for @user do |form|
+  = form.text_field :email, type: 'email', placeholder: 'email'
+  = form.password_field :password, placeholder: 'password'
+  = form.submit

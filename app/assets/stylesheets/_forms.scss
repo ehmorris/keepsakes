@@ -1,0 +1,15 @@
+.clearance {
+  @include content-box;
+
+  input {
+    box-sizing: border-box;
+    display: block;
+    margin: .5rem 0;
+    padding: .5rem;
+    width: 100%;
+  }
+
+  input[type=submit] {
+    @extend %button;
+  }
+}
