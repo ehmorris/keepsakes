@@ -9,10 +9,26 @@
   text-decoration: none;
 }
 
+%pseudo-incomplete-icon {
+  &:before {
+    background-size: .9rem;
+    border: 2px solid #000;
+    border-radius: 100%;
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    height: 1.5rem;
+    @include position(absolute, 0 0 0 1rem);
+    text-align: center;
+    width: 1.5rem;
+  }
+}
+
 %pseudo-complete-check {
   &:before {
     background: url(check.svg) $positive-color center center no-repeat;
     background-size: .9rem;
+    border: 2px solid $positive-color;
     border-radius: 100%;
     box-sizing: border-box;
     color: #fff;
