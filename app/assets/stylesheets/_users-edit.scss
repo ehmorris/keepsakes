@@ -1,5 +1,11 @@
+.view-map {
+  @include centered-text;
+  text-decoration: none;
+}
+
 .authorized-apps {
   @include content-box;
+  top: 36vh;
 
   .app-list {
     list-style-type: none;
@@ -7,9 +13,10 @@
     padding: 0;
 
     li {
+      background: rgba(255, 255, 255, .5);
       display: block;
       line-height: 1.5rem;
-      padding: 1rem 1rem 1rem 2rem;
+      padding: 1rem 1rem 1rem 3rem;
 
       &.complete {
         @extend %pseudo-complete-check;
@@ -19,9 +26,5 @@
     a {
       display: block;
     }
-  }
-
-  .view-map {
-    @extend %button;
   }
 }

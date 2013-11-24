@@ -19,15 +19,28 @@
     content: '';
     display: block;
     height: 1.5rem;
-    @include position(absolute, 0 0 0 0px);
+    @include position(absolute, 0 0 0 1rem);
     text-align: center;
     width: 1.5rem;
   }
 }
 
 @mixin content-box {
-  margin: 10% auto 0 auto;
+  margin: 0 auto;
   position: relative;
+  top: 10vh;
   width: 320px;
+  z-index: 2;
+}
+
+@mixin centered-text {
+  color: rgb(255, 255, 255);
+  display: block;
+  font: bold 10vw/1 sans-serif;
+  letter-spacing: 5px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: 32vh;
   z-index: 2;
 }

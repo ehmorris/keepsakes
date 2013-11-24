@@ -4,17 +4,23 @@
   z-index: 1;
 }
 
-.help {
-  background: rgba(0, 0, 0, .7);
-  box-sizing: border-box;
-  color: #fff;
-  display: block;
-  padding: 1rem;
-  @include position(absolute, 6rem 3rem 0 0);
-  width: 320px;
-  z-index: 2;
+.today {
+  @include animation(today-intro 2s);
+  @include animation-fill-mode(forwards);
+  @include centered-text;
+}
 
-  a {
-    color: #fff;
-  }
+.yesterday, .tomorrow {
+  color: rgb(255, 255, 255);
+  display: block;
+  font: bold 3vw/10vw sans-serif;
+  @include position(absolute, 32vh 0 0 2rem);
+  text-decoration: none;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.tomorrow {
+  left: auto;
+  right: 2rem;
 }

@@ -11,3 +11,17 @@
     z-index: 1;
   }
 }
+
+@include keyframes(today-intro) {
+  0% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

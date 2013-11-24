@@ -28,16 +28,17 @@ body {
   z-index: 1;
 }
 
-nav {
-  @include content-box;
+nav.account {
   background: #222;
   box-sizing: border-box;
   color: #fff;
+  @include content-box;
   height: 3rem;
   line-height: 3rem;
   margin: 0 0 0 -160px;
   padding: 0 1rem;
   @include position(fixed, 0 0 2rem 50%);
+  top: auto;
 
   a {
     color: #fff;

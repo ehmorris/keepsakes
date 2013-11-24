@@ -1,9 +1,11 @@
-.help
-  %p URL schemes
-  %ul
-    %li
-      = link_to '?date=2013-10-05', '?date=2013-10-05'
-    %li
-      = link_to '?from=2013-10-05&to=2013-10-10', '?from=2013-10-05&to=2013-10-10'
+.today
+  = @today
+
+%nav.days
+  = link_to "?date=#{@yesterday}", class: 'yesterday' do
+    = @yesterday
+  - if @tomorrow < Date.today
+    = link_to "?date=#{@tomorrow}", class: 'tomorrow' do
+      = @tomorrow
 
 %figure.map{ :id => 'map', 'data-geojson' => @geodata_json }
