@@ -5,6 +5,6 @@
   %ul.app-list
     - if current_user.moves_access_token.nil?
       %li
-        = link_to 'Authorize Dayview with Moves', @moves_authorize_uri
+        = link_to 'Connect with Moves', @moves_authorize_uri
     - else
-      %li.complete Authorize Moves
+      %li.complete Connect with Moves
