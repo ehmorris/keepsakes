@@ -1,5 +1,6 @@
 .map {
   @include position(absolute, 0px 0 0px 0);
+  @include transition(.3s);
   width: 100%;
   z-index: 1;
 }
@@ -8,19 +9,41 @@
   @include animation(today-intro 2s);
   @include animation-fill-mode(forwards);
   @include centered-text;
+  @include user-select(none);
 }
 
 .yesterday, .tomorrow {
   color: rgb(255, 255, 255);
   display: block;
   font: bold 2.5vw/9vw sans-serif;
-  @include position(absolute, 35vh 0 0 2rem);
+  margin: -4.5vw 0 0;
+  @include position(absolute, 50% 0 0 0);
   text-decoration: none;
-  text-shadow: 0 1px 60px rgba(0, 0, 0, .3), 0 1px 0 rgba(0, 0, 0, .2);
-  z-index: 2;
+  @include transition(.3s);
+  @include user-select(none);
+  z-index: 3;
+}
+
+.yesterday {
+  left: 2rem;
+
+  &:hover {
+    left: 1rem;
+
+    &+ .tomorrow + .map {
+      left: 8rem;
+    }
+  }
 }
 
 .tomorrow {
-  left: auto;
   right: 2rem;
+
+  &:hover {
+    right: 1rem;
+
+    &+ .map {
+      right: 8rem;
+    }
+  }
 }

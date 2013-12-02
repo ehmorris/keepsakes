@@ -8,3 +8,8 @@
         = link_to 'Connect with Moves', @moves_authorize_uri
     - else
       %li.complete Connect with Moves
+
+%nav.account
+  %span
+    = current_user.email
+  = link_to '&#8998'.html_safe, sign_out_path, class: 'signout', title: 'Sign out', method: :delete

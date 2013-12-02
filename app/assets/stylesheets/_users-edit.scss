@@ -1,11 +1,11 @@
 .view-map {
   @include centered-text;
   text-decoration: none;
+  z-index: 3;
 }
 
 .authorized-apps {
   @include content-box;
-  top: 40vh;
 
   .app-list {
     list-style-type: none;
