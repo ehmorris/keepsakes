@@ -1,11 +1,11 @@
 .today
-  = @today
+  = @today.strftime('%a %b %e')
 
 %nav.days
   = link_to day_path(@yesterday), class: 'yesterday' do
-    = @yesterday
+    = @yesterday.strftime('%a %b %e')
   - if @tomorrow < Date.today
     = link_to day_path(@tomorrow), class: 'tomorrow' do
-      = @tomorrow
+      = @tomorrow.strftime('%a %b %e')
 
 %figure.map{ :id => 'map', 'data-geojson' => @geodata_json }

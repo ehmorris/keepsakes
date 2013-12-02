@@ -26,7 +26,7 @@ class DaysController < ApplicationController
     @geodata_json = storyline_to_geodata(storyline_segments_hash)
 
     @yesterday = Date.parse(storyline_day) - 1
-    @today = storyline_day
+    @today = Date.parse(storyline_day)
     @tomorrow = Date.parse(storyline_day) + 1
   end
 

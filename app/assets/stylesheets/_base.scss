@@ -36,9 +36,15 @@ nav.account {
   height: 3rem;
   line-height: 3rem;
   margin: 0 0 0 -160px;
+  opacity: .8;
   padding: 0 1rem;
-  @include position(fixed, 0 0 2rem 50%);
+  @include position(fixed, 0 0 0px 50%);
   top: auto;
+  @include transition;
+
+  &:hover {
+    opacity: 1;
+  }
 
   a {
     color: #fff;

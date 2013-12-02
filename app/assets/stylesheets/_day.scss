@@ -13,10 +13,9 @@
 .yesterday, .tomorrow {
   color: rgb(255, 255, 255);
   display: block;
-  font: bold 3vw/10vw sans-serif;
-  @include position(absolute, 32vh 0 0 2rem);
+  font: bold 2.5vw/9vw sans-serif;
+  @include position(absolute, 35vh 0 0 2rem);
   text-decoration: none;
-  text-transform: uppercase;
   z-index: 2;
 }
 

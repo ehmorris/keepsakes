@@ -52,11 +52,11 @@
 @mixin centered-text {
   color: rgb(255, 255, 255);
   display: block;
-  font: bold 10vw/1 sans-serif;
-  letter-spacing: 5px;
+  font: bold 9vw/1 sans-serif;
+  letter-spacing: 3px;
   position: relative;
   text-align: center;
   text-transform: uppercase;
-  top: 32vh;
+  top: 35vh;
   z-index: 2;
 }
