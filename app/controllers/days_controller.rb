@@ -1,4 +1,4 @@
-class MapsController < ApplicationController
+class DaysController < ApplicationController
   include Moves
   include Maps
 
@@ -17,15 +17,17 @@ class MapsController < ApplicationController
       end
       # add comma for correct JSON, wrap joined segments in brackets
       @geodata_json = "[#{storyline_geodata_alldays.join(',')}]"
-    else
-      storyline_day = params['date'] || "#{Date.today - 1}"
-      storyline_segments_hash = get_storyline_segments_hash(storyline_day)
-      @geodata_json = storyline_to_geodata(storyline_segments_hash)
-
-      @yesterday = Date.parse(storyline_day) - 1
-      @today = storyline_day
-      @tomorrow = Date.parse(storyline_day) + 1
     end
+  end
+
+  def show
+    storyline_day = params['id']
+    storyline_segments_hash = get_storyline_segments_hash(storyline_day)
+    @geodata_json = storyline_to_geodata(storyline_segments_hash)
+
+    @yesterday = Date.parse(storyline_day) - 1
+    @today = storyline_day
+    @tomorrow = Date.parse(storyline_day) + 1
   end
 
   private

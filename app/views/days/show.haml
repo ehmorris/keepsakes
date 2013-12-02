@@ -2,10 +2,10 @@
   = @today
 
 %nav.days
-  = link_to "?date=#{@yesterday}", class: 'yesterday' do
+  = link_to day_path(@yesterday), class: 'yesterday' do
     = @yesterday
   - if @tomorrow < Date.today
-    = link_to "?date=#{@tomorrow}", class: 'tomorrow' do
+    = link_to day_path(@tomorrow), class: 'tomorrow' do
       = @tomorrow
 
 %figure.map{ :id => 'map', 'data-geojson' => @geodata_json }

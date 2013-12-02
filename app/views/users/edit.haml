@@ -1,6 +1,6 @@
 .intro-map
 - if current_user.moves_access_token
-  = link_to 'View the map', maps_path, class: 'view-map'
+  = link_to 'View the map', day_path(Date.today - 1), class: 'view-map'
 .authorized-apps
   %ul.app-list
     - if current_user.moves_access_token.nil?

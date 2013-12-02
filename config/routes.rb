@@ -15,8 +15,8 @@ Journal::Application.routes.draw do
       :only       => [:create, :edit, :update]
   end
 
-  resources :maps,
-    :only => [:index]
+  resources :days,
+    :only => [:show]
 
   match 'account'  => 'users#edit'
 
