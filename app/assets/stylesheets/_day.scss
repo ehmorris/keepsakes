@@ -1,5 +1,5 @@
 .map {
-  @include position(absolute, 0px 0 0px 0);
+  @include position(absolute, 0px 0px 0px 0px);
   @include transition(.3s);
   width: 100%;
   z-index: 1;
@@ -30,8 +30,9 @@
   &:hover {
     left: 1rem;
 
-    &+ .tomorrow + .map {
+    &+ .map {
       left: 8rem;
+      right: -8rem;
     }
   }
 }
@@ -42,7 +43,8 @@
   &:hover {
     right: 1rem;
 
-    &+ .map {
+    &+ .yesterday + .map {
+      left: -8rem;
       right: 8rem;
     }
   }
