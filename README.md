@@ -11,6 +11,7 @@
 * [Work | Github](http://developer.github.com/v3)
 * [Pictures | Instagram](http://instagram.com/developer)
 * [Weather](https://github.com/dlt/yahoo_weatherman)
+* Calendar
 
 #### Resources
 * [OAuth](https://github.com/intridea/oauth2)
