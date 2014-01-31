@@ -3,6 +3,10 @@
   @include transition(.3s);
   width: 100%;
   z-index: 1;
+
+  &.behind {
+    @include transform(scale(.9));
+  }
 }
 
 .today {
@@ -46,6 +50,30 @@
     &+ .yesterday + .map {
       left: -8rem;
       right: 8rem;
+    }
+  }
+}
+
+.meta {
+  align-items: center;
+  display: flex;
+  @include position(absolute, 0px 0px 0px 0px);
+  z-index: 4;
+
+  ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: block;
+    float: left;
+    width: 33.33%;
+
+    img {
+      display: block;
+      max-width: 100%;
     }
   }
 }
