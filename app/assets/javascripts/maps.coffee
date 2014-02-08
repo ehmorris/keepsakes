@@ -1,9 +1,8 @@
 $ ->
   geodata_json = $('#map').data('geojson')
-
   map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
 
-  set_boundary = ->
+  set_points_boundary = ->
     # initialize empty collection for getGeoJSON function
     marker_layer = L.mapbox.markerLayer({
       type: 'FeatureCollection',
@@ -21,22 +20,22 @@ $ ->
 
     map.fitBounds marker_layer.getBounds()
 
-  count = 0
-  render_points = ->
+  point_sequence_counter = 0
+  render_points_sequentially = ->
     point = {
       type: 'Feature',
-      geometry: geodata_json[count],
+      geometry: geodata_json[point_sequence_counter],
       properties: {
-        'title': geodata_json[count].title
+        'title': geodata_json[point_sequence_counter].title
       }}
 
     # add only the current point to the map
     L.mapbox.markerLayer(point).addTo map
 
     # recurse function until all points are plotted
-    if ++count < geodata_json.length
+    if ++point_sequence_counter < geodata_json.length
       # set delay to animate the line drawing
-      window.setTimeout(render_points, 10)
+      window.setTimeout(render_points_sequentially, 10)
 
-  set_boundary()
-  render_points()
+  set_points_boundary()
+  render_points_sequentially()
