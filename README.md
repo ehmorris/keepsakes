@@ -1,6 +1,12 @@
 # Dayview
 ### Displays QS information in one explorable interface.
 
+### Running the app
+* Run `./bin/setup`
+* Run `rake db:migrate`
+* Fill the `.env` file in with an actual Moves client ID and secret
+* Run `foreman start --port 3000`
+
 [![Code Climate](https://codeclimate.com/github/ehmorris/dayview.png)](https://codeclimate.com/github/ehmorris/dayview)
 
 #### Potential sources of information
