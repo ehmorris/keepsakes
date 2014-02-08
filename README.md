@@ -1,5 +1,4 @@
-# Dayview
-## Displays QS information in one explorable interface.
+### Dayview — Displays QS information in one explorable interface.
 
 #### Running the app
 * Run `./bin/setup`
@@ -8,6 +7,11 @@
 * Run `foreman start` and  `open http://localhost:3000`
 
 [![Code Climate](https://codeclimate.com/github/ehmorris/dayview.png)](https://codeclimate.com/github/ehmorris/dayview)
+
+#### Dashboards
+* [Mailgun](https://mailgun.com/cp?domain=dayview.co)
+* [Mapbox](https://www.mapbox.com/projects)
+* [Moves](https://dev.moves-app.com/apps)
 
 #### Potential sources of information
 * [Location | Foursquare](https://github.com/mattmueller/foursquare2)
