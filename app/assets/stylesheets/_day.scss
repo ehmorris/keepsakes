@@ -62,7 +62,7 @@
 
 .activate-meta-nav {
   background: transparent;
-  cursor: url('/assets/menu-cursor.svg'), pointer;
+  cursor: url('/assets/menu-cursor.svg') 15 10, pointer;
   display: block;
   height: 35%;
   @include position(absolute, 0px 0px 0 0px);
