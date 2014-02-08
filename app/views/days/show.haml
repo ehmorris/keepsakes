@@ -1,10 +1,6 @@
-.meta.detail
-  %p You usually come from Home
-  %p You've been here 12 times
-  %p You're here for 6 hours at a time on average
-
 .meta.journal
   %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porta ac sem convallis posuere. Quisque varius euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit amet auctor justo, in sodales diam. Curabitur a purus velit. Morbi lobortis quam vitae turpis imperdiet ultricies. Integer vel leo sit amet turpis euismod tincidunt sed ac velit. Nunc eu condimentum metus, vitae dignissim dui. Maecenas ut turpis et purus dignissim euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent molestie, odio quis pulvinar tristique, est dui aliquet ante, quis vehicula nisl dolor eu quam. Nunc scelerisque ultricies leo, pulvinar scelerisque ante egestas eu. Sed at vehicula mi.
+
 .meta.music
   %ol
     %li Childish Gambino — Song Name
@@ -15,11 +11,17 @@
     %li Childish Gambino — Song Name
     %li Childish Gambino — Song Name
     %li Childish Gambino — Song Name
+
 .meta.photos
   %ol
     %li= image_tag('ig1.jpg')
     %li= image_tag('ig2.jpg')
     %li= image_tag('ig3.jpg')
+
+.meta.detail
+  %p You usually come from Home
+  %p You've been here 12 times
+  %p You're here for 6 hours at a time on average
 
 .today
   = @today.strftime('%a %b %e')
