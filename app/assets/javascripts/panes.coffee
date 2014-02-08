@@ -1,5 +1,5 @@
 $ ->
-  $('.activate-meta-nav').hover ->
+  $('.activate-meta-nav').on 'click', ->
     activate_meta_nav()
     false
 

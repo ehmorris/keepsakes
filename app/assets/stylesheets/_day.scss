@@ -62,7 +62,7 @@
 
 .activate-meta-nav {
   background: transparent;
-  cursor: pointer;
+  cursor: url('/assets/menu-cursor.svg'), pointer;
   display: block;
   height: 35%;
   @include position(absolute, 0px 0px 0 0px);
@@ -146,7 +146,12 @@ div.meta {
 .journal {
   background: rgba(0, 0, 0, .2);
   color: #fff;
+  font-size: 2vw;
   padding: 0 20%;
+
+  p {
+    margin: 0;
+  }
 
   p + p {
     text-indent: 1em;
