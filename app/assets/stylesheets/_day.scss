@@ -34,6 +34,7 @@
 }
 
 .yesterday {
+  left: 0;
   padding-left: 2rem;
   @include transform(translateX(0));
 
@@ -49,6 +50,7 @@
 
 .tomorrow {
   padding-right: 2rem;
+  right: 0;
 
   &:hover {
     padding-left: 1rem;
@@ -64,7 +66,7 @@
   background: transparent;
   cursor: url('/assets/menu-cursor.svg') 15 10, pointer;
   display: block;
-  height: 35%;
+  height: 25%;
   @include position(absolute, 0px 0px 0 0px);
   @include transform(translateY(-50%));
   @include transition(.3s);
