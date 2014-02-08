@@ -1,5 +1,6 @@
 .map {
   @include position(absolute, 0px 0px 0px 0px);
+  @include transform(translateX(0) translateY(0) scale(1));
   @include transition(.3s);
   width: 100%;
   z-index: 1;
@@ -9,7 +10,7 @@
   }
 
   &.down {
-    @include transform(scale(.9) translateY(50%))
+    @include transform(scale(.9) translateY(50%));
   }
 }
 
@@ -34,13 +35,13 @@
 
 .yesterday {
   left: 2rem;
+  @include transform(translateX(0));
 
   &:hover {
-    left: 1rem;
+    @include transform(translateX(-1rem));
 
-    &+ .map {
-      left: 8rem;
-      right: -8rem;
+    &+ .activate-meta-nav + .map {
+      @include transform(translateX(8rem));
     }
   }
 }
@@ -49,11 +50,10 @@
   right: 2rem;
 
   &:hover {
-    right: 1rem;
+    @include transform(translateX(1rem));
 
-    &+ .yesterday + .map {
-      left: -8rem;
-      right: 8rem;
+    &+ .yesterday + .activate-meta-nav + .map {
+      @include transform(translateX(-8rem));
     }
   }
 }
@@ -62,7 +62,7 @@
   background: #ccc;
   cursor: pointer;
   display: block;
-  height: 10vh;
+  height: 10%;
   @include position(absolute, 0px 0px 0 0px);
   @include transform(translateY(-50%));
   @include transition(.3s);
@@ -70,6 +70,10 @@
 
   &:hover {
     @include transform(translateY(0%));
+
+    &+ .map {
+      @include transform(translateY(5%));
+    }
   }
 
   &.invisible {
