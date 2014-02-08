@@ -1,5 +1,5 @@
 $ ->
-  $('.activate-meta-nav').on 'click', ->
+  $('.activate-meta-nav').hover ->
     activate_meta_nav()
     false
 
@@ -13,16 +13,21 @@ $ ->
     deactivate_meta_nav()
     false
 
+  $('.meta.journal').on 'click', ->
+    deactivate_meta_panes()
+
 activate_meta_pane = (pane_class) ->
   # processed as in recessed vs. processed
   $(pane_class).addClass 'processed'
   deactivate_meta_nav()
   $('.map').addClass 'recessed'
 
+deactivate_meta_panes = ->
+  $('.map').removeClass 'recessed down'
+  $('.meta').removeClass 'processed'
+
 activate_meta_nav = ->
   $('.map').addClass 'down'
-  $('.activate-meta-nav').addClass 'invisible'
 
 deactivate_meta_nav = ->
   $('.map').removeClass 'recessed down'
-  $('.activate-meta-nav').removeClass 'invisible'

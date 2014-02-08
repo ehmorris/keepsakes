@@ -40,7 +40,7 @@
   &:hover {
     @include transform(translateX(-1rem));
 
-    &+ .activate-meta-nav + .map {
+    &+ .map {
       @include transform(translateX(8rem));
     }
   }
@@ -52,14 +52,14 @@
   &:hover {
     @include transform(translateX(1rem));
 
-    &+ .yesterday + .activate-meta-nav + .map {
+    &+ .yesterday + .map {
       @include transform(translateX(-8rem));
     }
   }
 }
 
 .activate-meta-nav {
-  background: #ccc;
+  background: transparent;
   cursor: pointer;
   display: block;
   height: 10%;
@@ -67,18 +67,6 @@
   @include transform(translateY(-50%));
   @include transition(.3s);
   z-index: 3;
-
-  &:hover {
-    @include transform(translateY(0%));
-
-    &+ .map {
-      @include transform(translateY(5%));
-    }
-  }
-
-  &.invisible {
-    opacity: 0;
-  }
 }
 
 nav.meta {
@@ -102,10 +90,10 @@ nav.meta {
 
   a {
     color: #666;
-    display: block;
+    display: inline-block;
     font-size: 4vh;
     font-weight: bold;
-    padding: 1vh 0;
+    padding: 1vh;
     text-decoration: none;
   }
 }

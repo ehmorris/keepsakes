@@ -1,3 +1,5 @@
+.activate-meta-nav
+
 %nav.meta
   %ol
     %li= link_to 'Close', '#', class: 'close-meta-nav'
@@ -38,8 +40,6 @@
     = @tomorrow.strftime('%a %b %e')
 = link_to day_path(@yesterday), class: 'yesterday' do
   = @yesterday.strftime('%a %b %e')
-
-.activate-meta-nav
 
 %figure.map{ :id => 'map', 'data-geojson' => @geodata_json }
 
