@@ -6,12 +6,11 @@
 * Fill the `.env` file in with an actual Moves client ID and secret
 * Run `foreman start` and  `open http://localhost:3000`
 
-[![Code Climate](https://codeclimate.com/github/ehmorris/dayview.png)](https://codeclimate.com/github/ehmorris/dayview)
-
 #### Dashboards
 * [Mailgun](https://mailgun.com/cp?domain=dayview.co)
 * [Mapbox](https://www.mapbox.com/projects)
 * [Moves](https://dev.moves-app.com/apps)
+* [![Code Climate](https://codeclimate.com/github/ehmorris/dayview.png)](https://codeclimate.com/github/ehmorris/dayview)
 
 #### Potential sources of information
 * [Location | Foursquare](https://github.com/mattmueller/foursquare2)
