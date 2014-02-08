@@ -1,9 +1,11 @@
-ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => ENV['SENDGRID_USERNAME'],
-  :password       => ENV['SENDGRID_PASSWORD'],
-  :domain         => 'heroku.com'
-}
 ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.smtp_settings = {
+     :authentication => :plain,
+     :address => ENV['MAILGUN_SMTP_SERVER'],
+     :port => 587,
+     :domain => "dayview.co",
+     :user_name => ENV['MAILGUN_DAYVIEWCO_SMTP_LOGIN'],
+     :password => ENV['MAILGUN_DAYVIEWCO_SMTP_PASSWORD']
+}
