@@ -2,8 +2,10 @@
 
 %nav.meta
   %ol
-    %li= link_to 'Close', '#', class: 'close-meta-nav'
     %li= link_to 'Journal', '#', class: 'activate-meta-pane', 'data-target' => 'journal'
+    %li= link_to 'Photos', '#', class: 'activate-meta-pane', 'data-target' => 'photos'
+    %li= link_to 'Music', '#', class: 'activate-meta-pane', 'data-target' => 'music'
+  .deactivate-meta-nav
 
 .meta.journal
   %article
@@ -41,7 +43,7 @@
 = link_to day_path(@yesterday), class: 'yesterday' do
   = @yesterday.strftime('%a %b %e')
 
-%figure.map{ :id => 'map', 'data-geojson' => @geodata_json }
+%figure.map#map{ 'data-geojson' => @geodata_json }
 
 %nav.account
   = link_to 'Connected Apps / Settings', account_path

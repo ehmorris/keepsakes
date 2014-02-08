@@ -10,7 +10,7 @@
   }
 
   &.down {
-    @include transform(scale(.9) translateY(50%));
+    @include transform(scale(.9) translateY(30%));
   }
 }
 
@@ -62,7 +62,7 @@
   background: transparent;
   cursor: pointer;
   display: block;
-  height: 10%;
+  height: 35%;
   @include position(absolute, 0px 0px 0 0px);
   @include transform(translateY(-50%));
   @include transition(.3s);
@@ -72,8 +72,16 @@
 nav.meta {
   @include align-items(center);
   @include display(flex);
-  height: 50vh;
+  height: 30vh;
+  opacity: 0;
+  position: relative;
+  @include transition(.3s);
   z-index: 1;
+
+  &.processed {
+    opacity: 1;
+    z-index: 4;
+  }
 
   ol {
     list-style-type: none;
@@ -95,6 +103,11 @@ nav.meta {
     font-weight: bold;
     padding: 1vh;
     text-decoration: none;
+  }
+
+  .deactivate-meta-nav {
+    @include position(fixed, 30vh 0px 0px 0px);
+    z-index: 4;
   }
 }
 

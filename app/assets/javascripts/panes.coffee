@@ -9,7 +9,8 @@ $ ->
     activate_meta_pane(".meta.#{target}")
     false
 
-  $('.close-meta-nav').on 'click', ->
+  $('.deactivate-meta-nav').on 'click', ->
+    console.log 'test'
     deactivate_meta_nav()
     false
 
@@ -28,6 +29,8 @@ deactivate_meta_panes = ->
 
 activate_meta_nav = ->
   $('.map').addClass 'down'
+  $('nav.meta').addClass 'processed'
 
 deactivate_meta_nav = ->
   $('.map').removeClass 'recessed down'
+  $('nav.meta').removeClass 'processed'
