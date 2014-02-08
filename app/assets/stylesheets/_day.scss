@@ -28,16 +28,17 @@
   margin: -4.5vw 0 0;
   @include position(absolute, 50% 0 0 0);
   text-decoration: none;
-  @include transition(.3s);
+  @include transition(all .3s, padding 0);
   @include user-select(none);
   z-index: 3;
 }
 
 .yesterday {
-  left: 2rem;
+  padding-left: 2rem;
   @include transform(translateX(0));
 
   &:hover {
+    padding-right: 1rem;
     @include transform(translateX(-1rem));
 
     &+ .map {
@@ -47,9 +48,10 @@
 }
 
 .tomorrow {
-  right: 2rem;
+  padding-right: 2rem;
 
   &:hover {
+    padding-left: 1rem;
     @include transform(translateX(1rem));
 
     &+ .yesterday + .map {
