@@ -1,7 +1,7 @@
 # Dayview
-### Displays QS information in one explorable interface.
+## Displays QS information in one explorable interface.
 
-### Running the app
+#### Running the app
 * Run `./bin/setup`
 * Run `rake db:migrate`
 * Fill the `.env` file in with an actual Moves client ID and secret
