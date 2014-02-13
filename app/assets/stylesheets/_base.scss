@@ -45,6 +45,7 @@ nav.account {
 
   &.map-view {
     @include animation(hide-account-nav 1s ease backwards);
+    @include animation-delay(1s);
     @include transform(translateY(80%));
 
     &:hover {
