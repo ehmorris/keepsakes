@@ -11,6 +11,7 @@
   %article
     %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porta ac sem convallis posuere. Quisque varius euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit amet auctor justo, in sodales diam. Curabitur a purus velit.
     %p Morbi lobortis quam vitae turpis imperdiet ultricies. Integer vel leo sit amet turpis euismod tincidunt sed ac velit. Nunc eu condimentum metus, vitae dignissim dui. Maecenas ut turpis et purus dignissim euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent molestie, odio quis pulvinar tristique, est dui aliquet ante, quis vehicula nisl dolor eu quam. Nunc scelerisque ultricies leo, pulvinar scelerisque ante egestas eu. Sed at vehicula mi.
+    %p Morbi lobortis quam vitae turpis imperdiet ultricies. Integer vel leo sit amet turpis euismod tincidunt sed ac velit. Nunc eu condimentum metus, vitae dignissim dui. Maecenas ut turpis et purus dignissim euismod. Euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit, odio quis pulvinar tristique, est dui aliquet ante, quis vehicula nisl dolor eu quam.
 
 .meta.music
   %ol
@@ -34,17 +35,19 @@
   %p You've been here 12 times
   %p You're here for 6 hours at a time on average
 
-.today
+.today-text
   = @today.strftime('%a %b %e')
 
 - if @tomorrow < Date.today
-  = link_to day_path(@tomorrow), class: 'tomorrow' do
+  = link_to day_path(@tomorrow), class: 'tomorrow-link' do
     = @tomorrow.strftime('%a %b %e')
-= link_to day_path(@yesterday), class: 'yesterday' do
+= link_to day_path(@yesterday), class: 'yesterday-link' do
   = @yesterday.strftime('%a %b %e')
 
-%figure.map#map{ 'data-geojson' => @geodata_json }
+%figure.map.map-today#map{ 'data-geojson' => @geodata_json }
+%figure.map.map-yesterday
+%figure.map.map-tomorrow
 
-%nav.account
+%nav.account.map-view
   = link_to 'Connected Apps / Settings', account_path
   = link_to '&#8998'.html_safe, sign_out_path, class: 'signout', title: 'Sign out', method: :delete

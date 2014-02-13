@@ -43,6 +43,15 @@ nav.account {
   top: auto;
   @include transition;
 
+  &.map-view {
+    @include animation(hide-account-nav 1s ease backwards);
+    @include transform(translateY(80%));
+
+    &:hover {
+      @include transform(translateY(0));
+    }
+  }
+
   &:hover {
     opacity: 1;
   }

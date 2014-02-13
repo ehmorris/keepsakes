@@ -1,27 +1,54 @@
-.map {
+.map-today {
   @include position(absolute, 0px 0px 0px 0px);
-  @include transform(translateX(0) translateY(0) scale(1));
+  @include transform(scale(1) translateY(0) translateX(0));
   @include transition(.3s);
   width: 100%;
   z-index: 1;
 
   &.recessed {
-    @include transform(scale(.9));
+    @include transform(scale(.7));
   }
 
   &.down {
-    @include transform(scale(.9) translateY(30%));
+    @include transform(scale(.7) translateY(30%));
   }
 }
 
-.today {
+.map-yesterday, .map-tomorrow {
+  background: #666;
+  @include position(absolute, 0px 0px 0px 0px);
+  @include transform(scale(1) translateY(0) translateX(-90%));
+  @include transition(.3s);
+
+  &.recessed {
+    @include transform(scale(.7) translateX(-110%));
+  }
+
+  &.down {
+    @include transform(scale(.7) translateY(30%) translateX(-110%));
+  }
+}
+
+.map-tomorrow {
+  @include transform(scale(1) translateY(0) translateX(90%));
+  
+  &.recessed {
+    @include transform(scale(.7) translateX(110%));
+  }
+
+  &.down {
+    @include transform(scale(.7) translateY(30%) translateX(110%));  
+  }
+}
+
+.today-text {
   @include animation(today-intro 2s);
   @include animation-fill-mode(forwards);
   @include centered-text;
   @include user-select(none);
 }
 
-.yesterday, .tomorrow {
+.yesterday-link, .tomorrow-link {
   color: rgb(255, 255, 255);
   display: block;
   font: bold 2.5vw/9vw sans-serif;
@@ -33,7 +60,7 @@
   z-index: 3;
 }
 
-.yesterday {
+.yesterday-link {
   left: 0;
   padding-left: 2rem;
   @include transform(translateX(0));
@@ -42,13 +69,13 @@
     padding-right: 1rem;
     @include transform(translateX(-1rem));
 
-    &+ .map {
+    &+ .map-today {
       @include transform(translateX(8rem));
     }
   }
 }
 
-.tomorrow {
+.tomorrow-link {
   padding-right: 2rem;
   right: 0;
 
@@ -56,7 +83,7 @@
     padding-left: 1rem;
     @include transform(translateX(1rem));
 
-    &+ .yesterday + .map {
+    &+ .yesterday + .map-today {
       @include transform(translateX(-8rem));
     }
   }
@@ -150,6 +177,11 @@ div.meta {
   color: #fff;
   font-size: 2vw;
   padding: 0 20%;
+
+  article {
+    max-height: 80vh;
+    overflow-y: scroll;
+  }
 
   p {
     margin: 0;
