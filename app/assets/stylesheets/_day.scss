@@ -83,7 +83,7 @@
     padding-left: 1rem;
     @include transform(translateX(1rem));
 
-    &+ .yesterday + .map-today {
+    &+ .yesterday-link + .map-today {
       @include transform(translateX(-8rem));
     }
   }
