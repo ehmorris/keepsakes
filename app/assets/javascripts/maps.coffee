@@ -1,6 +1,9 @@
 $ ->
-  geodata_json = $('#map').data('geojson')
   map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
+  geodata_json = {}
+  
+  get_geodata_json = ->
+    geodata_json = $('#map').data('geojson')
 
   set_points_boundary = ->
     # initialize empty collection for getGeoJSON function
@@ -37,5 +40,6 @@ $ ->
       # set delay to animate the line drawing
       window.setTimeout(render_points_sequentially, 10)
 
+  get_geodata_json()
   set_points_boundary()
   render_points_sequentially()

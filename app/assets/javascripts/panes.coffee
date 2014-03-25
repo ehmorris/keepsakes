@@ -10,7 +10,6 @@ $ ->
     false
 
   $('.deactivate-meta-nav').on 'click', ->
-    console.log 'test'
     deactivate_meta_nav()
     false
 
