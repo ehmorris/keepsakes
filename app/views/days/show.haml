@@ -39,9 +39,9 @@
   = @today.strftime('%a %b %e')
 
 - if @tomorrow < Date.today
-  = link_to day_path(@tomorrow), class: 'tomorrow-link', remote: true do
+  = link_to day_path(@tomorrow), class: 'tomorrow-link' do
     = @tomorrow.strftime('%a %b %e')
-= link_to day_path(@yesterday), class: 'yesterday-link', remote: true do
+= link_to day_path(@yesterday), class: 'yesterday-link' do
   = @yesterday.strftime('%a %b %e')
 
 %figure.map.map-today#map{ 'data-geojson' => @geodata_json }
