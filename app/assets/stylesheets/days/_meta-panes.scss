@@ -1,0 +1,49 @@
+div.meta {
+  @include align-items(center);
+  @include display(flex);
+  opacity: 0;
+  @include position(absolute, 0px 0px 0px 0px);
+  z-index: -1;
+
+  &.processed {
+    z-index: 4;
+    opacity: 1;
+  }  
+
+  ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: block;
+    float: left;
+    width: 33.33%;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
+
+.journal {
+  background: rgba(0, 0, 0, .2);
+  color: #fff;
+  font-size: 2vw;
+  padding: 0 20%;
+
+  article {
+    max-height: 80vh;
+    overflow-y: scroll;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  p + p {
+    text-indent: 1em;
+  }
+}

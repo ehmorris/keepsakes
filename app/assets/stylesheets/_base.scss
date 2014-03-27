@@ -1,11 +1,11 @@
-html {
-  background: $building-color;
-}
-
 body {
+  background: url(sunrise.jpg) no-repeat;
+  background-size: cover;
   margin: 0;
   overflow: hidden;
   padding: 0;
+  @include perspective(1000px);
+  @include position(absolute, 0px 0px 0px 0px);
 }
 
 .flash {

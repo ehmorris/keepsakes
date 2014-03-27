@@ -1,0 +1,46 @@
+.map-today {
+  @include position(absolute, 0px 0px 0px 0px);
+  @include transform(scale(1) translateY(0) translateX(0));
+  @include transition(.3s);
+  width: 100%;
+  z-index: 1;
+
+  &.recessed {
+    @include transform(scale(.7));
+  }
+
+  &.down {
+    @include transform(scale(.7) translateY(30%));
+  }
+
+  &.tilt {
+    @include transform(rotateX(5deg));
+  }
+}
+
+.map-yesterday, .map-tomorrow {
+  background: url(anonymous-map.png);
+  @include position(absolute, 0px 0px 0px 0px);
+  @include transform(scale(1) translateY(0) translateX(-110%));
+  @include transition(.3s);
+
+  &.recessed {
+    @include transform(scale(.7) translateX(-110%));
+  }
+
+  &.down {
+    @include transform(scale(.7) translateY(30%) translateX(-110%));
+  }
+}
+
+.map-tomorrow {
+  @include transform(scale(1) translateY(0) translateX(110%));
+  
+  &.recessed {
+    @include transform(scale(.7) translateX(110%));
+  }
+
+  &.down {
+    @include transform(scale(.7) translateY(30%) translateX(110%));  
+  }
+}
