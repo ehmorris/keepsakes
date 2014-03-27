@@ -1,5 +1,11 @@
 $ ->
-  map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
+  if window.location.search == '?temp=warm'
+    map = L.mapbox.map('map', 'ehmorris.gecdn03c', { zoomControl: false })
+  else if window.location.search == '?temp=cold'
+    map = L.mapbox.map('map', 'ehmorris.gecdf0am', { zoomControl: false })
+  else
+    map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
+
   geodata_json = {}
   
   get_geodata_json = ->
