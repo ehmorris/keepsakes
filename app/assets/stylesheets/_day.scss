@@ -15,7 +15,7 @@
 }
 
 .map-yesterday, .map-tomorrow {
-  background: #666;
+  background: url(anonymous-map.png);
   @include position(absolute, 0px 0px 0px 0px);
   @include transform(scale(1) translateY(0) translateX(-90%));
   @include transition(.3s);
@@ -65,13 +65,9 @@
   padding-left: 2rem;
   @include transform(translateX(0));
 
-  &:hover {
+  &.hint {
     padding-right: 1rem;
     @include transform(translateX(-1rem));
-
-    &+ .map-today {
-      @include transform(translateX(8rem));
-    }
   }
 }
 
@@ -79,13 +75,9 @@
   padding-right: 2rem;
   right: 0;
 
-  &:hover {
+  &.hint {
     padding-left: 1rem;
     @include transform(translateX(1rem));
-
-    &+ .yesterday-link + .map-today {
-      @include transform(translateX(-8rem));
-    }
   }
 }
 

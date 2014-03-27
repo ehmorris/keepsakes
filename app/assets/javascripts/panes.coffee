@@ -16,6 +16,14 @@ $ ->
   $('.meta.journal').on 'click', ->
     deactivate_meta_panes()
 
+  $('.yesterday-link, .tomorrow-link').hover ->
+    $(this).addClass 'hint'
+    $('.map').addClass 'recessed'
+
+  , ->
+    $(this).removeClass 'hint'
+    $('.map').removeClass 'recessed'
+
 activate_meta_pane = (pane_class) ->
   # processed as in recessed vs. processed
   $(pane_class).addClass 'processed'
