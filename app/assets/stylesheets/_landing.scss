@@ -3,16 +3,27 @@
   background: #111;
   @include display(flex);
   height: 100vh;
+  position: relative;
 
   img {
     display: block;
     margin: auto;
+    position: relative;
+    @include user-select(none);
     width: 500px;
+    z-index: 2;
+  }
+
+  #landingmap {
+    background: #111;
+    cursor: default;
+    @include position(absolute, 0px 0px 0px 0px);
+    z-index: 1;
   }
 }
 
 .features {
-  padding: 5rem 0;
+  padding: 6rem 0;
 
   h1, h4, blockquote {
     color: #222;
@@ -43,16 +54,15 @@
     margin-left: 20%;
 
     &:first-letter {
-      margin-left: -1rem;
+      margin-left: -.75rem;
     }
   }
 
   .apps {
     @include display(flex);
     list-style-type: none;
-    margin: 3rem 0 0 0;
-    padding: 0 10%;
-    width: 100%;
+    margin: 3rem 10% 0 10%;
+    padding: 0;
 
     li {
       @include flex(1 auto);
