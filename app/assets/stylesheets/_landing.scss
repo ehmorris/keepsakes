@@ -79,10 +79,15 @@
 
 .sign-up-flow {
   padding-bottom: 6rem;
+  position: relative;
 
   form {
+    @include align-items(center);
     background: #eee;
     border-radius: 5px;
+    @include display(flex);
+    @include flex-wrap(wrap);
+    height: 250px;
     margin: auto;
     padding: 2rem;
     width: 35%;
@@ -96,7 +101,7 @@
       text-align: center;
       width: 100%;
 
-      &:last-child {
+      &:last-of-type {
         margin: 0;
       }
     }
@@ -109,6 +114,8 @@
 
     .confirm {
       display: none;
+      font-size: 1.5rem;
+      text-align: center;
     }
   }
 
@@ -130,6 +137,25 @@
         margin: 0 0 0 2rem;
         vertical-align: center;
       }
+
+      img {
+        width: 50px;
+      }
+    }
+  }
+
+  .success {
+    background: #eee;
+    border-radius: 5px 0 0 5px;
+    color: #000;
+    display: none;
+    height: 250px;
+    padding: 0 4rem;
+    @include position(absolute, 0px 0px 0 0);
+    text-decoration: none;
+
+    span {
+      line-height: 250px;
     }
   }
 }
