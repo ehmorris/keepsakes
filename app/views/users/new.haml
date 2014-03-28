@@ -24,5 +24,23 @@
       %p iDoneThis is an email journal
 
 .sign-up-flow
+  %form
+    %input{ type: 'email', placeholder: 'youremail@gmail.com' }
+    %input{ type: 'password', placeholder: 'password' }
+    %input{ type: 'button', value: 'Register' }
+    .confirm
+      %h4 Great, you're registered! Now connect some apps to get started... 
 
-
+  %ol.connections
+    %li
+      = image_tag('moves-logo.png') 
+      %span Connect Moves
+    %li
+      = image_tag('instagram-logo.png') 
+      %span Connect Instagram
+    %li
+      = image_tag('rdio-logo.png') 
+      %span Connect Rdio
+    %li
+      = image_tag('idonethis-logo.png') 
+      %span Connect iDoneThis

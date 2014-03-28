@@ -76,3 +76,60 @@
     }
   }
 }
+
+.sign-up-flow {
+  padding-bottom: 6rem;
+
+  form {
+    background: #eee;
+    border-radius: 5px;
+    margin: auto;
+    padding: 2rem;
+    width: 35%;
+
+    input {
+      border: 1px solid #999;
+      border-radius: 5px;
+      display: block;
+      margin: 0 0 1rem;
+      padding: 1rem;
+      text-align: center;
+      width: 100%;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    input[type=button] {
+      background: #ff6600;
+      border: 0;
+      color: #fff;
+    }
+
+    .confirm {
+      display: none;
+    }
+  }
+
+  .connections {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 35%;
+
+    li {
+      @include align-items(center);
+      background: #eee;
+      border-radius: 5px;
+      @include display(flex);
+      margin: 1rem 0 0 0;
+      padding: 1rem;
+
+      span {
+        margin: 0 0 0 2rem;
+        vertical-align: center;
+      }
+    }
+  }
+}
