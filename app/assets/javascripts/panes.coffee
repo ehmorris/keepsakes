@@ -36,6 +36,7 @@ window.activate_meta_pane = (pane_class) ->
 window.deactivate_meta_panes = ->
   clear_map_classes()
   $('.meta').removeClass 'processed'
+  $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 window.activate_meta_nav = ->
   $('.map-today').removeClass 'tilt'

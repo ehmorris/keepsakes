@@ -43,10 +43,12 @@ $ ->
     }
 
     $('.meta.detail').addClass 'processed'
-    $('.detail-previous, .detail-next').addClass 'show'
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
     $('.meta.detail h1').text(point.layer.feature.properties.title)
+
+  $('.meta.detail').on 'click', ->
+    map.fitBounds(feature_layer.getBounds())
 
   reset_markers = ->
     # cycle through each point in the feature layer, set the marker
