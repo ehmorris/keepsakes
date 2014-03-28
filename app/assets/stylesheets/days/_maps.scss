@@ -1,4 +1,5 @@
 .map-today {
+  background: $ground-color;
   @include position(absolute, 0px 0px 0px 0px);
   @include transform(scale(1) translateY(0) translateX(0));
   @include transition(.3s);

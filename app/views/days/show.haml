@@ -31,9 +31,11 @@
     %li= image_tag('ig3.jpg')
 
 .meta.detail
-  %p You usually come from Home
-  %p You've been here 12 times
-  %p You're here for 6 hours at a time on average
+  %h2 CVS/pharmacy
+  %p Arrived at 12:35pm
+  %p Spent 20 minutes here
+  = link_to 'Ryder Hall', '#', class: 'detail-previous'
+  = link_to 'Shake Shack', '#', class: 'detail-next'
 
 .today-text
   = @today.strftime('%a %b %e')

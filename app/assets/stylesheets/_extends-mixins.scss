@@ -61,3 +61,11 @@
   text-transform: uppercase;
   z-index: 2;
 }
+
+@mixin close-cursor {
+  cursor: url('close-cursor.svg') 15 10, pointer;
+}
+
+@mixin menu-cursor {
+  cursor: url('menu-cursor.svg') 15 10, pointer;
+}

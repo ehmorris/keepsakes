@@ -1,6 +1,8 @@
 div.meta {
   @include align-items(center);
+  @include close-cursor;
   @include display(flex);
+  @include flex-wrap(wrap);
   opacity: 0;
   @include position(absolute, 0px 0px 0px 0px);
   z-index: -1;
@@ -45,5 +47,26 @@ div.meta {
 
   p + p {
     text-indent: 1em;
+  }
+}
+
+.detail {
+  background: rgba(0, 0, 0, .5);
+
+  h2 {
+    color: #fff;
+    @include flex(1 100%);
+    font-size: 6vh;
+    margin: 0;
+    text-align: center;
+  }
+
+  p {
+    color: #fff;
+    @include flex(1 50%);
+    font-size: 4vh;
+    margin: 0;
+    padding: 4rem;
+    text-align: center;
   }
 }
