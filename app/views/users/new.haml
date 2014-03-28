@@ -1,6 +1,26 @@
-.clearance.sign-up
-  %h2 Sign up
-  = render :partial => '/users/form'
+.logo-screen
+  = image_tag('logo-white-large.png')
+  #map
 
-  .other-links
-    = link_to t('.sign_in'), sign_in_path
+.features
+  %h1 Your story is here
+  %h4 Keepsake creates an automatic journal from the apps you already use.
+  %h4 Keepsake brings the information from these apps together to uncover the story that was already there.
+  %blockquote
+    %p "Until you make the unknown known, it will direct your life and you will call it fate."
+
+  %ol.apps
+    %li
+      = image_tag('moves-logo.png') 
+      %p Moves
+    %li
+      = image_tag('instagram-logo.png') 
+      %p Instagram
+    %li
+      = image_tag('rdio-logo.png')
+      %p Rdio
+    %li
+      = image_tag('idonethis-logo.png') 
+      %p iDoneThis
+
+.sign-up-flow

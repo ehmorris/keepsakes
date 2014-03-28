@@ -1,11 +1,15 @@
 body {
-  background: url(sunrise.jpg) no-repeat;
-  background-size: 1800px;
+  font-family: 'Helvetica Neue';
   margin: 0;
-  overflow: hidden;
   padding: 0;
   @include perspective(1000px);
-  @include position(absolute, 0px 0px 0px 0px);
+
+  &.day-view {
+    background: url(sunrise.jpg) no-repeat;
+    background-size: 1800px;
+    overflow: hidden;
+    @include position(absolute, 0px 0px 0px 0px);
+  }
 }
 
 .flash {
