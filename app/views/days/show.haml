@@ -1,11 +1,10 @@
-.activate-meta-nav
+.activate-settings-nav
 
-%nav.meta
+%nav.settings
   %ol
-    %li= link_to 'Journal', '#', class: 'activate-meta-pane', 'data-target' => 'journal'
-    %li= link_to 'Photos', '#', class: 'activate-meta-pane', 'data-target' => 'photos'
-    %li= link_to 'Music', '#', class: 'activate-meta-pane', 'data-target' => 'music'
-  .deactivate-meta-nav
+    %li= link_to 'Edit connected apps', '#'
+    %li= link_to 'Edit email and password', account_path
+  .deactivate-settings-nav
 
 .meta.journal
   %article
@@ -47,9 +46,18 @@
   = @yesterday.strftime('%a %b %e')
 
 %figure.map.map-today#map{ 'data-geojson' => @geodata_json }
+  %nav.meta
+    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
+      %span.title= image_tag('journal-icon.svg')
+      %span.desc You wrote 356 words today
+    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
+      %span.title= image_tag('photos-icon.svg')
+      %span.desc You took 2 photos today
+    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'music' do
+      %span.title= image_tag('music-icon.svg')
+      %span.desc You listened to 24 songs today
+    = link_to '#' do
+      %span.title= image_tag('weather-icon.svg')
+      %span.desc The low today was 15&deg; with a high of 50&deg;. It was cloudy.
 %figure.map.map-yesterday
 %figure.map.map-tomorrow
-
-%nav.account.map-view
-  = link_to 'Connected Apps / Settings', account_path
-  = link_to '&#8998'.html_safe, sign_out_path, class: 'signout', title: 'Sign out', method: :delete

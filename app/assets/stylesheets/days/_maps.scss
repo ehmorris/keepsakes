@@ -11,7 +11,7 @@
   }
 
   &.down {
-    @include transform(scale(.7) translateY(30%));
+    @include transform(scale(.7) translateY(25%));
   }
 
   &.tilt {
@@ -30,7 +30,7 @@
   }
 
   &.down {
-    @include transform(scale(.7) translateY(30%) translateX(-110%));
+    @include transform(scale(.7) translateY(25%) translateX(-110%));
   }
 }
 
@@ -42,6 +42,6 @@
   }
 
   &.down {
-    @include transform(scale(.7) translateY(30%) translateX(110%));  
+    @include transform(scale(.7) translateY(25%) translateX(110%));  
   }
 }

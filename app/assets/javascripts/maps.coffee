@@ -44,6 +44,7 @@ $ ->
 
     $('.meta.detail').addClass 'processed'
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
+    $('nav.meta').addClass 'hide'
 
     $('.meta.detail h1').text(point.layer.feature.properties.title)
 

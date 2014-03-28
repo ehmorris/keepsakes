@@ -1,11 +1,14 @@
 $ ->
-  $('.activate-meta-nav').hover ->
+  $('.activate-settings-nav').hover ->
     $('.map-today').addClass 'tilt'
   , ->
     $('.map-today').removeClass 'tilt'
 
-  $('.activate-meta-nav').on 'click', ->
+  $('.activate-settings-nav').on 'click', ->
     window.activate_meta_nav()
+
+  $('.deactivate-settings-nav').on 'click', ->
+    window.deactivate_meta_nav()
 
   $('.activate-meta-pane').on 'click', ->
     target = $(@).data('target')
@@ -13,10 +16,7 @@ $ ->
     window.activate_meta_pane(".meta.#{target}")
     false
 
-  $('.deactivate-meta-nav').on 'click', ->
-    window.deactivate_meta_nav()
-
-  $('.meta.journal, .meta.detail').on 'click', ->
+  $('div.meta').on 'click', ->
     window.deactivate_meta_panes()
 
   $('.yesterday-link, .tomorrow-link').hover ->
@@ -35,18 +35,19 @@ window.activate_meta_pane = (pane_class) ->
 
 window.deactivate_meta_panes = ->
   clear_map_classes()
-  $('.meta').removeClass 'processed'
+  $('div.meta').removeClass 'processed'
+  $('nav.meta').removeClass 'hide'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 window.activate_meta_nav = ->
   $('.map-today').removeClass 'tilt'
   push_maps_down()
-  $('nav.meta').addClass 'processed'
+  $('nav.settings').addClass 'processed'
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 window.deactivate_meta_nav = ->
   clear_map_classes()
-  $('nav.meta').removeClass 'processed'
+  $('nav.settings').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 window.recess_maps = ->
