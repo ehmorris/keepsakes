@@ -14,8 +14,16 @@
     @include transform(scale(.7) translateY(25%));
   }
 
-  &.tilt {
+  &.up {
+    @include transform(scale(.7) translateY(-25%));
+  }
+
+  &.tilt-up {
     @include transform(rotateX(5deg));
+  }
+
+  &.tilt-down {
+    @include transform(rotateX(-5deg));
   }
 }
 
@@ -32,6 +40,10 @@
   &.down {
     @include transform(scale(.7) translateY(25%) translateX(-110%));
   }
+
+  &.up {
+    @include transform(scale(.7) translateY(-25%) translateX(-110%));
+  }
 }
 
 .map-tomorrow {
@@ -43,5 +55,9 @@
 
   &.down {
     @include transform(scale(.7) translateY(25%) translateX(110%));  
+  }
+
+  &.up {
+    @include transform(scale(.7) translateY(-25%) translateX(110%));  
   }
 }

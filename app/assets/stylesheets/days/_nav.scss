@@ -46,7 +46,7 @@
   }
 }
 
-.activate-settings-nav {
+.activate-settings-nav, .activate-meta-nav {
   background: transparent;
   height: 10%;
   @include menu-cursor;
@@ -55,21 +55,33 @@
   z-index: 3;
 }
 
-.deactivate-settings-nav {
+.activate-meta-nav {
+  top: auto;
+  bottom: 0px;
+}
+
+.deactivate-settings-nav, .deactivate-meta-nav {
   @include close-cursor;
   @include position(fixed, 30vh 0px 0px 0px);
   z-index: 4;
 }
 
+.deactivate-meta-nav {
+  bottom: 30vh;
+  top: 0px;
+}
+
 nav.meta {
   @include display(flex);
-  @include position(absolute, 5% 0 0 0);
+  opacity: 0;
+  @include position(absolute, 0 0 0px 0);
   @include transition;
   width: 100%;
-  z-index: 3;
+  z-index: 1;
 
-  &.hide {
-    opacity: 0;
+  &.processed {
+    opacity: 1;
+    z-index: 4;
   }
 
   @for $i from 1 through 4 {

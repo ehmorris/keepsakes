@@ -1,18 +1,46 @@
 - content_for :body_classes, 'day-view'
 
 .activate-settings-nav
-
 %nav.settings
   %ol
     %li= link_to 'Edit connected apps', '#'
     %li= link_to 'Edit email and password', account_path
   .deactivate-settings-nav
 
+.activate-meta-nav  
+%nav.meta
+  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
+    %span.title= image_tag('journal-icon.svg')
+    %span.desc You wrote 356 words today
+  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
+    %span.title= image_tag('photos-icon.svg')
+    %span.desc You took 2 total photos today
+  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'music' do
+    %span.title= image_tag('music-icon.svg')
+    %span.desc You listened to 24 total songs today
+  = link_to '#' do
+    %span.title= image_tag('weather-icon.svg')
+    %span.desc The low today was 15&deg; with a high of 50&deg;. It was cloudy.
+  .deactivate-meta-nav
+
+.meta.detail
+  %h2.title
+  = image_tag('ig4.jpg')
+  = image_tag('ig5.jpg')
+  %video{ 'src' => '/assets/vid1.m4v', 'autoplay' => 'true', 'loop' => 'true' }
+  = image_tag('music1.jpg')
+  = image_tag('music2.jpg')
+  %p Arrived at 12:35pm
+  %p Spent 20 minutes here
+  = link_to 'Came from Ryder Hall', '#', class: 'detail-previous'
+  = link_to 'Left for Shake Shack', '#', class: 'detail-next'
+
 .meta.journal
   %article
     %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porta ac sem convallis posuere. Quisque varius euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit amet auctor justo, in sodales diam. Curabitur a purus velit.
     %p Morbi lobortis quam vitae turpis imperdiet ultricies. Integer vel leo sit amet turpis euismod tincidunt sed ac velit. Nunc eu condimentum metus, vitae dignissim dui. Maecenas ut turpis et purus dignissim euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent molestie, odio quis pulvinar tristique, est dui aliquet ante, quis vehicula nisl dolor eu quam. Nunc scelerisque ultricies leo, pulvinar scelerisque ante egestas eu. Sed at vehicula mi.
     %p Morbi lobortis quam vitae turpis imperdiet ultricies. Integer vel leo sit amet turpis euismod tincidunt sed ac velit. Nunc eu condimentum metus, vitae dignissim dui. Maecenas ut turpis et purus dignissim euismod. Euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit, odio quis pulvinar tristique, est dui aliquet ante, quis vehicula nisl dolor eu quam.
+    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porta ac sem convallis posuere. Quisque varius euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit amet auctor justo, in sodales diam. Curabitur a purus velit.
 
 .meta.music
   %ol
@@ -31,17 +59,6 @@
     %li= image_tag('ig2.jpg')
     %li= image_tag('ig3.jpg')
 
-.meta.detail
-  %h2.title
-  = image_tag('ig4.jpg')
-  = image_tag('ig5.jpg')
-  %video{ 'src' => '/assets/vid1.m4v', 'autoplay' => 'true', 'loop' => 'true' }
-  = image_tag('music1.jpg')
-  = image_tag('music2.jpg')
-  %p Arrived at 12:35pm
-  %p Spent 20 minutes here
-  = link_to 'Came from Ryder Hall', '#', class: 'detail-previous'
-  = link_to 'Left for Shake Shack', '#', class: 'detail-next'
 
 .today-text
   = @today.strftime('%a %b %e')
@@ -53,18 +70,5 @@
   = @yesterday.strftime('%a %b %e')
 
 %figure.map.map-today#map{ 'data-geojson' => @geodata_json }
-  %nav.meta
-    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
-      %span.title= image_tag('journal-icon.svg')
-      %span.desc You wrote 356 words today
-    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
-      %span.title= image_tag('photos-icon.svg')
-      %span.desc You took 2 photos today
-    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'music' do
-      %span.title= image_tag('music-icon.svg')
-      %span.desc You listened to 24 songs today
-    = link_to '#' do
-      %span.title= image_tag('weather-icon.svg')
-      %span.desc The low today was 15&deg; with a high of 50&deg;. It was cloudy.
 %figure.map.map-yesterday
 %figure.map.map-tomorrow
