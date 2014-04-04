@@ -4,7 +4,7 @@ body {
   padding: 0;
   @include perspective(1000px);
 
-  &.day-view {
+  &.day-view, &.user-edit {
     background: url(sunrise.jpg) no-repeat;
     background-size: 1800px;
     overflow: hidden;

@@ -46,7 +46,7 @@ $ ->
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
     $('nav.meta').addClass 'hide'
 
-    $('.meta.detail h1').text(point.layer.feature.properties.title)
+    $('.meta.detail .title').text(point.layer.feature.properties.title)
 
   $('.meta.detail').on 'click', ->
     map.fitBounds(feature_layer.getBounds())
