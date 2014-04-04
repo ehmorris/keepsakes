@@ -33,26 +33,30 @@ $ ->
   # plot all the points at once
   feature_layer.addTo map
 
+  # zoom to a detail view
   feature_layer.on 'click', (point) ->
     map.panTo(point.layer.getLatLng()).setZoom(18)
     point.layer.feature.properties['marker-size'] = 'large'
-    point.layer.feature.properties['marker-color'] = '#fff'
+    point.layer.feature.properties['marker-color'] = '#71A052'
     feature_layer.setGeoJSON {
       type: 'FeatureCollection',
       features: feature_layer.getGeoJSON().features.concat point
     }
 
+    $('.meta.detail').data('point', point)
     $('.meta.detail').addClass 'processed'
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
     $('.meta.detail .title').text(point.layer.feature.properties.title)
 
+  # zoom map back out to boundaries after returning from the detail view
   $('.meta.detail').on 'click', ->
     map.fitBounds(feature_layer.getBounds())
 
-  reset_markers = ->
-    # cycle through each point in the feature layer, set the marker
-    # color and size to the default values, then setGeoJSON
-    console.log 'reset all markers'
-
-  feature_layer.on 'click', reset_markers
+  window.reset_marker = (point) ->
+    point.layer.feature.properties['marker-size'] = ''
+    point.layer.feature.properties['marker-color'] = ''
+    feature_layer.setGeoJSON {
+      type: 'FeatureCollection',
+      features: feature_layer.getGeoJSON().features.concat point
+    }

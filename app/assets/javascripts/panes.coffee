@@ -35,7 +35,7 @@ $ ->
     false
 
   $('div.meta').on 'click', ->
-    window.deactivate_meta_panes()
+    window.deactivate_meta_panes($(this))
 
   # cancel out window deactivation when clicking on things inside the pane
   $('.meta.detail img, .meta.detail video'). on 'click', ->
@@ -47,30 +47,31 @@ window.activate_meta_pane = (pane_class) ->
   deactivate_meta_nav()
   recess_maps()
 
-window.deactivate_meta_panes = ->
-  clear_map_classes()
+window.deactivate_meta_panes = (pane) ->
+  window.clear_map_classes()
+  window.reset_marker(pane.data('point'))
   $('div.meta').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 window.activate_settings_nav = ->
+  window.push_maps_down()
   $('.map-today').removeClass 'tilt-up'
-  push_maps_down()
   $('nav.settings').addClass 'processed'
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 window.deactivate_settings_nav = ->
-  clear_map_classes()
+  window.clear_map_classes()
   $('nav.settings').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 window.activate_meta_nav = ->
+  window.push_maps_up()
   $('.map-today').removeClass 'tilt-down'
-  push_maps_up()
   $('nav.meta').addClass 'processed'
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 window.deactivate_meta_nav = ->
-  clear_map_classes()
+  window.clear_map_classes()
   $('nav.meta').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
