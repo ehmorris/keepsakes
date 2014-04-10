@@ -7,15 +7,15 @@
   z-index: 1;
 
   &.recessed {
-    @include transform(scale(.7));
+    @include transform(translate3d(0, 0, -30vw));
   }
 
   &.down {
-    @include transform(scale(.7) translateY(25%));
+    @include transform(translate3d(0, 25%, -30vw));
   }
 
   &.up {
-    @include transform(scale(.7) translateY(-25%));
+    @include transform(translate3d(0, -25%, -30vw));
   }
 
   &.tilt-up {
@@ -30,34 +30,34 @@
 .map-yesterday, .map-tomorrow {
   background: url(anonymous-map.png);
   @include position(absolute, 0px 0px 0px 0px);
-  @include transform(scale(1) translateY(0) translateX(-110%));
+  @include transform(translate3d(-110%, 0, 0));
   @include transition(.3s);
 
   &.recessed {
-    @include transform(scale(.7) translateX(-110%));
+    @include transform(translate3d(-110%, 0, -30vw));
   }
 
   &.down {
-    @include transform(scale(.7) translateY(25%) translateX(-110%));
+    @include transform(translate3d(-110%, 25%, -30vw));
   }
 
   &.up {
-    @include transform(scale(.7) translateY(-25%) translateX(-110%));
+    @include transform(translate3d(-110%, -25%, -30vw));
   }
 }
 
 .map-tomorrow {
-  @include transform(scale(1) translateY(0) translateX(110%));
+  @include transform(translate3d(110%, 0, 0));
   
   &.recessed {
-    @include transform(scale(.7) translateX(110%));
+    @include transform(translate3d(110%, 0, -30vw));
   }
 
   &.down {
-    @include transform(scale(.7) translateY(25%) translateX(110%));  
+    @include transform(translate3d(110%, 25%, -30vw));
   }
 
   &.up {
-    @include transform(scale(.7) translateY(-25%) translateX(110%));  
+    @include transform(translate3d(110%, -25%, -30vw));
   }
 }
