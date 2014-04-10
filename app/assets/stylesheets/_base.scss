@@ -1,8 +1,9 @@
 body {
-  font-family: 'Helvetica Neue';
+  font-family: $sans;
   margin: 0;
   padding: 0;
   @include perspective(1000px);
+  text-rendering: optimizelegibility;
 
   &.day-view, &.user-edit {
     background: url(sunrise.jpg) no-repeat;

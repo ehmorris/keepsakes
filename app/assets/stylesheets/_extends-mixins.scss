@@ -52,7 +52,7 @@
 @mixin centered-text {
   color: rgb(255, 255, 255);
   display: block;
-  font: bold 9vw/1 sans-serif;
+  font: bold 9vw/1 $sans;
   letter-spacing: 3px;
   margin: -4.5vw 0 0;
   @include position(absolute, 50% 0px 0 0px);
