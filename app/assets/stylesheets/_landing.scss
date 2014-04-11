@@ -4,21 +4,15 @@
   @include display(flex);
   height: 100vh;
   position: relative;
+  @include radial-gradient(#444, #222);
 
-  img {
-    display: block;
-    margin: auto;
-    position: relative;
+  h1 {
+    color: #fff;
+    font-family: $serif;
+    font-size: 10vh;
+    text-align: center;
     @include user-select(none);
-    width: 500px;
-    z-index: 2;
-  }
-
-  #landingmap {
-    background: #111;
-    cursor: default;
-    @include position(absolute, 0px 0px 0px 0px);
-    z-index: 1;
+    width: 100%;
   }
 }
 
