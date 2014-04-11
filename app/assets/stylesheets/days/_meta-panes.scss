@@ -16,16 +16,6 @@ div.meta {
     opacity: 1;
   }  
 
-  ol {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li img {
-    max-width: 100%;
-  }
-
   .item {
     position: relative;
 
@@ -56,6 +46,18 @@ div.meta {
       width: 100%;
     }
   }
+
+  .gallery {
+    white-space: nowrap;
+
+    .item {
+      display: inline-block;
+      margin: 0 2vw;
+      max-height: 80vh;
+      max-width: 60vw;
+      white-space: normal;
+    }
+  }
 }
 
 div.meta.journal {
@@ -79,16 +81,19 @@ div.meta.journal {
 
 div.meta.photos {
   overflow-x: scroll;
+}
 
-  .gallery {
-    white-space: nowrap;
+div.meta.music {
+  overflow-x: scroll;
+
+  .gallery .item {
+    max-width: 30vw;
   }
 
-  .item {
-    margin: 0 2vw;
-    display: inline-block;
-    max-height: 85vh;
-    max-width: 85vw;
+  .item .detail {
+    .album, .arist {
+      font-weight: 700;
+    }
   }
 }
 
