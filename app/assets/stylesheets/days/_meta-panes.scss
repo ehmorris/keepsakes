@@ -65,9 +65,12 @@ div.meta.journal {
   font-size: 2vw;
   line-height: 1.4;
   overflow-y: scroll;
+  padding: 0 20vw;
 
   article {
-    padding: 10vh 25vw;
+    cursor: text;
+    outline: none;
+    padding: 10vh 5vw;
   }
 
   p {
@@ -103,7 +106,7 @@ div.meta.marker-detail {
     @include flex(1 100%);
     font-family: $serif;
     font-size: 6vh;
-    margin: 25vh 0 0;
+    margin: 24vh 0 0;
     text-align: center;
 
     &:hover {

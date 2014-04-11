@@ -37,6 +37,9 @@ $ ->
   $('div.meta').on 'click', ->
     deactivate_meta_panes()
 
+  $('div.meta article').on 'click', ->
+    false
+
   $('div.meta:not(.marker-detail').on 'click', ->
     activate_meta_nav()
 
