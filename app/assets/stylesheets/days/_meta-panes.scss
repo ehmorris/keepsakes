@@ -35,7 +35,9 @@ div.meta {
 .journal {
   background: rgba(0, 0, 0, .5);
   color: #fff;
+  font-family: $serif;
   font-size: 2vw;
+  line-height: 1.4;
   padding: 0 20%;
 
   article {
