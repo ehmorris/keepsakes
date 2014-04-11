@@ -69,22 +69,24 @@ div.meta {
     @include position(absolute, 50% 0 0 50%);
     z-index: -1;
 
+    &:hover {
+      .detail {
+        opacity: 1;
+      }
+    }
+
     &:hover, &.ui-draggable-dragging {
       box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
       cursor: pointer;
       z-index: 4;
     }
 
-    &.image {
+    &.image, &.video {
       width: 35vw;
     }
 
     &.music {
       width: 20vw;
-    }
-
-    &.video {
-      width: 45vw;
     }
 
     &.time {
@@ -100,6 +102,23 @@ div.meta {
 
       span {
         display: block;
+      }
+    }
+
+    .detail {
+      @include align-items(center);
+      background: rgba(0, 0, 0, .6);
+      color: #fff;
+      @include display(flex);
+      @include flex-wrap(wrap);
+      opacity: 0;
+      padding: 3rem;
+      @include position(absolute, 0px 0px 0px 0px);
+      @include transition;
+
+      span {
+        display: block;
+        width: 100%;
       }
     }
 
