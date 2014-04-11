@@ -45,8 +45,8 @@ activate_meta_pane = (pane_class) ->
 
 deactivate_meta_panes = ->
   clear_map_classes()
+  activate_meta_nav()
   $('div.meta').removeClass 'processed'
-  $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 activate_upper_nav = ->
   push_maps_down()
