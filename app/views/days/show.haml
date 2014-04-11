@@ -1,11 +1,22 @@
 - content_for :body_classes, 'day-view'
 
-.activate-settings-nav
-%nav.settings
-  %ol
-    %li= link_to 'Edit connected apps', '#'
-    %li= link_to 'Edit email and password', account_path
-  .deactivate-settings-nav
+.activate-upper-nav
+.upper-nav
+  %nav.settings
+    %ol
+      %li
+        = link_to '#' do
+          %i.fa.fa-cog
+          Edit connected apps
+      %li
+        = link_to account_path do
+          %i.fa.fa-cog
+          Edit email and password
+
+  %nav.calendar
+    %span calendar
+
+  .deactivate-upper-nav
 
 .activate-meta-nav  
 %nav.meta
@@ -88,20 +99,12 @@
 
 .meta.journal
   %article
-    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porta ac sem convallis posuere. Quisque varius euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit amet auctor justo, in sodales diam. Curabitur a purus velit.
-    %p Morbi lobortis quam vitae turpis imperdiet ultricies. Integer vel leo sit amet turpis euismod tincidunt sed ac velit. Nunc eu condimentum metus, vitae dignissim dui. Maecenas ut turpis et purus dignissim euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent molestie, odio quis pulvinar tristique, est dui aliquet ante, quis vehicula nisl dolor eu quam. Nunc scelerisque ultricies leo, pulvinar scelerisque ante egestas eu. Sed at vehicula mi.
-    %p Morbi lobortis quam vitae turpis imperdiet ultricies. Integer vel leo sit amet turpis euismod tincidunt sed ac velit. Nunc eu condimentum metus, vitae dignissim dui. Maecenas ut turpis et purus dignissim euismod. Euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit, odio quis pulvinar tristique, est dui aliquet ante, quis vehicula nisl dolor eu quam.
-    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porta ac sem convallis posuere. Quisque varius euismod leo, a pellentesque ipsum elementum nec. Proin dictum vulputate libero a fermentum. Etiam sit amet auctor justo, in sodales diam. Curabitur a purus velit.
+    %p I had a haircut appointment before noon today, so at least I had a reason to get out of bed. I arrived just on time and talked with Josh about Puerto Rico and school — it was a good haircut. I didn't quite know where to go afterwards but I always enjoy being around the South End. I walked around until I thought of going to Bostonian Market for a cheap sandwich. I'd just read a great article about a food and blankets van that Pine Street Inn sends around Downtown Crossing at night during the winter, so it was nice to watch the Pine Street people across the street / in the market while I ate. Maybe once I have more time in NY I'll volunteer at a place like Pine Street.
+    %p I got the bus home and took a long nap before heading to Gallows for Ben's goodbye party — he leaves for NY and Yahoo on Friday. I chatted with the guy from Pilot who I've met before (Ben was getting hounded by everyone he knew), and I tried a "Scotch Egg" for the first time which is a $6 egg (at Gallows at least) that's breaded and fried and contains shredded pork. I got some advice on submitting my notice from Ben, who's been around the block.
+    %p Tasty Tuesday was happening and I was already late, so I got an UberX from Foodie's to to Nicole's to catch the last of it — the ride only took 5 mins and cost $5, which is crazy cheap to me. Less than a Scotch Egg. I hung around with everyone until Nicole kicked us out, but I was kinda being a bum on the couch the whole time.
 
 .meta.music
   %ol
-    %li Childish Gambino — Song Name
-    %li Childish Gambino — Song Name
-    %li Childish Gambino — Song Name
-    %li Childish Gambino — Song Name
-    %li Childish Gambino — Song Name
-    %li Childish Gambino — Song Name
-    %li Childish Gambino — Song Name
     %li Childish Gambino — Song Name
 
 .meta.photos
@@ -109,7 +112,8 @@
     %li= image_tag('ig1.jpg')
     %li= image_tag('ig2.jpg')
     %li= image_tag('ig3.jpg')
-
+    %li= image_tag('vid1.jpg')
+    %li= image_tag('ig4.jpg')
 
 .today-text
   = @today.strftime('%a %b %e')

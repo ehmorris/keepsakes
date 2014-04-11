@@ -46,7 +46,7 @@
   }
 }
 
-.activate-settings-nav, .activate-meta-nav {
+.activate-upper-nav, .activate-meta-nav {
   background: transparent;
   height: 10%;
   @include menu-cursor;
@@ -60,7 +60,7 @@
   bottom: 0px;
 }
 
-.deactivate-settings-nav, .deactivate-meta-nav {
+.deactivate-upper-nav, .deactivate-meta-nav {
   @include close-cursor;
   @include position(fixed, 30vh 0px 0px 0px);
   z-index: 4;
@@ -120,13 +120,11 @@ nav.meta {
   }
 }
 
-nav.settings {
-  @include align-items(center);
-  @include display(flex);
+.upper-nav {
   height: 30vh;
   opacity: 0;
   position: relative;
-  @include transition(.3s);
+  @include transition;
   z-index: 1;
 
   &.processed {
@@ -134,25 +132,29 @@ nav.settings {
     z-index: 4;
   }
 
-  ol {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  nav.settings {
+    @include position(absolute, 0px 0px 0 0);
+
+    ol {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    a {
+      color: #fff;
+      display: block;
+      padding: 1rem .5rem;
+      text-decoration: none;
+    }
   }
 
-  li {
-    display: block;
-    text-align: center;
-    width: 100%;
-  }
-
-  a {
+  nav.calendar {
     color: #fff;
-    display: inline-block;
-    font-size: 4vh;
-    font-weight: bold;
-    padding: 1vh;
-    text-decoration: none;
   }
 }
