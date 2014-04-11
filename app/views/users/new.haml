@@ -1,22 +1,11 @@
-.logo-screen
+.logo-screen.active
   %h1 keepsake
+  = link_to 'Your story is here', '#'
 
 .features
-  %h1 Your story is here
-  %h4 Keepsake creates an automatic journal from the apps you already use.
-  %h4 Keepsake brings the information from these apps together to uncover the story that was already there.
-  %blockquote
-    %p "Until you make the unknown known, it will direct your life and you will call it fate."
-
-  %ol.apps
-    %li
-      %p Moves tracks where you go
-    %li
-      %p Instagram tracks what you see
-    %li
-      %p Rdio tracks your music
-    %li
-      %p iDoneThis is an email journal
+  %span Keepsake creates an automatic journal from the apps you already use.
+  %span Keepsake brings the information from these apps together to uncover the story that was already there.
+  = link_to 'Show me', '#'
 
 .sign-up-flow
   %form
@@ -24,20 +13,16 @@
     %input{ type: 'password', placeholder: 'password' }
     %input{ type: 'button', value: 'Register' }
     .confirm
-      %h4 Great, you're registered! Now connect some apps to get started... 
+      %h4 Great, you're registered! Now connect some apps to get started...
 
   %ol.connections
     %li
-      = image_tag('moves-logo.png') 
       %span Connect Moves
     %li
-      = image_tag('instagram-logo.png') 
       %span Connect Instagram
     %li
-      = image_tag('rdio-logo.png') 
       %span Connect Rdio
     %li
-      = image_tag('idonethis-logo.png') 
       %span Connect iDoneThis
   = link_to '#', class: 'success' do
     %span Start browsing your journal &rarr;

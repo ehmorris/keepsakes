@@ -1,16 +1,12 @@
 body {
   font-family: $sans;
   margin: 0;
+  overflow: hidden;
   padding: 0;
   @include perspective($perspective-amount);
+  @include position(absolute, 0px 0px 0px 0px);
+  @include radial-gradient(#444, #222);
   text-rendering: optimizelegibility;
-
-  &.day-view, &.user-edit {
-    background-size: 1800px;
-    overflow: hidden;
-    @include position(absolute, 0px 0px 0px 0px);
-    @include radial-gradient(#444, #222);
-  }
 }
 
 .flash {

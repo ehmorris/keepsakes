@@ -1,10 +1,16 @@
-.logo-screen {
+.logo-screen, .features, .sign-up-flow {
   @include align-items(center);
-  background: #111;
   @include display(flex);
-  height: 100vh;
-  position: relative;
-  @include radial-gradient(#444, #222);
+  @include flex-wrap(wrap);
+  opacity: 0;
+  @include position(absolute, 0px 0px 0px 0px);
+  @include transition;
+  z-index: -1;
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+  }
 
   h1 {
     color: #fff;
@@ -14,67 +20,31 @@
     @include user-select(none);
     width: 100%;
   }
+
+  a {
+    border: 2px solid #000;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-size: 3vh;
+    font-weight: 400;
+    margin: 0 auto;
+    padding: 2rem;
+    text-decoration: none;
+  }
 }
 
 .features {
-  padding: 6rem 0;
-
-  h1, h4, blockquote {
-    color: #222;
-    font-size: 5vh;
-    font-weight: normal;
-    margin: 3rem 0;
-    max-width: 70%;
-  }
-
-  h1 {
-    font-size: 7vh;
-    font-weight: bold;
-    letter-spacing: 5px;
-    margin-left: 20%;
-    text-transform: uppercase;
-  }
-
-  h4:first-of-type {
-    margin-left: 10%;
-  }
-
-  h4:last-of-type {
-    margin-left: 20%;
-  }
-
-  blockquote {
-    font-style: italic;
-    margin-left: 20%;
-
-    &:first-letter {
-      margin-left: -.75rem;
-    }
-  }
-
-  .apps {
-    @include display(flex);
-    list-style-type: none;
-    margin: 3rem 10% 0 10%;
-    padding: 0;
-
-    li {
-      @include flex(1 auto);
-      text-align: center;
-
-      img {
-        display: block;
-        margin: auto;
-        width: 50px;
-      }
-    }
+  span {
+    display: block;
+    padding: 0 25vw;
+    color: #fff;
+    font-size: 3vh;
+    width: 100%;
   }
 }
 
 .sign-up-flow {
-  padding-bottom: 6rem;
-  position: relative;
-
   form {
     @include align-items(center);
     background: #eee;
@@ -126,15 +96,6 @@
       @include display(flex);
       margin: 1rem 0 0 0;
       padding: 1rem;
-
-      span {
-        margin: 0 0 0 2rem;
-        vertical-align: center;
-      }
-
-      img {
-        width: 50px;
-      }
     }
   }
 
