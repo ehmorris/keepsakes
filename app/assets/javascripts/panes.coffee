@@ -37,6 +37,9 @@ $ ->
   $('div.meta').on 'click', ->
     deactivate_meta_panes()
 
+  $('div.meta:not(.marker-detail').on 'click', ->
+    activate_meta_nav()
+
 activate_meta_pane = (pane_class) ->
   # processed as in recessed vs. processed
   $(pane_class).addClass 'processed'
@@ -45,7 +48,7 @@ activate_meta_pane = (pane_class) ->
 
 deactivate_meta_panes = ->
   clear_map_classes()
-  activate_meta_nav()
+  $('.yesterday-link, .tomorrow-link').removeClass 'hide'
   $('div.meta').removeClass 'processed'
 
 activate_upper_nav = ->

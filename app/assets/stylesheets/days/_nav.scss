@@ -72,10 +72,13 @@
 }
 
 nav.meta {
+  @include align-items(center);
   @include display(flex);
+  height: 30vh;
   opacity: 0;
   @include position(absolute, 0 0 0px 0);
   @include transition;
+  @include user-select(none);
   width: 100%;
   z-index: 1;
 
@@ -84,38 +87,42 @@ nav.meta {
     z-index: 4;
   }
 
-  @for $i from 1 through 4 {
-    a:nth-child(#{$i}) {
-      @include animation-delay(#{($i - 1) * .15}s);
-    }
-  }
-
   a {
-    @include animation(fade-in 1.5s backwards);
     color: #fff;
-    @include flex(1 100%);
+    @include display(flex);
+    @include flex(1);
+    @include flex-wrap(wrap);
     font-size: 3vh;
-    font-weight: bold;
     padding: 4vh;
-    text-align: center;
     text-decoration: none;
 
     &:hover {
       color: #fff;
     }
 
-    span {
+    i {
+      display: inline;
+      @include flex(1);
+      line-height: 1.2;
+    }
+
+    .title {
+      @include flex(4);
+    }
+
+    .low {
+      color: rgb(170, 170, 245);
+      margin-right: .2rem;
+    }
+
+    .high {
+      color: rgb(250, 220, 60);
+      margin-right: .2rem;
+    }
+
+    .condition {
       display: block;
-
-      &.title img {
-        display: block;
-        height: 45px;
-        margin: auto;
-      }
-
-      &.desc {
-        margin-top: 3vh;
-      }
+      width: 100%;
     }
   }
 }

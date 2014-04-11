@@ -6,9 +6,9 @@ $ ->
     style_active_marker(point)
 
     $random_marker_detail = $(".meta.marker-detail:eq(#{random_number_between(0, 2)})")
-    $random_marker_detail.data('point', point)
-    $random_marker_detail.data('zoom', current_zoom)
-    $random_marker_detail.addClass('processed').siblings('.marker-detail').removeClass 'processed'
+    $($random_marker_detail).data('point', point)
+    $($random_marker_detail).data('zoom', current_zoom)
+    $($random_marker_detail).addClass 'processed'
     arrange_marker_detail_items()
     $random_marker_detail.children('.title').text(point.layer.feature.properties.title)
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
