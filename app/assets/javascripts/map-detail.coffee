@@ -1,21 +1,23 @@
 $ ->
   # zoom to a marker and open the detail view
   window.feature_layer.on 'click', (point) ->
+    current_zoom = window.map.getZoom()
     window.map.panTo(point.layer.getLatLng()).setZoom(18)
     style_active_marker(point)
 
     $random_marker_detail = $(".meta.marker-detail:eq(#{random_number_between(0, 2)})")
-
     $($random_marker_detail).data('point', point)
+    $($random_marker_detail).data('zoom', current_zoom)
     $($random_marker_detail).addClass 'processed'
     arrange_marker_detail_items()
     $random_marker_detail.children('.title').text(point.layer.feature.properties.title)
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
-  # zoom map back out to boundaries after exiting the detail view
+  # zoom map back out to previous zoom level after exiting the detail view
+  # reset the clicked marker's styles
   $('.meta.marker-detail').on 'click', ->
-    reset_marker($(@).data('point'))
-    window.map.fitBounds(window.feature_layer.getBounds())
+    window.map.setZoom $(@).data('zoom')
+    reset_marker $(@).data('point')
 
   # cancel out close action when clicking on things inside the detail view 
   $('.meta.marker-detail .item, .meta.marker-detail h2'). on 'click', ->
