@@ -1,6 +1,8 @@
 div.meta {
   @include align-items(center);
+  background: rgba(0, 0, 0, .5);
   @include close-cursor;
+  color: #fff;
   @include display(flex);
   @include flex-wrap(wrap);
   opacity: 0;
@@ -20,29 +22,50 @@ div.meta {
     padding: 0;
   }
 
-  li {
-    display: block;
-    float: left;
-    width: 33.33%;
+  li img {
+    max-width: 100%;
+  }
 
-    img {
+  .item {
+    position: relative;
+
+    &:hover {
+      .detail {
+        opacity: 1;
+      }
+    }
+
+    .detail {
+      @include align-items(center);
+      background: rgba(0, 0, 0, .6);
+      @include display(flex);
+      @include flex-wrap(wrap);
+      opacity: 0;
+      padding: 3rem;
+      @include position(absolute, 0px 0px 0px 0px);
+      @include transition;
+
+      span {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    img, video {
       display: block;
-      max-width: 100%;
+      width: 100%;
     }
   }
 }
 
-.journal {
-  background: rgba(0, 0, 0, .5);
-  color: #fff;
+div.meta.journal {
   font-family: $serif;
   font-size: 2vw;
   line-height: 1.4;
-  padding: 0 20%;
+  overflow-y: scroll;
 
   article {
-    max-height: 80vh;
-    overflow-y: scroll;
+    padding: 10vh 25vw;
   }
 
   p {
@@ -54,12 +77,24 @@ div.meta {
   }
 }
 
-.marker-detail {
-  background: rgba(0, 0, 0, .5);
+div.meta.photos {
+  overflow-x: scroll;
 
+  .gallery {
+    white-space: nowrap;
+  }
+
+  .item {
+    margin: 0 2vw;
+    display: inline-block;
+    max-height: 85vh;
+    max-width: 85vw;
+  }
+}
+
+div.meta.marker-detail {
   h2 {
     @include align-self(flex-start);
-    color: #fff;
     @include flex(1 100%);
     font-family: $serif;
     font-size: 6vh;
@@ -74,12 +109,6 @@ div.meta {
   .item {
     @include position(absolute, 50% 0 0 50%);
     z-index: -1;
-
-    &:hover {
-      .detail {
-        opacity: 1;
-      }
-    }
 
     &:hover, &.ui-draggable-dragging {
       box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
@@ -99,7 +128,6 @@ div.meta {
       @include align-items(center);
       background: #000;
       border-radius: 50%;
-      color: #fff;
       @include display(flex);
       @include flex-wrap(wrap);
       height: 15vw;
@@ -109,28 +137,6 @@ div.meta {
       span {
         display: block;
       }
-    }
-
-    .detail {
-      @include align-items(center);
-      background: rgba(0, 0, 0, .6);
-      color: #fff;
-      @include display(flex);
-      @include flex-wrap(wrap);
-      opacity: 0;
-      padding: 3rem;
-      @include position(absolute, 0px 0px 0px 0px);
-      @include transition;
-
-      span {
-        display: block;
-        width: 100%;
-      }
-    }
-
-    img, video {
-      display: block;
-      width: 100%;
     }
   }
 }
