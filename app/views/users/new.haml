@@ -8,13 +8,6 @@
   = link_to 'Show me', '#'
 
 .sign-up-flow
-  %form
-    %input{ type: 'email', placeholder: 'youremail@gmail.com' }
-    %input{ type: 'password', placeholder: 'password' }
-    %input{ type: 'button', value: 'Register' }
-    .confirm
-      %h4 Great, you're registered! Now connect some apps to get started...
-
   %ol.connections
     %li
       %span Connect Moves
@@ -24,5 +17,3 @@
       %span Connect Rdio
     %li
       %span Connect iDoneThis
-  = link_to '#', class: 'success' do
-    %span Start browsing your journal &rarr;

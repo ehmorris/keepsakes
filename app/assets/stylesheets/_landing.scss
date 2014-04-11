@@ -45,44 +45,6 @@
 }
 
 .sign-up-flow {
-  form {
-    @include align-items(center);
-    background: #eee;
-    border-radius: 5px;
-    @include display(flex);
-    @include flex-wrap(wrap);
-    height: 250px;
-    margin: auto;
-    padding: 2rem;
-    width: 35%;
-
-    input {
-      border: 1px solid #999;
-      border-radius: 5px;
-      display: block;
-      margin: 0 0 1rem;
-      padding: 1rem;
-      text-align: center;
-      width: 100%;
-
-      &:last-of-type {
-        margin: 0;
-      }
-    }
-
-    input[type=button] {
-      background: #ff6600;
-      border: 0;
-      color: #fff;
-    }
-
-    .confirm {
-      display: none;
-      font-size: 1.5rem;
-      text-align: center;
-    }
-  }
-
   .connections {
     list-style-type: none;
     margin: 0 auto;
