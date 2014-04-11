@@ -18,7 +18,7 @@ $ ->
     window.map.fitBounds(window.feature_layer.getBounds())
 
   # cancel out close action when clicking on things inside the detail view 
-  $('.meta.marker-detail .item'). on 'click', ->
+  $('.meta.marker-detail .item, .meta.marker-detail h2'). on 'click', ->
     false
 
   $('.marker-detail .item').draggable {

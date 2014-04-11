@@ -52,13 +52,11 @@
 @mixin centered-text {
   color: rgb(255, 255, 255);
   display: block;
-  font: bold 9vw/1 $sans;
-  letter-spacing: 3px;
+  font: bold 9vw/1 $serif;
   margin: -4.5vw 0 0;
   @include position(absolute, 50% 0px 0 0px);
   text-align: center;
   text-shadow: 0 0 100px rgba(0, 0, 0, .2);
-  text-transform: uppercase;
   z-index: 2;
 }
 
