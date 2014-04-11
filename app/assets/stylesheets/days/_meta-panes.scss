@@ -66,8 +66,7 @@ div.meta {
   }
 
   .item {
-    @include position(absolute, 0px 0 0 0px);
-    @include transition(box-shadow .15s ease-out);
+    @include position(absolute, 50% 0 0 50%);
     z-index: -1;
 
     &:hover, &.ui-draggable-dragging {
@@ -89,10 +88,19 @@ div.meta {
     }
 
     &.time {
+      @include align-items(center);
       background: #000;
+      border-radius: 50%;
       color: #fff;
+      @include display(flex);
+      @include flex-wrap(wrap);
       height: 15vw;
+      padding: 3rem;
       width: 15vw;
+
+      span {
+        display: block;
+      }
     }
 
     img, video {

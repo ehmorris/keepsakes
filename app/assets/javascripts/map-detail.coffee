@@ -28,7 +28,7 @@ $ ->
 
 style_active_marker = (point) ->
   point.layer.feature.properties['marker-size'] = 'large'
-  point.layer.feature.properties['marker-color'] = '#71A052'
+  point.layer.feature.properties['marker-color'] = '#fff'
   window.feature_layer.setGeoJSON {
     type: 'FeatureCollection',
     features: window.feature_layer.getGeoJSON().features.concat point
@@ -38,10 +38,19 @@ arrange_marker_detail_items = ->
   $('.marker-detail .item').each ->
     top_value = random_number_between(6, 68)
     left_value = random_number_between(6, 68)
-    $(@).css {
+    $item = $(@)
+    $item.css {
+      '-webkit-transition': 'all .5s ease'
+      'transition': 'all .5s ease'
       top: "#{top_value}%"
       left: "#{left_value}%"
     }
+    setTimeout ->
+      $item.css {
+        '-webkit-transition': 'none'
+        'transition': 'none'
+      }
+    , 1500
 
 reset_marker = (point) ->
   point.layer.feature.properties['marker-size'] = ''
