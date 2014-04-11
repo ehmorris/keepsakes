@@ -14,7 +14,16 @@
           Edit email and password
 
   %nav.calendar
-    %span calendar
+    %ol
+      %li.month February
+      - 28.times do |n|
+        %li= n+1
+      %li.month March
+      - 31.times do |n|
+        %li= n+1
+      %li.month April
+      - 30.times do |n|
+        %li= n+1
 
   .deactivate-upper-nav
 
@@ -112,7 +121,7 @@
     %li= image_tag('ig1.jpg')
     %li= image_tag('ig2.jpg')
     %li= image_tag('ig3.jpg')
-    %li= image_tag('vid1.jpg')
+    %li= image_tag('vid1.m4v')
     %li= image_tag('ig4.jpg')
 
 .today-text

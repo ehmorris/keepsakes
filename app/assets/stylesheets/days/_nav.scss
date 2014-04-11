@@ -149,12 +149,42 @@ nav.meta {
     a {
       color: #fff;
       display: block;
+      opacity: .75;
       padding: 1rem .5rem;
       text-decoration: none;
+      @include transition;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
   nav.calendar {
-    color: #fff;
+    @include align-items(center);
+    @include display(flex);
+    height: 25vh;
+    overflow-x: scroll;
+    @include position(absolute, 3rem 2rem 0 2rem);
+
+    ol {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    li {
+      color: #fff;
+      display: inline-block;
+      font-family: $serif;
+      font-size: 4vh;
+      padding: 0 .5rem;
+
+      &.month {
+        font-family: $sans;
+        font-weight: 700;
+      }
+    }
   }
 }
