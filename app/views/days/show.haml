@@ -23,15 +23,45 @@
     %span.desc The low today was 15&deg; with a high of 50&deg;. It was cloudy.
   .deactivate-meta-nav
 
-.meta.detail
+.meta.marker-detail
   %h2.title
-  = image_tag('ig4.jpg')
-  = image_tag('ig5.jpg')
-  %video{ 'src' => '/assets/vid1.m4v', 'autoplay' => 'true', 'loop' => 'true' }
-  = image_tag('music1.jpg')
-  = image_tag('music2.jpg')
-  %p Arrived at 12:35pm
-  %p Spent 20 minutes here
+  .item.image
+    = image_tag('ig4.jpg')
+  .item.image
+    = image_tag('ig5.jpg')
+  .item.video
+    %video{ 'src' => '/assets/vid1.m4v', 'autoplay' => 'true', 'loop' => 'true' }
+  .item.music
+    = image_tag('music1.jpg')
+  .item.music
+    = image_tag('music2.jpg')
+  .item.time
+    %p Arrived at 12:35pm
+    %p Spent 20 minutes here
+  = link_to 'Came from Ryder Hall', '#', class: 'detail-previous'
+  = link_to 'Left for Shake Shack', '#', class: 'detail-next'
+
+.meta.marker-detail
+  %h2.title
+  .item.image
+    = image_tag('ig1.jpg')
+  .item.music
+    = image_tag('music1.jpg')
+  .item.music
+    = image_tag('music2.jpg')
+  .item.time
+    %p Arrived at 12:35pm
+    %p Spent 20 minutes here
+  = link_to 'Came from Ryder Hall', '#', class: 'detail-previous'
+  = link_to 'Left for Shake Shack', '#', class: 'detail-next'
+
+.meta.marker-detail
+  %h2.title
+  .item.music
+    = image_tag('music2.jpg')
+  .item.time
+    %p Arrived at 12:35pm
+    %p Spent 20 minutes here
   = link_to 'Came from Ryder Hall', '#', class: 'detail-previous'
   = link_to 'Left for Shake Shack', '#', class: 'detail-next'
 

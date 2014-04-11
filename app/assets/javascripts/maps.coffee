@@ -1,62 +1,34 @@
 $ ->
   if window.location.search == '?temp=warm'
-    map = L.mapbox.map('map', 'ehmorris.gecdn03c', { zoomControl: false })
+    window.map = L.mapbox.map('map', 'ehmorris.gecdn03c', { zoomControl: false })
   else if window.location.search == '?temp=cold'
-    map = L.mapbox.map('map', 'ehmorris.gecdf0am', { zoomControl: false })
+    window.map = L.mapbox.map('map', 'ehmorris.gecdf0am', { zoomControl: false })
   else
-    map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
+    window.map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
 
   geodata_json = $('#map').data('geojson')
 
   # initialize empty collection for getGeoJSON function within set_points_boundary
-  feature_layer = L.mapbox.featureLayer({
+  window.feature_layer = L.mapbox.featureLayer({
     type: 'FeatureCollection',
     features: []})
 
   # aggregate all geodata into one object to determine boundaries
   $.each geodata_json, ->
-    feature_layer = L.mapbox.featureLayer {
+    window.feature_layer = L.mapbox.featureLayer {
       type: 'FeatureCollection',
-      features: feature_layer.getGeoJSON().features.concat {
+      features: window.feature_layer.getGeoJSON().features.concat {
         type: 'Feature',
-        geometry: this,
+        geometry: @,
         properties: {
-          'title': this.title
+          'title': @.title
           'stroke': '#fff'
           'stroke-opacity': .9
           'stroke-width': 5
         }}}
 
   # zoom the map to fit the boundaries, but don't plot any points
-  map.fitBounds(feature_layer.getBounds())
+  window.map.fitBounds(window.feature_layer.getBounds())
 
   # plot all the points at once
-  feature_layer.addTo map
-
-  # zoom to a detail view
-  feature_layer.on 'click', (point) ->
-    map.panTo(point.layer.getLatLng()).setZoom(18)
-    point.layer.feature.properties['marker-size'] = 'large'
-    point.layer.feature.properties['marker-color'] = '#71A052'
-    feature_layer.setGeoJSON {
-      type: 'FeatureCollection',
-      features: feature_layer.getGeoJSON().features.concat point
-    }
-
-    $('.meta.detail').data('point', point)
-    $('.meta.detail').addClass 'processed'
-    $('.yesterday-link, .tomorrow-link').addClass 'hide'
-
-    $('.meta.detail .title').text(point.layer.feature.properties.title)
-
-  # zoom map back out to boundaries after returning from the detail view
-  $('.meta.detail').on 'click', ->
-    map.fitBounds(feature_layer.getBounds())
-
-  window.reset_marker = (point) ->
-    point.layer.feature.properties['marker-size'] = ''
-    point.layer.feature.properties['marker-color'] = ''
-    feature_layer.setGeoJSON {
-      type: 'FeatureCollection',
-      features: feature_layer.getGeoJSON().features.concat point
-    }
+  window.feature_layer.addTo window.map

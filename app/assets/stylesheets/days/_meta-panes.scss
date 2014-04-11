@@ -4,6 +4,7 @@ div.meta {
   @include display(flex);
   @include flex-wrap(wrap);
   opacity: 0;
+  @include perspective($perspective-amount);
   @include position(absolute, 0px 0px 0px 0px);
   @include transition;
   z-index: -1;
@@ -51,66 +52,52 @@ div.meta {
   }
 }
 
-.detail {
+.marker-detail {
   background: rgba(0, 0, 0, .5);
 
-  img, video {
-    @include position(absolute, 0 0 0 0);
-    @include transition;
-    z-index: -1;
-
-    &:hover {
-      cursor: pointer;
-      @include transform(scale(1.1));
-      z-index: 4;
-    }
-  }
-
-  img {
-    &:nth-of-type(1) {
-      width: 35vw;
-      top: 10%;
-      left: 10%;
-    }
-
-    &:nth-of-type(2) {
-      width: 35vw;
-      right: 10%;
-      bottom: 10%;
-    }
-
-    &:nth-of-type(3) {
-      width: 20vw;
-      left: 15%;
-      bottom: 15%;
-    }    
-
-    &:nth-of-type(4) {
-      bottom: 15%;
-      left: 40%;
-      width: 20vw;
-    }
-  }
-
-  video {
-    right: 5%;
-    top: 15%;
-    width: 45vw;
-  }
-
   h2 {
+    @include align-self(flex-start);
     color: #fff;
     @include flex(1 100%);
+    font-family: $serif;
     font-size: 6vh;
-    margin: 0;
+    margin: 25vh 0 0;
     text-align: center;
   }
 
-  p {
-    color: #fff;
-    @include flex(1 50%);
-    font-size: 4vh;
-    margin: 0;
-    text-align: center;
+  .item {
+    @include position(absolute, 0px 0 0 0px);
+    @include transition(box-shadow .15s ease-out);
+    z-index: -1;
+
+    &:hover, &.ui-draggable-dragging {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+      cursor: pointer;
+      z-index: 4;
+    }
+
+    &.image {
+      width: 35vw;
+    }
+
+    &.music {
+      width: 20vw;
+    }
+
+    &.video {
+      width: 45vw;
+    }
+
+    &.time {
+      background: #000;
+      color: #fff;
+      height: 15vw;
+      width: 15vw;
+    }
+
+    img, video {
+      display: block;
+      width: 100%;
+    }
   }
 }

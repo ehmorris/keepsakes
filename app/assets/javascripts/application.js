@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.draggable
 //= require mapbox
 //
-//= require panes
 //= require maps
-//= require landing 
+//= require_tree .

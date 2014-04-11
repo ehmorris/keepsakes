@@ -2,7 +2,7 @@ body {
   font-family: $sans;
   margin: 0;
   padding: 0;
-  @include perspective(1000px);
+  @include perspective($perspective-amount);
   text-rendering: optimizelegibility;
 
   &.day-view, &.user-edit {
