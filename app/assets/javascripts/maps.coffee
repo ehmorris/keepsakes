@@ -1,10 +1,11 @@
 $ ->
-  if window.location.search == '?temp=warm'
-    window.map = L.mapbox.map('map', 'ehmorris.gecdn03c', { zoomControl: false })
-  else if window.location.search == '?temp=cold'
-    window.map = L.mapbox.map('map', 'ehmorris.gecdf0am', { zoomControl: false })
-  else
-    window.map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
+  window.render_map()
+
+window.render_map = ->
+  if window.feature_layer
+    window.feature_layer.clearLayers()
+
+  window.map = L.mapbox.map('map', 'ehmorris.map-lfrw1qag', { zoomControl: false })
 
   geodata_json = $('#map').data('geojson')
 

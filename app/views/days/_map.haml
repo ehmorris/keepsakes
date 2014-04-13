@@ -1,0 +1,12 @@
+.today-text
+  = @today.strftime('%a %b %e')
+
+- if @tomorrow < Date.today
+  = link_to day_path(@tomorrow), class: 'tomorrow-link', remote: 'true' do
+    = @tomorrow.strftime('%a %b %e')
+= link_to day_path(@yesterday), class: 'yesterday-link', remote: 'true' do
+  = @yesterday.strftime('%a %b %e')
+
+%figure.map.map-today#map{ 'data-today' => day_path(@today), 'data-geojson' => @geodata_json }
+%figure.map.map-yesterday
+%figure.map.map-tomorrow

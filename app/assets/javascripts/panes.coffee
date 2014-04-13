@@ -1,20 +1,29 @@
 $ ->
-  $('.yesterday-link, .tomorrow-link').hover ->
-    $(@).addClass 'hint'
-    recess_maps()
-  , ->
-    $(@).removeClass 'hint'
-    clear_map_classes()
+  $(document).on {
+    mouseenter: ->
+      $(@).addClass 'hint'
+      recess_maps()
+    ,
+    mouseleave: ->
+      $(@).removeClass 'hint'
+      clear_map_classes()
+  }, '.yesterday-link, .tomorrow-link'
 
-  $('.activate-upper-nav').hover ->
-    $('.map-today').addClass 'tilt-up'
-  , ->
-    $('.map-today').removeClass 'tilt-up'
+  $(document).on {
+    mouseenter: ->
+      $('.map-today').addClass 'tilt-up'
+    ,
+    mouseleave: ->
+      $('.map-today').removeClass 'tilt-up'
+  }, '.activate-upper-nav'
 
-  $('.activate-meta-nav').hover ->
-    $('.map-today').addClass 'tilt-down'
-  , ->
-    $('.map-today').removeClass 'tilt-down'
+  $(document).on {
+    mouseenter: ->
+      $('.map-today').addClass 'tilt-down'
+    ,
+    mouseleave: ->
+      $('.map-today').removeClass 'tilt-down'
+  }, '.activate-meta-nav'
 
   $('.activate-upper-nav').on 'click', ->
     activate_upper_nav()
