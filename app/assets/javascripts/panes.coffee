@@ -92,10 +92,12 @@ deactivate_meta_nav = ->
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 activate_map_loading_animation = (direction) ->
-  $('.map').addClass("load-#{direction}")
+  $('.map').addClass "load-#{direction}"
+  $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 window.deactivate_map_loading_animation = ->
-  $('.map').removeClass('load-tomorrow load-yesterday')
+  $('.map').removeClass 'load-tomorrow load-yesterday'
+  $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 recess_maps = ->
   $('.map-today').addClass 'recessed'

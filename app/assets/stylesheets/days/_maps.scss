@@ -1,9 +1,12 @@
 .map {
   @include position(absolute, 0px 0px 0px 0px);
-  @include transition(.3s);
+  @include transition(all .35s $ease-out-quint);
 
   &.load-tomorrow, &.load-yesterday {
-    -webkit-filter: blur(15px);
+    .image {
+      @include animation(map-loading 2.5s infinite);
+      -webkit-filter: blur(15px);
+    }
   }
 }
 
@@ -50,13 +53,6 @@
   overflow: hidden;
   @include transform(translate3d(-110%, 0, 0));
 
-  &:after {
-    background: url(anonymous-map.png) no-repeat;
-    background-size: cover;
-    content: '';
-    @include position(absolute, 0px 0px 0px 0px);
-  }
-
   &.recessed {
     @include transform(translate3d(-110%, 0, -30vw));
   }
@@ -75,6 +71,13 @@
 
   &.load-yesterday {
     @include transform(translate3d(0%, 0, 0));
+  }
+
+  .image {
+    background: url(anonymous-map-1.png) no-repeat;
+    background-size: cover;
+    content: '';
+    @include position(absolute, 0px 0px 0px 0px);
   }
 }
 

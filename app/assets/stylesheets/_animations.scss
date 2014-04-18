@@ -1,3 +1,25 @@
+@include keyframes(map-loading) {
+  0% {
+    background-image: url(anonymous-map-1.png);
+  }
+
+  20% {
+    background-image: url(anonymous-map-2.jpg);
+  }
+
+  40% {
+    background-image: url(anonymous-map-3.jpg);
+  }
+
+  60% {
+    background-image: url(anonymous-map-4.jpg);
+  }
+
+  80% {
+    background-image: url(anonymous-map-5.jpg);
+  }
+}
+
 @include keyframes(map-intro) {
   0% {
     opacity: 0;

@@ -23,7 +23,7 @@ body {
 .intro-map {
   @include animation(map-intro 1s);
   @include animation-fill-mode(backwards);
-  background: url('anonymous-map.png');
+  background: url('anonymous-map-1.png');
   background-size: cover;
   @include position(absolute, 0px 0px 0px 0px);
   @include transform(scale3D(1, 1, 1));
