@@ -3,11 +3,14 @@ module Maps
     lon = segment['place']['location']['lon']
     lat = segment['place']['location']['lat']
     title = segment['place']['name']
-    type = 
+    arrival_time = segment['startTime']
+    departure_time = segment['endTime']
 
     {'type' => 'Point',
      'coordinates' => [lon, lat],
-     'title' => title}
+     'title' => title,
+     'arrival' => arrival_time,
+     'departure' => departure_time}
   end
 
   def trackpoints_to_geodata_line(trackpoint_1, trackpoint_2, activity)

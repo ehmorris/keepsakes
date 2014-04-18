@@ -6,14 +6,16 @@ window.attach_marker_detail_events = ->
   window.feature_layer.on 'click', (point) ->
     current_zoom = window.map.getZoom()
     window.map.panTo(point.layer.getLatLng()).setZoom(18)
-    style_active_marker(point)
 
     $random_marker_detail = $(".meta.marker-detail:eq(#{random_number_between(0, 2)})")
     $random_marker_detail.data('point', point)
     $random_marker_detail.data('zoom', current_zoom)
     $random_marker_detail.addClass('processed')
+
+    style_active_marker(point)
     arrange_marker_detail_items()
-    $random_marker_detail.children('.title').text(point.layer.feature.properties.title)
+    set_marker_title(point)
+    set_marker_next_prev_locations(point)
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
   $('.marker-detail .item').draggable {
@@ -30,6 +32,28 @@ $(document).on 'click', '.meta.marker-detail', ->
 # cancel out close action when clicking on things inside the detail view 
 $(document).on 'click', '.meta.marker-detail .item, .meta.marker-detail h2', ->
   false
+
+set_marker_title = (point) ->
+  $('.marker-detail .title').text point.layer.feature.properties.title
+
+set_marker_next_prev_locations = (point) ->
+  all_markers = get_all_markers()
+
+  for marker, i in all_markers
+    if marker.arrival == point.layer.feature.geometry.arrival
+      if all_markers[i+1]
+        $('.marker-detail .detail-next').text "Left for #{all_markers[i+1].title}"
+      if all_markers[i-1]
+        $('.marker-detail .detail-previous').text "Came from #{all_markers[i-1].title}"
+
+get_all_markers = ->
+  markers = []
+  $.each window.feature_layer.getLayers(), (index, layer) ->
+    if layer.feature.geometry.type == 'Point'
+      markers.push
+        arrival: layer.feature.geometry.arrival
+        title: layer.feature.properties.title
+  markers
 
 style_active_marker = (point) ->
   point.layer.feature.properties['marker-size'] = 'large'

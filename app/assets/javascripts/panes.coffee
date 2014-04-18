@@ -49,7 +49,7 @@ $ ->
   $('div.meta article').on 'click', ->
     false
 
-  $('div.meta:not(.marker-detail').on 'click', ->
+  $('div.meta:not(.marker-detail)').on 'click', ->
     activate_meta_nav()
 
   $(document).on 'click', '.tomorrow-link', ->
