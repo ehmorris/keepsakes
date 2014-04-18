@@ -4,7 +4,6 @@
 
   &.load-tomorrow, &.load-yesterday {
     .image {
-      @include animation(map-loading 2.5s infinite);
       -webkit-filter: blur(15px);
     }
   }
@@ -33,11 +32,11 @@
   }
 
   &.tilt-up {
-    @include transform(rotateX(5deg));
+    @include transform(translate3d(0, 1.4rem, 0) rotateX(5deg));
   }
 
   &.tilt-down {
-    @include transform(rotateX(-5deg));
+    @include transform(translate3d(0, -1.4rem, 0) rotateX(-5deg));
   }
 
   &.load-tomorrow {

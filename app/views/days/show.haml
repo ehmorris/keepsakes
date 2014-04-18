@@ -22,27 +22,27 @@
       %li.month April
       - 30.times do |n|
         %li= n+1
-
+  .tilt-hint
+    %span Calendar
   .deactivate-upper-nav
 
 .activate-meta-nav  
 %nav.meta
   = link_to '#' do
-    %i.fa.fa-moon-o
-    %span.title Slept 8 hours
+    %span Slept 8 hours
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
-    %i.fa.fa-book
-    %span.title Wrote 356 words
+    %span Wrote 356 words
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
-    %i.fa.fa-instagram
-    %span.title Took 2 photos
+    %span Took 2 photos
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'music' do
-    %i.fa.fa-music
-    %span.title Played 11 songs
+    %span Played 11 songs
   = link_to '#', class: 'weather' do
-    %span.low 30&deg;
-    %span.high 50&deg;
+    %span.temp
+      %span.low 30&deg;
+      %span.high 50&deg;
     %span.condition Cloudy
+  .tilt-hint
+    %span Full day statistics
   .deactivate-meta-nav
 
 .meta.marker-detail

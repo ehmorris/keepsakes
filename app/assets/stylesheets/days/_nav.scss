@@ -12,7 +12,7 @@
   margin: -4.5vw 0 0;
   @include position(absolute, 50% 0 0 0);
   text-decoration: none;
-  @include transition(all .3s, padding 0);
+  @include transition(all .3s, padding 0s);
   @include user-select(none);
   z-index: 3;
 
@@ -24,23 +24,21 @@
     opacity: 1;
   }
 }
-
 .yesterday-link, .detail-previous {
   left: 0;
   padding-left: 2rem;
   @include transform(translateX(0));
 
-  &.hint {
+  &:hover {
     padding-right: 1rem;
     @include transform(translateX(-1rem));
   }
 }
-
 .tomorrow-link, .detail-next {
   padding-right: 2rem;
   right: 0;
 
-  &.hint {
+  &:hover {
     padding-left: 1rem;
     @include transform(translateX(1rem));
   }
@@ -54,7 +52,6 @@
   @include transition(.3s);
   z-index: 3;
 }
-
 .activate-meta-nav {
   top: auto;
   bottom: 0px;
@@ -65,27 +62,49 @@
   @include position(fixed, 30vh 0px 0px 0px);
   z-index: 4;
 }
-
 .deactivate-meta-nav {
   bottom: 30vh;
   top: 0px;
 }
 
-nav.meta {
-  @include align-items(center);
-  @include display(flex);
+nav.meta, .upper-nav {
   height: 30vh;
   opacity: 0;
-  @include position(absolute, 0 0 0px 0);
-  @include transition;
-  @include user-select(none);
-  width: 100%;
   z-index: 1;
+  @include user-select(none);
+  @include transition;
 
   &.processed {
     opacity: 1;
     z-index: 4;
+
+    .tilt-hint {
+      opacity: 0;
+    }
   }
+
+  &.tilt-expose {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .tilt-hint {
+    @include position(absolute, 0 460px 0px 460px);
+    text-align: center;
+    @include transition;
+
+    span {
+      color: #fff;
+      line-height: 2.4rem;
+    }
+  }
+}
+
+nav.meta {
+  @include align-items(center);
+  @include display(flex);
+  @include position(absolute, 0 0 0px 0);
+  width: 100%;
 
   a {
     color: #fff;
@@ -100,24 +119,23 @@ nav.meta {
       color: #fff;
     }
 
-    i {
-      display: inline;
-      @include flex(1);
-      line-height: 1.2;
+    span {
+      display: block;
+      text-align: center;
+      width: 100%;
     }
 
-    .title {
-      @include flex(4);
+    .low, .high {
+      display: inline-block;
+      width: auto;
     }
 
     .low {
       color: rgb(170, 170, 245);
-      margin-right: .2rem;
     }
 
     .high {
       color: rgb(250, 220, 60);
-      margin-right: .2rem;
     }
 
     .condition {
@@ -128,15 +146,11 @@ nav.meta {
 }
 
 .upper-nav {
-  height: 30vh;
-  opacity: 0;
   position: relative;
-  @include transition;
-  z-index: 1;
 
-  &.processed {
-    opacity: 1;
-    z-index: 4;
+  .tilt-hint {
+    top: 0px;
+    bottom: auto;
   }
 
   nav.settings {
@@ -156,8 +170,9 @@ nav.meta {
     a {
       color: #fff;
       display: block;
+      line-height: 2.4rem;
+      margin-right: 1rem;
       opacity: .75;
-      padding: 1rem .5rem;
       text-decoration: none;
       @include transition;
 

@@ -1,41 +1,26 @@
 $ ->
   $(document).on {
-    mouseenter: ->
-      $(@).addClass 'hint'
-      recess_maps()
-    ,
-    mouseleave: ->
-      $(@).removeClass 'hint'
-      clear_map_classes()
+    mouseenter: recess_maps
+    mouseleave: clear_map_classes
   }, '.yesterday-link, .tomorrow-link'
 
   $(document).on {
-    mouseenter: ->
-      $('.map-today').addClass 'tilt-up'
-    ,
-    mouseleave: ->
-      $('.map-today').removeClass 'tilt-up'
+    mouseenter: tilt_map_up
+    mouseleave: untilt_map
   }, '.activate-upper-nav'
 
   $(document).on {
-    mouseenter: ->
-      $('.map-today').addClass 'tilt-down'
-    ,
-    mouseleave: ->
-      $('.map-today').removeClass 'tilt-down'
+    mouseenter: tilt_map_down
+    mouseleave: untilt_map
   }, '.activate-meta-nav'
 
-  $('.activate-upper-nav').on 'click', ->
-    activate_upper_nav()
+  $('.activate-upper-nav').on 'click', activate_upper_nav
 
-  $('.deactivate-upper-nav').on 'click', ->
-    deactivate_upper_nav()
+  $('.deactivate-upper-nav').on 'click', deactivate_upper_nav
 
-  $('.activate-meta-nav').on 'click', ->
-    activate_meta_nav()
+  $('.activate-meta-nav').on 'click', activate_meta_nav
 
-  $('.deactivate-meta-nav').on 'click', ->
-    deactivate_meta_nav()
+  $('.deactivate-meta-nav').on 'click', deactivate_meta_nav
 
   $('.activate-meta-pane').on 'click', ->
     target = $(@).data('target')
@@ -43,20 +28,29 @@ $ ->
     activate_meta_pane(".meta.#{target}")
     false
 
-  $('div.meta').on 'click', ->
-    deactivate_meta_panes()
+  $('div.meta').on 'click', deactivate_meta_panes
 
-  $('div.meta article').on 'click', ->
-    false
+  $('div.meta article').on 'click', false
 
-  $('div.meta:not(.marker-detail)').on 'click', ->
-    activate_meta_nav()
+  $('div.meta:not(.marker-detail)').on 'click', activate_meta_nav
 
   $(document).on 'click', '.tomorrow-link', ->
     activate_map_loading_animation('tomorrow')
 
   $(document).on 'click', '.yesterday-link', ->
     activate_map_loading_animation('yesterday')
+
+tilt_map_up = ->
+  $('.map-today').addClass 'tilt-up'
+  $('.upper-nav').addClass 'tilt-expose'
+
+tilt_map_down = ->
+  $('.map-today').addClass 'tilt-down'
+  $('nav.meta').addClass 'tilt-expose'
+
+untilt_map = ->
+  $('.map').removeClass 'tilt-up tilt-down'
+  $('nav.meta, .upper-nav').removeClass 'tilt-expose'
 
 activate_meta_pane = (pane_class) ->
   # processed as in recessed vs. processed
@@ -70,6 +64,7 @@ deactivate_meta_panes = ->
   $('div.meta').removeClass 'processed'
 
 activate_upper_nav = ->
+  clear_map_classes()
   push_maps_down()
   $('.map-today').removeClass 'tilt-up'
   $('.upper-nav').addClass 'processed'
@@ -121,4 +116,4 @@ push_maps_up = ->
     $('.map-yesterday').addClass 'up'
 
 clear_map_classes = ->
-  $('.map').removeClass 'recessed down up'
+  $('.map').removeClass 'recessed down up tilt-up tilt-down'
