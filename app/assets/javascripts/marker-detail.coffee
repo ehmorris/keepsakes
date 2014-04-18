@@ -2,7 +2,6 @@ $ ->
   window.attach_marker_detail_events()
 
 window.attach_marker_detail_events = ->
-  console.log 'test'
   # zoom to a marker and open the detail view
   window.feature_layer.on 'click', (point) ->
     current_zoom = window.map.getZoom()
@@ -17,20 +16,20 @@ window.attach_marker_detail_events = ->
     $random_marker_detail.children('.title').text(point.layer.feature.properties.title)
     $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
-  # zoom map back out to previous zoom level after exiting the detail view
-  # reset the clicked marker's styles
-  $('.meta.marker-detail').on 'click', ->
-    window.map.setZoom $(@).data('zoom')
-    reset_marker $(@).data('point')
-
-  # cancel out close action when clicking on things inside the detail view 
-  $('.meta.marker-detail .item, .meta.marker-detail h2'). on 'click', ->
-    false
-
   $('.marker-detail .item').draggable {
     containment: '.marker-detail'
     scroll: false
   }
+
+# zoom map back out to previous zoom level after exiting the detail view
+# reset the clicked marker's styles
+$(document).on 'click', '.meta.marker-detail', ->
+  window.map.setZoom $(@).data('zoom')
+  reset_marker $(@).data('point')
+
+# cancel out close action when clicking on things inside the detail view 
+$(document).on 'click', '.meta.marker-detail .item, .meta.marker-detail h2', ->
+  false
 
 style_active_marker = (point) ->
   point.layer.feature.properties['marker-size'] = 'large'

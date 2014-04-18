@@ -6,6 +6,10 @@
   width: 100%;
   z-index: 1;
 
+  &.loading {
+    -webkit-filter: blur(50px);
+  }
+
   &.recessed {
     @include transform(translate3d(0, 0, -30vw));
   }

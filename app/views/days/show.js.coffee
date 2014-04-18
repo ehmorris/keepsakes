@@ -3,6 +3,6 @@ $('body').append('<%= escape_javascript(render :partial => 'map') %>')
 
 window.render_map()
 window.attach_marker_detail_events()
+window.deactivate_map_loading_animation()
 
-today = $('.map-today').data('today')
-window.history.pushState null, null, today
+window.history.pushState null, null, $('.map-today').data('today')

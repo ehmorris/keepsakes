@@ -1,5 +1,3 @@
-- content_for :body_classes, 'day-view'
-
 .activate-upper-nav
 .upper-nav
   %nav.settings
@@ -110,50 +108,8 @@
   = link_to 'Came from Ryder Hall', '#', class: 'detail-previous'
   = link_to 'Left for 7-Eleven', '#', class: 'detail-next'
 
-.meta.journal
-  %article{ 'contenteditable' => 'true' }
-    %p I had a haircut appointment before noon today, so at least I had a reason to get out of bed. I arrived just on time and talked with Josh about Puerto Rico and school — it was a good haircut. I didn&rsquo;t quite know where to go afterwards but I always enjoy being around the South End. I walked around until I thought of going to Bostonian Market for a cheap sandwich. I&rsquo;d just read a great article about a food and blankets van that Pine Street Inn sends around Downtown Crossing at night during the winter, so it was nice to watch the Pine Street people across the street / in the market while I ate. Maybe once I have more time in NY I&rsquo;ll volunteer at a place like Pine Street.
-    %p I got the bus home and took a long nap before heading to Gallows for Ben&rsquo;s goodbye party — he leaves for NY and Yahoo on Friday. I chatted with the guy from Pilot who I&rsquo;ve met before (Ben was getting hounded by everyone he knew), and I tried a &ldquo;Scotch Egg&rdquo; for the first time which is a $6 egg (at Gallows at least) that&rsquo;s breaded and fried and contains shredded pork. I got some advice on submitting my notice from Ben, who&rsquo;s been around the block.
-    %p Tasty Tuesday was happening and I was already late, so I got an UberX from Foodie&rsquo;s to to Nicole&rsquo;s to catch the last of it — the ride only took 5 mins and cost $5, which is crazy cheap to me. Less than a Scotch Egg. I hung around with everyone until Nicole kicked us out, but I was kinda being a bum on the couch the whole time.
-
-.meta.music
-  .gallery
-    .item
-      = image_tag('music1.jpg')
-      .detail
-        %span.album Lanterns
-        %span.artist Son Lux
-        %span.song Alternate World
-        %span.song No Crimes
-        %span.song No Crimes
-        %span.song No Crimes
-        
-
-    .item
-      = image_tag('music2.jpg')
-      .detail
-        %span.album The Grand Budapest Hotel (Original Soundtrack
-        %span.artist Various Artists
-        %span.song Last Will And Testament
-        %span.song The Linden Tree
-        %span.song Last Will And Testament
-        %span.song Last Will And Testament
-
-.meta.photos
-  .gallery
-    .item
-      = image_tag('ig1.jpg')
-    .item
-      = image_tag('ig2.jpg')
-    .item
-      = image_tag('ig3.jpg')
-    .item
-      %video{ 'src' => '/assets/vid1.m4v', 'autoplay' => 'true', 'loop' => 'true' }
-      .detail
-        %span.desc @aaron10buuren and @jillianbass seesawing
-    .item
-      = image_tag('ig4.jpg')
-      .detail
-        %span.desc Good mooooorning Ryder
+= render :partial => 'journal'
+= render :partial => 'music'
+= render :partial => 'photos'
 
 = render :partial => 'map'
