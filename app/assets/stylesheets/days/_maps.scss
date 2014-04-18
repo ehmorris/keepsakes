@@ -1,8 +1,15 @@
+.map {
+  @include position(absolute, 0px 0px 0px 0px);
+  @include transition(.3s);
+
+  &.load-tomorrow, &.load-yesterday {
+    -webkit-filter: blur(15px);
+  }
+}
+
 .map-today {
   background: $ground-color;
-  @include position(absolute, 0px 0px 0px 0px);
   @include transform(scale(1) translateY(0) translateX(0));
-  @include transition(.3s);
   width: 100%;
   z-index: 1;
 
@@ -29,13 +36,26 @@
   &.tilt-down {
     @include transform(rotateX(-5deg));
   }
+
+  &.load-tomorrow {
+    @include transform(translate3d(-110%, 0, 0));
+  }
+
+  &.load-yesterday {
+    @include transform(translate3d(110%, 0, 0));
+  }
 }
 
 .map-yesterday, .map-tomorrow {
-  background: url(anonymous-map.png);
-  @include position(absolute, 0px 0px 0px 0px);
+  overflow: hidden;
   @include transform(translate3d(-110%, 0, 0));
-  @include transition(.3s);
+
+  &:after {
+    background: url(anonymous-map.png) no-repeat;
+    background-size: cover;
+    content: '';
+    @include position(absolute, 0px 0px 0px 0px);
+  }
 
   &.recessed {
     @include transform(translate3d(-110%, 0, -30vw));
@@ -47,6 +67,14 @@
 
   &.up {
     @include transform(translate3d(-110%, -25%, -30vw));
+  }
+
+  &.load-tomorrow {
+    @include transform(translate3d(-220%, 0, 0));
+  }
+
+  &.load-yesterday {
+    @include transform(translate3d(0%, 0, 0));
   }
 }
 
@@ -63,5 +91,13 @@
 
   &.up {
     @include transform(translate3d(110%, -25%, -30vw));
+  }
+
+  &.load-tomorrow {
+    @include transform(translate3d(0%, 0, 0));
+  }
+
+  &.load-yesterday {
+    @include transform(translate3d(220%, 0, 0));
   }
 }

@@ -52,8 +52,11 @@ $ ->
   $('div.meta:not(.marker-detail').on 'click', ->
     activate_meta_nav()
 
-  $(document).on 'click', '.yesterday-link, .tomorrow-link', ->
-    activate_map_loading_animation()
+  $(document).on 'click', '.tomorrow-link', ->
+    activate_map_loading_animation('tomorrow')
+
+  $(document).on 'click', '.yesterday-link', ->
+    activate_map_loading_animation('yesterday')
 
 activate_meta_pane = (pane_class) ->
   # processed as in recessed vs. processed
@@ -88,12 +91,11 @@ deactivate_meta_nav = ->
   $('nav.meta').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
-activate_map_loading_animation = ->
-  clear_map_classes()
-  $('.map-today').addClass('loading')
+activate_map_loading_animation = (direction) ->
+  $('.map').addClass("load-#{direction}")
 
 window.deactivate_map_loading_animation = ->
-  $('.map-today').removeClass('loading')
+  $('.map').removeClass('load-tomorrow load-yesterday')
 
 recess_maps = ->
   $('.map-today').addClass 'recessed'
