@@ -1,21 +1,21 @@
 @include keyframes(map-loading) {
-  0% {
+  0%, 19% {
     background-image: url(anonymous-map-1.png);
   }
 
-  20% {
+  20%, 39% {
     background-image: url(anonymous-map-2.jpg);
   }
 
-  40% {
+  40%, 59% {
     background-image: url(anonymous-map-3.jpg);
   }
 
-  60% {
+  60%, 79% {
     background-image: url(anonymous-map-4.jpg);
   }
 
-  80% {
+  80%, 99% {
     background-image: url(anonymous-map-5.jpg);
   }
 }
