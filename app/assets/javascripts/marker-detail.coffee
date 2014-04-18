@@ -7,6 +7,11 @@ window.attach_feature_layer_events = ->
 $(document).on 'click', '.meta.marker-detail', ->
   deactivate_marker_detail(@)
 
+$(document).on 'click', '.detail-previous, .detail-next', ->
+  window.deactivate_meta_panes()
+  reset_marker_style $(@).parents('.marker-detail').data('point')
+  activate_marker_detail($(@).data('point'))
+
 activate_marker_detail = (point) ->
   current_zoom = window.map.getZoom()
   window.map.panTo(point.layer.getLatLng()).setZoom(18)
@@ -32,8 +37,7 @@ get_all_markers = ->
   $.each window.feature_layer.getLayers(), (index, layer) ->
     if layer.feature.geometry.type == 'Point'
       markers.push
-        arrival: layer.feature.geometry.arrival
-        title: layer.feature.properties.title
+        layer: layer
   markers
 
 set_marker_title = (point) ->
@@ -42,11 +46,15 @@ set_marker_title = (point) ->
 set_marker_next_prev_locations = (point) ->
   all_markers = get_all_markers()
   for marker, i in all_markers
-    if marker.arrival == point.layer.feature.geometry.arrival
-      if all_markers[i+1]
-        $('.marker-detail .detail-next').text "Left for #{all_markers[i+1].title}"
+    if marker.layer.feature.geometry.arrival == point.layer.feature.geometry.arrival
       if all_markers[i-1]
-        $('.marker-detail .detail-previous').text "Came from #{all_markers[i-1].title}"
+        $('.marker-detail .detail-previous')
+        .text "Came from #{all_markers[i-1].layer.feature.properties.title}"
+        .data 'point', all_markers[i-1]
+      if all_markers[i+1]
+        $('.marker-detail .detail-next')
+        .text "Left for #{all_markers[i+1].layer.feature.properties.title}"
+        .data 'point', all_markers[i+1]
 
 arrange_marker_detail_items = ->
   $('.marker-detail .item').each ->

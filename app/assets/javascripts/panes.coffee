@@ -31,7 +31,7 @@ $ ->
 
   $(document).on 'click', 'div.meta:not(.marker-detail)', activate_meta_nav
 
-  $(document).on 'click', 'div.meta *:not(a)', false
+  $(document).on 'click', 'div.meta *:not(h2)', false
 
   $(document).on 'click', '.tomorrow-link', ->
     activate_map_loading_animation('tomorrow')
@@ -57,7 +57,7 @@ activate_meta_pane = (pane_class) ->
   deactivate_meta_nav()
   recess_maps()
 
-deactivate_meta_panes = ->
+window.deactivate_meta_panes = ->
   clear_map_classes()
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
   $('div.meta').removeClass 'processed'
