@@ -6,6 +6,8 @@ module Maps
     arrival_time = segment['startTime']
     departure_time = segment['endTime']
 
+    title = '(unnamed)' if title.nil?
+
     {'type' => 'Point',
      'coordinates' => [lon, lat],
      'title' => title,

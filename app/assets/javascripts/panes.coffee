@@ -24,15 +24,14 @@ $ ->
 
   $('.activate-meta-pane').on 'click', ->
     target = $(@).data('target')
-    deactivate_upper_nav()
     activate_meta_pane(".meta.#{target}")
     false
 
-  $('div.meta').on 'click', deactivate_meta_panes
+  $(document).on 'click', 'div.meta', deactivate_meta_panes
 
-  $('div.meta article').on 'click', false
+  $(document).on 'click', 'div.meta:not(.marker-detail)', activate_meta_nav
 
-  $('div.meta:not(.marker-detail)').on 'click', activate_meta_nav
+  $(document).on 'click', 'div.meta *:not(a)', false
 
   $(document).on 'click', '.tomorrow-link', ->
     activate_map_loading_animation('tomorrow')
@@ -64,7 +63,6 @@ deactivate_meta_panes = ->
   $('div.meta').removeClass 'processed'
 
 activate_upper_nav = ->
-  clear_map_classes()
   push_maps_down()
   $('.map-today').removeClass 'tilt-up'
   $('.upper-nav').addClass 'processed'
@@ -91,7 +89,7 @@ activate_map_loading_animation = (direction) ->
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 window.deactivate_map_loading_animation = ->
-  $('.map').removeClass 'load-tomorrow load-yesterday'
+  clear_map_classes()
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 recess_maps = ->
@@ -116,4 +114,4 @@ push_maps_up = ->
     $('.map-yesterday').addClass 'up'
 
 clear_map_classes = ->
-  $('.map').removeClass 'recessed down up tilt-up tilt-down'
+  $('.map').removeClass 'recessed down up tilt-up tilt-down load-tomorrow load-yesterday'

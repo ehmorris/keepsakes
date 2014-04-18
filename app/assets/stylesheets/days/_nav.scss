@@ -10,10 +10,14 @@
   display: block;
   font: bold 2.5vw/9vw $sans;
   margin: -4.5vw 0 0;
+  max-width: 40%;
+  overflow: hidden;
   @include position(absolute, 50% 0 0 0);
   text-decoration: none;
+  text-overflow: ellipsis;
   @include transition(all .3s, padding 0s);
   @include user-select(none);
+  white-space: nowrap;
   z-index: 3;
 
   &.hide {
