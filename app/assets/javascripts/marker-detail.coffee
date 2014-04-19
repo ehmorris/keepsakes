@@ -13,7 +13,7 @@ $(document).on 'click', '.detail-previous, .detail-next', ->
   activate_marker_detail($(@).data('point'))
 
 activate_marker_detail = (point) ->
-  current_zoom = window.map.getZoom()
+  if window.map.getZoom() != 18 then current_zoom = window.map.getZoom()
   window.map.panTo(point.layer.getLatLng()).setZoom(18)
 
   $random_marker_detail = $(".meta.marker-detail:eq(#{random_number_between(0, 2)})")
@@ -51,10 +51,14 @@ set_marker_next_prev_locations = (point) ->
         $('.marker-detail .detail-previous')
         .text "Came from #{all_markers[i-1].layer.feature.properties.title}"
         .data 'point', all_markers[i-1]
+      else
+        $('.marker-detail .detail-previous').text ''
       if all_markers[i+1]
         $('.marker-detail .detail-next')
         .text "Left for #{all_markers[i+1].layer.feature.properties.title}"
         .data 'point', all_markers[i+1]
+      else
+        $('.marker-detail .detail-next').text ''
 
 arrange_marker_detail_items = ->
   $('.marker-detail .item').each ->
