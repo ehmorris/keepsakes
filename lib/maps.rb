@@ -1,18 +1,20 @@
 module Maps
+  include ActionView::Helpers::DateHelper
+
   def place_to_geodata_point(segment)
     lon = segment['place']['location']['lon']
     lat = segment['place']['location']['lat']
     title = segment['place']['name']
-    arrival_time = segment['startTime']
-    departure_time = segment['endTime']
+    arrival = Time.parse(segment['startTime']).in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M%P")
+    duration = distance_of_time_in_words(Time.parse(segment['startTime']), Time.parse(segment['endTime']))
 
     title = '(unnamed)' if title.nil?
 
     {'type' => 'Point',
      'coordinates' => [lon, lat],
      'title' => title,
-     'arrival' => arrival_time,
-     'departure' => departure_time}
+     'arrival' => arrival,
+     'duration' => duration}
   end
 
   def trackpoints_to_geodata_line(trackpoint_1, trackpoint_2, activity)

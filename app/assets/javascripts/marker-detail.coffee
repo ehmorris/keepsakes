@@ -25,6 +25,7 @@ activate_marker_detail = (point) ->
   style_active_marker(point)
   arrange_marker_detail_items()
   set_marker_title(point)
+  set_marker_time(point)
   set_marker_next_prev_locations(point)
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
@@ -42,6 +43,10 @@ get_all_markers = ->
 
 set_marker_title = (point) ->
   $('.marker-detail .title').text point.layer.feature.properties.title
+
+set_marker_time = (point) ->
+  $('.marker-detail .time .arrived').text "Arrived at #{point.layer.feature.geometry.arrival}."
+  $('.marker-detail .time .duration').text "Spent #{point.layer.feature.geometry.duration} here."
 
 set_marker_next_prev_locations = (point) ->
   all_markers = get_all_markers()
