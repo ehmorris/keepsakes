@@ -115,6 +115,13 @@ div.meta.marker-detail {
     @include position(absolute, 50% 0 0 50%);
     z-index: -1;
 
+    @mixin span($units, $square: false) {
+      // 100vw is 16 spans wide
+      width: 6.25vw * $units;
+
+      @if $square { height: 6.25vw * $units }
+    }
+
     &:hover, &.ui-draggable-dragging {
       box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
       cursor: pointer;
@@ -122,11 +129,11 @@ div.meta.marker-detail {
     }
 
     &.image, &.video {
-      width: 30vw;
+      @include span(4);
     }
 
     &.music {
-      width: 20vw;
+      @include span(3);
     }
 
     &.time {
@@ -135,9 +142,8 @@ div.meta.marker-detail {
       border-radius: 50%;
       @include display(flex);
       @include flex-wrap(wrap);
-      height: 15vw;
       padding: 3rem;
-      width: 15vw;
+      @include span(3, true);
 
       span {
         display: block;

@@ -11,7 +11,6 @@ gem 'coffee-rails', '~> 3.2.1'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'bourbon', '3.2.0.beta.1'
 gem 'neat'
 

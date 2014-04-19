@@ -69,31 +69,23 @@ arrange_marker_detail_items = ->
   $('.marker-detail .item').each ->
     top_value = random_number_between(6, 68)
     left_value = random_number_between(6, 68)
-    $item = $(@)
-    $item.css {
+    $(@).css
       top: "#{top_value}%"
       left: "#{left_value}%"
-    }
-  .draggable {
-    containment: '.marker-detail'
-    scroll: false
-  }
 
 style_active_marker = (point) ->
   point.layer.feature.properties['marker-size'] = 'large'
   point.layer.feature.properties['marker-color'] = '#fff'
-  window.feature_layer.setGeoJSON {
-    type: 'FeatureCollection',
+  window.feature_layer.setGeoJSON
+    type: 'FeatureCollection'
     features: window.feature_layer.getGeoJSON().features.concat point
-  }
 
 reset_marker_style = (point) ->
   point.layer.feature.properties['marker-size'] = ''
   point.layer.feature.properties['marker-color'] = ''
-  window.feature_layer.setGeoJSON {
-    type: 'FeatureCollection',
+  window.feature_layer.setGeoJSON
+    type: 'FeatureCollection'
     features: window.feature_layer.getGeoJSON().features.concat point
-  }
 
 random_number_between = (min, max)->
   Math.round(Math.random() * (max - min) + min)
