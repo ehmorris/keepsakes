@@ -67,11 +67,11 @@ set_marker_next_prev_locations = (point) ->
 
 arrange_marker_detail_items = ->
   $('.marker-detail .item').each ->
-    top_value = random_number_between(6, 68)
-    left_value = random_number_between(6, 68)
+    top_value = random_number_between(1, 65).closest_divisible_by(6.25)
+    left_value = random_number_between(20, 80).closest_divisible_by(6.25)
     $(@).css
-      top: "#{top_value}%"
-      left: "#{left_value}%"
+      top: "#{top_value}vh"
+      left: "#{left_value}vw"
 
 style_active_marker = (point) ->
   point.layer.feature.properties['marker-size'] = 'large'
@@ -89,3 +89,6 @@ reset_marker_style = (point) ->
 
 random_number_between = (min, max)->
   Math.round(Math.random() * (max - min) + min)
+
+Number::closest_divisible_by = (divisor) ->
+  Math.round(this / divisor) * divisor

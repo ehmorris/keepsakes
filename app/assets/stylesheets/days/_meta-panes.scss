@@ -102,32 +102,32 @@ div.meta.music {
 }
 
 div.meta.marker-detail {
-  h2 {
-    @include align-self(flex-start);
-    @include flex(1 100%);
-    font-family: $serif;
-    font-size: 6vh;
-    margin: 24vh 0 0;
-    text-align: center;
+  @mixin span($units, $square: false) {
+    width: 6.25vw * $units;
+    @if $square { height: 6.25vw * $units }
   }
 
-  .item {
+  h2 {
+    font-family: $serif;
+    font-size: 2.5vw;
+    margin: 0;
+    @include position(absolute, 12.5vh 0 0 18.75vw);
+    @include span(5);
+  }
+
+  .item, .time {
     @include position(absolute, 50% 0 0 50%);
+    @include user-select(none);
     z-index: -1;
 
-    @mixin span($units, $square: false) {
-      // 100vw is 16 spans wide
-      width: 6.25vw * $units;
-
-      @if $square { height: 6.25vw * $units }
-    }
-
-    &:hover, &.ui-draggable-dragging {
+    &:hover {
       box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
       cursor: pointer;
       z-index: 4;
     }
+  }
 
+  .item {
     &.image, &.video {
       @include span(4);
     }
@@ -135,19 +135,21 @@ div.meta.marker-detail {
     &.music {
       @include span(3);
     }
+  }
 
-    &.time {
-      @include align-items(center);
-      background: #000;
-      border-radius: 50%;
-      @include display(flex);
-      @include flex-wrap(wrap);
-      padding: 3rem;
-      @include span(3, true);
+  .time {
+    @include align-items(center);
+    background: #000;
+    border-radius: 50%;
+    @include display(flex);
+    @include flex-wrap(wrap);
+    padding: 3rem;
+    @include position(absolute, 62.5vh 0 0 18.75vw);
+    @include span(3, true);
+    z-index: 1;
 
-      span {
-        display: block;
-      }
+    span {
+      display: block;
     }
   }
 }

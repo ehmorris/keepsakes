@@ -47,6 +47,9 @@
     @include transform(translateX(1rem));
   }
 }
+.detail-previous, .detail-next {
+  font-weight: 300;
+}
 
 .activate-upper-nav, .activate-meta-nav {
   background: transparent;
