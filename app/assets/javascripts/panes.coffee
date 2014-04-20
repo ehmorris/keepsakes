@@ -94,7 +94,7 @@ window.deactivate_map_loading_animation = ->
   $('.loading-text').removeClass 'pulse'
   setTimeout ->
     $('.loading-text').removeClass 'show'
-  , 2500
+  , 2000
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 recess_maps = ->
