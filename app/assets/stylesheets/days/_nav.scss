@@ -30,6 +30,7 @@
 }
 .yesterday-link, .detail-previous {
   left: 0;
+  @include left-cursor;
   padding-left: 2rem;
   @include transform(translateX(0));
 
@@ -41,6 +42,7 @@
 .tomorrow-link, .detail-next {
   padding-right: 2rem;
   right: 0;
+  @include right-cursor;
 
   &:hover {
     padding-left: 1rem;
@@ -54,7 +56,7 @@
 .activate-upper-nav, .activate-meta-nav {
   background: transparent;
   height: 10%;
-  @include menu-cursor;
+  @include up-cursor;
   @include position(absolute, 0px 0px 0 0px);
   @include transition(.3s);
   z-index: 3;
@@ -62,6 +64,7 @@
 .activate-meta-nav {
   top: auto;
   bottom: 0px;
+  @include down-cursor;
 }
 
 .deactivate-upper-nav, .deactivate-meta-nav {

@@ -61,9 +61,21 @@
 }
 
 @mixin close-cursor {
-  cursor: url('close-cursor.svg') 15 10, pointer;
+  cursor: url('cursors_x.svg') 16 16, pointer;
 }
 
-@mixin menu-cursor {
-  cursor: url('menu-cursor.svg') 15 10, pointer;
+@mixin right-cursor {
+  cursor: url('cursors_right.svg') 8 16, pointer;
+}
+
+@mixin left-cursor {
+  cursor: url('cursors_left.svg') 24 16, pointer;
+}
+
+@mixin up-cursor {
+  cursor: url('cursors_up.svg') 16 8, pointer;
+}
+
+@mixin down-cursor {
+  cursor: url('cursors_down.svg') 16 24, pointer;
 }
