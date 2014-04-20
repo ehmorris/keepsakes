@@ -1,4 +1,4 @@
-### Dayview — Displays QS information in one explorable interface.
+### keepsakes — displays QS information in one explorable interface.
 
 #### Running the app
 * Run `./bin/setup`
@@ -10,7 +10,7 @@
 * [Mailgun](https://mailgun.com/cp?)
 * [Mapbox](https://www.mapbox.com/projects)
 * [Moves](https://dev.moves-app.com/apps)
-* [![Code Climate](https://codeclimate.com/github/ehmorris/dayview.png)](https://codeclimate.com/github/ehmorris/dayview)
+* [![Code Climate](https://codeclimate.com/github/ehmorris/keepsakes.png)](https://codeclimate.com/github/ehmorris/keepsakes)
 
 #### Potential sources of information
 * [Location | Foursquare](https://github.com/mattmueller/foursquare2)
