@@ -1,20 +1,28 @@
-.today-text {
-  @include animation(today-intro 2s);
-  @include animation-fill-mode(forwards);
-  @include centered-text;
-  @include user-select(none);
-}
 .loading-text {
-  @include animation(pulse .75s ease infinite);
-  @include centered-text;
+  @include align-items(center);
+  @include display(flex);
   opacity: 0;
-  @include transition;
+  @include position(absolute, 0px 0px 0px 0px);
+  @include transition(1s);
   @include user-select(none);
   z-index: -1;
 
+  span {
+    color: #fff;
+    display: block;
+    font: bold 9vw/1 $serif;
+    text-align: center;
+    text-shadow: 0 10px 90px rgba(0, 0, 0, .1);
+    width: 100%;
+  }
+
+  &.pulse {
+    @include animation(pulse .75s ease infinite);
+  }
+
   &.show {
     opacity: 1;
-    z-index: 2;
+    z-index: 10;
   }
 }
 

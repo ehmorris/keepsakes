@@ -1,6 +1,3 @@
-.today-text
-  = @today.strftime('%a %b %e')
-
 - if @tomorrow < Date.today
   = link_to day_path(@tomorrow), class: 'tomorrow-link', remote: 'true' do
     = @tomorrow.strftime('%a %b %e')

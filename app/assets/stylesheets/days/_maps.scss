@@ -1,12 +1,6 @@
 .map {
   @include position(absolute, 0px 0px 0px 0px);
   @include transition(all .4s $ease-out-quint);
-
-  &.load-tomorrow, &.load-yesterday {
-    .image {
-      -webkit-filter: blur(10px);
-    }
-  }
 }
 
 .map-today {

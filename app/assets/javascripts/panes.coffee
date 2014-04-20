@@ -86,12 +86,15 @@ deactivate_meta_nav = ->
 
 activate_map_loading_animation = (direction) ->
   $('.map').addClass "load-#{direction}"
-  $('.loading-text').text($(".#{direction}-link").text()).addClass 'show'
+  $('.loading-text span').text($(".#{direction}-link").text()).parent().addClass 'show pulse'
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 window.deactivate_map_loading_animation = ->
   clear_map_classes()
-  $('.loading-text').removeClass 'show'
+  $('.loading-text').removeClass 'pulse'
+  setTimeout ->
+    $('.loading-text').removeClass 'show'
+  , 2500
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
 recess_maps = ->
