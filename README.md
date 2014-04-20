@@ -7,7 +7,7 @@
 * Run `foreman start` and  `open http://localhost:3000`
 
 #### Dashboards
-* [Mailgun](https://mailgun.com/cp?domain=dayview.co)
+* [Mailgun](https://mailgun.com/cp?)
 * [Mapbox](https://www.mapbox.com/projects)
 * [Moves](https://dev.moves-app.com/apps)
 * [![Code Climate](https://codeclimate.com/github/ehmorris/dayview.png)](https://codeclimate.com/github/ehmorris/dayview)

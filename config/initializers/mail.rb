@@ -5,7 +5,7 @@ ActionMailer::Base.smtp_settings = {
      :authentication => :plain,
      :address => ENV['MAILGUN_SMTP_SERVER'],
      :port => 587,
-     :domain => "dayview.co",
+     :domain => "keepsak.es",
      :user_name => ENV['MAILGUN_DAYVIEWCO_SMTP_LOGIN'],
      :password => ENV['MAILGUN_DAYVIEWCO_SMTP_PASSWORD']
 }

@@ -1,3 +1,3 @@
 Clearance.configure do |config|
-  config.mailer_sender = 'accounts@dayview.co'
+  config.mailer_sender = 'accounts@keepsak.es'
 end
