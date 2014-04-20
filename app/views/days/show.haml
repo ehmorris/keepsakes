@@ -27,9 +27,9 @@
   = link_to '#' do
     %span Slept 8 hours
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
-    %span Wrote 356 words
+    %span Wrote 286 words
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
-    %span Took 2 photos
+    %span Took 5 photos
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'music' do
     %span Played 11 songs
   = link_to '#', class: 'weather' do
@@ -43,10 +43,6 @@
 
 .meta.marker-detail
   %h2.title
-  .item.image
-    = image_tag('ig4.jpg')
-    .detail
-      %span.desc Good mooooorning Ryder
   .item.image
     = image_tag('ig5.jpg')
     .detail
@@ -80,11 +76,6 @@
     .detail
       %span.album Lanterns
       %span.artist Son Lux
-  .item.music
-    = image_tag('music2.jpg')
-    .detail
-      %span.album The Grand Budapest Hotel (Original Soundtrack
-      %span.artist Various Artists
   .time
     %span.arrived
     %span.duration
@@ -93,11 +84,6 @@
 
 .meta.marker-detail
   %h2.title
-  .item.music
-    = image_tag('music2.jpg')
-    .detail
-      %span.album The Grand Budapest Hotel (Original Soundtrack
-      %span.artist Various Artists
   .time
     %span.arrived
     %span.duration
