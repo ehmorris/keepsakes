@@ -3,6 +3,11 @@ $ ->
 
 window.attach_feature_layer_events = ->
   window.feature_layer.on 'click', activate_marker_detail
+  window.feature_layer.on
+    mouseover: (point) ->
+      point.layer.openPopup()
+    mouseout: (point) ->
+      point.layer.closePopup()
 
 $(document).on 'click', '.meta.marker-detail', ->
   deactivate_marker_detail(@)

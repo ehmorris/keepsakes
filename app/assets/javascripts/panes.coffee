@@ -5,20 +5,20 @@ $ ->
     $('.loading-text').removeClass 'show'
   , 1800
 
-  $(document).on {
+  $(document).on
     mouseenter: recess_maps
     mouseleave: clear_map_classes
-  }, '.yesterday-link, .tomorrow-link'
+  , '.yesterday-link, .tomorrow-link'
 
-  $(document).on {
+  $(document).on
     mouseenter: tilt_map_up
     mouseleave: untilt_map
-  }, '.activate-upper-nav'
+  , '.activate-upper-nav'
 
-  $(document).on {
+  $(document).on
     mouseenter: tilt_map_down
     mouseleave: untilt_map
-  }, '.activate-meta-nav'
+  , '.activate-meta-nav'
 
   $('.activate-upper-nav').on 'click', activate_upper_nav
 
