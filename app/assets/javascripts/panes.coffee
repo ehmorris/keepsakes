@@ -1,4 +1,10 @@
 $ ->
+  scroll_to_center '.calendar'
+  $('.loading-text').addClass 'show'
+  setTimeout ->
+    $('.loading-text').removeClass 'show'
+  , 1800
+
   $(document).on {
     mouseenter: recess_maps
     mouseleave: clear_map_classes
@@ -94,7 +100,7 @@ activate_day_loading_animation = (direction, loading_text) ->
 
 window.deactivate_day_loading_animation = ->
   clear_map_classes()
-  scroll_to_center('.calendar')
+  scroll_to_center '.calendar'
   $('.loading-text').removeClass 'pulse'
   setTimeout ->
     $('.loading-text').removeClass 'show'

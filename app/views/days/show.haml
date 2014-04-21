@@ -85,5 +85,5 @@
 = render :partial => 'photos'
 
 .loading-text
-  %span
+  %span= @today.strftime('%a %b %e')
 = render :partial => 'map'
