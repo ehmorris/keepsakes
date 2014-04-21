@@ -9,35 +9,36 @@ window.render_map = ->
 
   geodata_json = $('#map').data('geojson')
 
-  # initialize empty collection for getGeoJSON function within set_points_boundary
-  window.feature_layer = L.mapbox.featureLayer
-    type: 'FeatureCollection'
-    features: []
-
-  # aggregate all geodata into one object to determine boundaries
-  $.each geodata_json, ->
-    if @.activity == 'wlk'
-      properties =
-        'title': @.title
-        'stroke': '#fff'
-        'stroke-opacity': .9
-        'stroke-width': 5
-    else
-      properties =
-        'title': @.title
-        'stroke': '#999'
-        'stroke-opacity': .5
-        'stroke-width': 5
-
+  if geodata_json.length > 0
+    # initialize empty collection for getGeoJSON function within set_points_boundary
     window.feature_layer = L.mapbox.featureLayer
       type: 'FeatureCollection'
-      features: window.feature_layer.getGeoJSON().features.concat
-        type: 'Feature'
-        geometry: @
-        properties: properties
+      features: []
 
-  # zoom the map to fit the boundaries, but don't plot any points
-  window.map.fitBounds(window.feature_layer.getBounds())
+    # aggregate all geodata into one object to determine boundaries
+    $.each geodata_json, ->
+      if @.activity == 'wlk'
+        properties =
+          'title': @.title
+          'stroke': '#fff'
+          'stroke-opacity': .9
+          'stroke-width': 5
+      else
+        properties =
+          'title': @.title
+          'stroke': '#999'
+          'stroke-opacity': .5
+          'stroke-width': 5
 
-  # plot all the points at once
-  window.feature_layer.addTo window.map
+      window.feature_layer = L.mapbox.featureLayer
+        type: 'FeatureCollection'
+        features: window.feature_layer.getGeoJSON().features.concat
+          type: 'Feature'
+          geometry: @
+          properties: properties
+
+    # zoom the map to fit the boundaries, but don't plot any points
+    window.map.fitBounds(window.feature_layer.getBounds())
+
+    # plot all the points at once
+    window.feature_layer.addTo window.map

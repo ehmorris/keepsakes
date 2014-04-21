@@ -7,7 +7,11 @@ class DaysController < ApplicationController
   def show
     storyline_day = params['id']
     storyline_segments_hash = get_storyline_segments_hash(storyline_day)
-    @geodata_json = storyline_to_geodata(storyline_segments_hash)
+    if storyline_segments_hash
+      @geodata_json = storyline_to_geodata(storyline_segments_hash)
+    else
+      @geodata_json = []
+    end
 
     @yesterday = Date.parse(storyline_day) - 1
     @today = Date.parse(storyline_day)

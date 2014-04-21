@@ -14,7 +14,12 @@ div.meta {
   &.processed {
     z-index: 4;
     opacity: 1;
-  }  
+  }
+
+  &.music .gallery .item .detail {
+    display: block;
+    overflow-y: scroll;
+  }
 
   .item {
     position: relative;
@@ -34,6 +39,14 @@ div.meta {
       padding: 3rem;
       @include position(absolute, 0px 0px 0px 0px);
       @include transition;
+
+      ol {
+        padding: 0;
+      }
+
+      li {
+        margin: 0 0 1rem;
+      }
 
       span {
         display: block;
