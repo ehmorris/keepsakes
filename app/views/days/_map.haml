@@ -1,7 +1,7 @@
 - if @tomorrow < Date.today
-  = link_to day_path(@tomorrow), class: 'tomorrow-link', remote: 'true' do
+  = link_to day_path(@tomorrow), class: 'tomorrow-link', 'data-loading-text' => "#{@tomorrow.strftime('%a %b %e')}", remote: 'true' do
     = @tomorrow.strftime('%a %b %e')
-= link_to day_path(@yesterday), class: 'yesterday-link', remote: 'true' do
+= link_to day_path(@yesterday), class: 'yesterday-link', 'data-loading-text' => "#{@yesterday.strftime('%a %b %e')}", remote: 'true' do
   = @yesterday.strftime('%a %b %e')
 
 %figure.map.map-today#map{ 'data-today' => day_path(@today), 'data-geojson' => @geodata_json }

@@ -33,11 +33,13 @@ $ ->
 
   $(document).on 'click', 'div.meta *:not(h2)', false
 
-  $(document).on 'click', '.tomorrow-link', ->
-    activate_map_loading_animation('tomorrow')
+  $(document).on 'click', '.tomorrow-link, .calendar .forwards', ->
+    loading_text = $(@).data('loading-text')
+    activate_day_loading_animation('tomorrow', loading_text)
 
-  $(document).on 'click', '.yesterday-link', ->
-    activate_map_loading_animation('yesterday')
+  $(document).on 'click', '.yesterday-link, .calendar .backwards', ->
+    loading_text = $(@).data('loading-text')
+    activate_day_loading_animation('yesterday', loading_text)
 
 tilt_map_up = ->
   $('.map-today').addClass 'tilt-up'
@@ -84,18 +86,24 @@ deactivate_meta_nav = ->
   $('nav.meta').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
-activate_map_loading_animation = (direction) ->
+activate_day_loading_animation = (direction, loading_text) ->
+  deactivate_upper_nav()
   $('.map').addClass "load-#{direction}"
-  $('.loading-text span').text($(".#{direction}-link").text()).parent().addClass 'show pulse'
+  $('.loading-text span').text(loading_text).parent().addClass 'show pulse'
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
-window.deactivate_map_loading_animation = ->
+window.deactivate_day_loading_animation = ->
   clear_map_classes()
+  scroll_to_center('.calendar')
   $('.loading-text').removeClass 'pulse'
   setTimeout ->
     $('.loading-text').removeClass 'show'
-  , 2000
+  , 1800
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
+
+scroll_to_center = (container) ->
+  $(container).scrollLeft(
+    ($(container).get(0).scrollWidth / 2) - ($(container).width() / 2))
 
 recess_maps = ->
   $('.map-today').addClass 'recessed'

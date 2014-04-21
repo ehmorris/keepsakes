@@ -68,3 +68,7 @@
 @mixin down-cursor {
   cursor: url('cursors_down.svg') 16 24, pointer;
 }
+
+@mixin o-cursor {
+  cursor: url('cursors_o.svg') 16 24, pointer;
+}

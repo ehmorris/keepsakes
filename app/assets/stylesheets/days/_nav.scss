@@ -120,7 +120,7 @@ nav.meta, .upper-nav {
   }
 
   .tilt-hint {
-    @include position(absolute, 0 460px 0px 460px);
+    @include position(absolute, 0 200px 0px 200px);
     text-align: center;
     @include transition;
 
@@ -216,9 +216,10 @@ nav.meta {
   nav.calendar {
     @include align-items(center);
     @include display(flex);
-    height: 21vh;
+    height: 30vh;
     overflow-x: scroll;
-    @include position(absolute, 3rem 2rem 0 2rem);
+    @include position(absolute, 0px 2vw 0 2vw);
+    z-index: -1;
 
     ol {
       list-style-type: none;
@@ -228,15 +229,63 @@ nav.meta {
     }
 
     li {
-      color: #fff;
       display: inline-block;
-      font-family: $serif;
-      font-size: 4vh;
-      padding: 0 .5rem;
+      font-size: 2.25vw;
+      margin: 0 .5vw 0 0;
+      position: relative;
+      width: 6vw;
 
-      &.month {
-        font-family: $sans;
-        font-weight: 700;
+      &.real-time-today {
+        margin-left: 4vw;
+      }
+
+      .month {
+        color: #999;
+        font-size: .8rem;
+        margin-left: .25vw;
+        padding: .5rem;
+        @include position(absolute, -2rem 0 0 0);
+        text-transform: uppercase;
+      }
+
+      .calendar-day {
+        border: .25vw solid #fff;
+        color: #fff;
+        display: block;
+        padding: .5rem;
+        text-decoration: none;
+        @include transition;
+
+        &:hover {
+          @include transform(scale(1.1));
+        }
+
+        &.disabled {
+          opacity: .5;
+        }
+
+        &.today {
+          border-color: transparent;
+          @include o-cursor;
+        }
+
+        &.backwards {
+          @include left-cursor;
+        }
+
+        &.forwards {
+          @include right-cursor;
+        }
+      }
+
+      .number {
+        font-family: $serif;
+      }
+
+      .day {
+        display: block;
+        font-size: .8rem;
+        text-transform: uppercase;
       }
     }
   }

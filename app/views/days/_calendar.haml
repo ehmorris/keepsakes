@@ -1,0 +1,34 @@
+%nav.calendar
+  %ol
+    - 30.times do |day|
+      %li
+        .month= (@today - (30 - day)).strftime('%b')
+        = link_to day_path(@today - (30 - day)), class: 'calendar-day backwards', 'data-loading-text' => "#{(@today - (30 - day)).strftime('%a %b %e')}", remote: 'true' do
+          %span.number= (@today - (30 - day)).strftime('%e')
+          %span.day= (@today - (30 - day)).strftime('%a')
+
+    %li
+      .month= @today.strftime('%b')
+      .calendar-day.today
+        %span.number= (@today).strftime('%e')
+        %span.day= (@today).strftime('%a')
+
+    - 30.times do |day|
+      %li
+        .month= (@today + (day + 1)).strftime('%b')
+        - if (@today + (day + 1)) > Date.today - 1
+          .calendar-day.disabled
+            %span.number= (@today + (day + 1)).strftime('%e')
+            %span.day= (@today + (day + 1)).strftime('%a')
+        - else
+          = link_to day_path(@today + (day + 1)), class: 'calendar-day forwards', 'data-loading-text' => "#{(@today + (day + 1)).strftime('%a %b %e')}", remote: 'true' do
+            %span.number= (@today + (day + 1)).strftime('%e')
+            %span.day= (@today + (day + 1)).strftime('%a')
+
+    - if (Date.today - 1) > @today + 30
+      %li.real-time-today
+        .month= (Date.today - 1).strftime('%b')
+        = link_to day_path(Date.today - 1), class: 'calendar-day forwards', 'data-loading-text' => "#{(Date.today - 1).strftime('%a %b %e')}", remote: 'true' do
+
+          %span.number= (Date.today - 1).strftime('%e')
+          %span.day= (Date.today - 1).strftime('%a')
