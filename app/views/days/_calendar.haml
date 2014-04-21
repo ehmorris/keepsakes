@@ -1,5 +1,9 @@
 %nav.calendar
   %ol
+    %li.search
+      %i.fa.fa-search
+      %form
+        %input{ :type => 'text', :placeholder => 'ex: Feb 3 2013' }
     - 30.times do |day|
       %li
         .month= (@today - (30 - day)).strftime('%b')

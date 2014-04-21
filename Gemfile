@@ -17,5 +17,6 @@ gem 'neat'
 
 gem 'foursquare2'
 gem 'mapbox-rails'
+gem 'momentjs-rails'
 gem 'yahoo_weatherman'
 gem 'oauth2'

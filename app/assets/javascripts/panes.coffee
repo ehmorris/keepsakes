@@ -47,6 +47,14 @@ $ ->
     loading_text = $(@).data('loading-text')
     activate_day_loading_animation('yesterday', loading_text)
 
+  $(document).on 'submit', '.search form', (e) ->
+    e.preventDefault()
+    if moment($('.search input').val()).isValid()
+      day_id = moment($('.search input').val()).format('YYYY-MM-DD')
+      document.location.href = "/days/#{day_id}"
+    else
+      $('.search').addClass 'invalid'
+
 tilt_map_up = ->
   $('.map-today').addClass 'tilt-up'
   $('.upper-nav').addClass 'tilt-expose'

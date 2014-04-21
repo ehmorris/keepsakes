@@ -239,6 +239,40 @@ nav.meta {
         margin-left: 4vw;
       }
 
+      &.search {
+        border: .25vw solid #fff;
+        font-family: $serif;
+        margin-right: 4vw;
+        padding: 0 0 .825vw;
+        vertical-align: top;
+        width: auto;
+
+        &.invalid {
+          border-color: red;
+        }
+
+        i {
+          color: #fff;
+          @include position(absolute, .7rem 0 0 .5rem);
+          z-index: -1;
+        }
+      }
+
+      input {
+        background: none;
+        border: 0;
+        color: #fff;
+        padding: .5rem .5rem .75rem;
+        text-indent: 5vw;
+        @include transition;
+        width: 6vw;
+
+        &:focus {
+          outline: none;
+          width: 24vw;
+        }
+      }
+
       .month {
         color: #999;
         font-size: .8rem;
@@ -252,7 +286,7 @@ nav.meta {
         border: .25vw solid #fff;
         color: #fff;
         display: block;
-        padding: .5rem;
+        padding: .5rem .5rem .75rem;
         text-decoration: none;
         @include transition;
 
@@ -284,7 +318,8 @@ nav.meta {
 
       .day {
         display: block;
-        font-size: .8rem;
+        font-size: .8vw;;
+        line-height: 1;
         text-transform: uppercase;
       }
     }
