@@ -14,7 +14,7 @@ $(document).on 'click', '.detail-previous, .detail-next', ->
   reset_marker_style $(@).parents('.marker-detail').data('point')
   activate_marker_detail($(@).data('point'))
 
-activate_marker_detail = (point) ->
+window.activate_marker_detail = (point) ->
   if window.map.getZoom() != 18 then current_zoom = window.map.getZoom()
   window.map.panTo(point.layer.getLatLng()).setZoom(18)
 
@@ -35,14 +35,6 @@ deactivate_marker_detail = (marker_detail) ->
   window.map.setZoom $(marker_detail).data('zoom')
   reset_marker_style $(marker_detail).data('point')
 
-get_all_markers = ->
-  markers = []
-  $.each window.feature_layer.getLayers(), (index, layer) ->
-    if layer.feature.geometry.type == 'Point'
-      markers.push
-        layer: layer
-  markers
-
 set_marker_title = (point) ->
   $('.marker-detail .title').text point.layer.feature.properties.title
 
@@ -52,7 +44,7 @@ set_marker_time = (point) ->
   $('.marker-detail .time .duration').text "Spent #{point.duration} here."
 
 set_marker_next_prev_locations = (point) ->
-  all_markers = get_all_markers()
+  all_markers = window.get_all_markers()
   for marker, i in all_markers
     if marker.layer.feature.geometry.arrival == point.layer.feature.geometry.arrival
       if all_markers[i-1]

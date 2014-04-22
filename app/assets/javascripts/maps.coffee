@@ -42,3 +42,11 @@ window.render_map = ->
 
     # plot all the points at once
     window.feature_layer.addTo window.map
+
+window.get_all_markers = ->
+  markers = []
+  $.each window.feature_layer.getLayers(), (index, layer) ->
+    if layer.feature.geometry.type == 'Point'
+      markers.push
+        layer: layer
+  markers

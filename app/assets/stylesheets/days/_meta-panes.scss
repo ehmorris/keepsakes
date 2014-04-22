@@ -89,9 +89,11 @@ div.meta.places {
 
   li {
     border: .25vw solid #fff;
+    display: block;
     margin: 0 0 2vw;
     padding: .5rem .5rem .75rem;
     @include transition;
+    width: 100%;
 
     &:hover {
       @include o-cursor;

@@ -18,7 +18,6 @@ module Maps
      'coordinates' => [lon, lat],
      'title' => title,
      'arrival' => arrival,
-     'arrival_timestamp' => segment['startTime'],
      'duration' => duration}
   end
 
