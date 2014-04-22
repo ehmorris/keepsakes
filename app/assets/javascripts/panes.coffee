@@ -115,10 +115,6 @@ window.deactivate_day_loading_animation = ->
   , 1800
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
-scroll_to_center = (container) ->
-  $(container).scrollLeft(
-    ($(container).get(0).scrollWidth / 2) - ($(container).width() / 2))
-
 recess_maps = ->
   $('.map-today').addClass 'recessed'
   if $('.tomorrow-link').length
@@ -142,3 +138,7 @@ push_maps_up = ->
 
 clear_map_classes = ->
   $('.map').removeClass 'recessed down up tilt-up tilt-down load-tomorrow load-yesterday'
+
+scroll_to_center = (container) ->
+  $(container).scrollLeft(
+    ($(container).get(0).scrollWidth / 2) - ($(container).width() / 2))

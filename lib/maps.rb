@@ -5,8 +5,12 @@ module Maps
     lon = segment['place']['location']['lon']
     lat = segment['place']['location']['lat']
     title = segment['place']['name']
-    arrival = Time.parse(segment['startTime']).in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M%P")
-    duration = distance_of_time_in_words(Time.parse(segment['startTime']), Time.parse(segment['endTime']))
+    arrival = Time.parse(segment['startTime'])
+              .in_time_zone('Eastern Time (US & Canada)')
+              .strftime("%I:%M%P")
+    duration = distance_of_time_in_words(
+      Time.parse(segment['startTime']),
+      Time.parse(segment['endTime']))
 
     title = '(unnamed)' if title.nil?
 
@@ -14,6 +18,7 @@ module Maps
      'coordinates' => [lon, lat],
      'title' => title,
      'arrival' => arrival,
+     'arrival_timestamp' => segment['startTime'],
      'duration' => duration}
   end
 
@@ -52,5 +57,17 @@ module Maps
     end
 
     geodata_hash.to_json
+  end
+
+
+  def all_places(storyline_segments_hash)
+    places_hash = []
+    storyline_segments_hash.each do |segment|
+      if segment['type'] == 'place'
+        places_hash.push(place_to_geodata_point(segment))
+      end
+    end
+
+    places_hash
   end
 end

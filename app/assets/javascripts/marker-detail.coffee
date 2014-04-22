@@ -1,13 +1,10 @@
-$ ->
-  window.attach_feature_layer_events()
+$ -> window.attach_feature_layer_events()
 
 window.attach_feature_layer_events = ->
   window.feature_layer.on 'click', activate_marker_detail
   window.feature_layer.on
-    mouseover: (point) ->
-      point.layer.openPopup()
-    mouseout: (point) ->
-      point.layer.closePopup()
+    mouseover: (point) -> point.layer.openPopup()
+    mouseout: (point) -> point.layer.closePopup()
 
 $(document).on 'click', '.meta.marker-detail', ->
   deactivate_marker_detail(@)
@@ -25,14 +22,14 @@ activate_marker_detail = (point) ->
 
   $random_marker_detail.data('point', point)
   $random_marker_detail.data('zoom', current_zoom)
-  $random_marker_detail.addClass('processed')
 
+  $('.yesterday-link, .tomorrow-link').addClass 'hide'
+  $random_marker_detail.addClass 'processed'
   style_active_marker(point)
   arrange_marker_detail_items()
   set_marker_title(point)
   set_marker_time(point)
   set_marker_next_prev_locations(point)
-  $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 deactivate_marker_detail = (marker_detail) ->
   window.map.setZoom $(marker_detail).data('zoom')
@@ -50,8 +47,9 @@ set_marker_title = (point) ->
   $('.marker-detail .title').text point.layer.feature.properties.title
 
 set_marker_time = (point) ->
-  $('.marker-detail .time .arrived').text "Arrived at #{point.layer.feature.geometry.arrival}."
-  $('.marker-detail .time .duration').text "Spent #{point.layer.feature.geometry.duration} here."
+  point = point.layer.feature.geometry
+  $('.marker-detail .time .arrived').text "Arrived at #{point.arrival}."
+  $('.marker-detail .time .duration').text "Spent #{point.duration} here."
 
 set_marker_next_prev_locations = (point) ->
   all_markers = get_all_markers()
@@ -83,16 +81,16 @@ style_active_marker = (point) ->
   point.layer.feature.properties['marker-color'] = '#fff'
   window.feature_layer.setGeoJSON
     type: 'FeatureCollection'
-    features: window.feature_layer.getGeoJSON().features.concat point
+    features: window.feature_layer.getGeoJSON().features.concat(point)
 
 reset_marker_style = (point) ->
   point.layer.feature.properties['marker-size'] = ''
   point.layer.feature.properties['marker-color'] = ''
   window.feature_layer.setGeoJSON
     type: 'FeatureCollection'
-    features: window.feature_layer.getGeoJSON().features.concat point
+    features: window.feature_layer.getGeoJSON().features.concat(point)
 
-random_number_between = (min, max)->
+random_number_between = (min, max) ->
   Math.round(Math.random() * (max - min) + min)
 
 Number::closest_divisible_by = (divisor) ->

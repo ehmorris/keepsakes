@@ -1,0 +1,6 @@
+.meta.places
+  %ol
+    - @places.each do |place|
+      %li
+        %span.title= place['title']
+        %span.time= "Arrived at #{place['arrival']}, stayed for #{place['duration']}."

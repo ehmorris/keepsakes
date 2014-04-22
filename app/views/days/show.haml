@@ -13,23 +13,7 @@
   .deactivate-upper-nav
 
 .activate-meta-nav  
-%nav.meta
-  = link_to '#' do
-    %span Slept 8 hours
-  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
-    %span Wrote 286 words
-  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
-    %span Took 5 photos
-  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'music' do
-    %span Played 11 songs
-  = link_to '#', class: 'weather' do
-    %span.temp
-      %span.low 30&deg;
-      %span.high 50&deg;
-    %span.condition Cloudy
-  .tilt-hint
-    %span At a glance: 6 places, 286 words, 5 photos, 11 songs, ...
-  .deactivate-meta-nav
+= render :partial => 'meta-nav'
 
 .meta.marker-detail
   %h2.title
@@ -80,6 +64,7 @@
   = link_to '', '#', class: 'detail-previous'
   = link_to '', '#', class: 'detail-next'
 
+= render :partial => 'places'
 = render :partial => 'journal'
 = render :partial => 'music'
 = render :partial => 'photos'

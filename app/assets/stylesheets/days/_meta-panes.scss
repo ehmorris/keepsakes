@@ -75,9 +75,41 @@ div.meta {
   }
 }
 
+div.meta.places {
+  padding: 0 20vw;
+  overflow-y: scroll;
+  font-size: 2.25vw;
+  font-family: $serif; 
+
+  ol {
+    margin: 0;
+    padding: 10vh 5vw;
+    width: 100%;
+  }
+
+  li {
+    border: .25vw solid #fff;
+    margin: 0 0 2vw;
+    padding: .5rem .5rem .75rem;
+    @include transition;
+
+    &:hover {
+      @include o-cursor;
+      @include transform(scale(1.1));
+    }
+
+    .time {
+      display: block;
+      font-family: $sans;
+      font-size: .8vw;
+      margin-top: .4vw;
+    }
+  }
+}
+
 div.meta.journal {
   font-family: $serif;
-  font-size: 2vw;
+  font-size: 2.25vw;
   line-height: 1.4;
   overflow-y: scroll;
   padding: 0 20vw;

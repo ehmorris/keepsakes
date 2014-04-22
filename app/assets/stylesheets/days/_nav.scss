@@ -127,6 +127,18 @@ nav.meta, .upper-nav {
     span {
       color: #fff;
       line-height: 2.4rem;
+
+      &:after {
+        content: ', '
+      }
+
+      &:first-child:after {
+        content: ''
+      }
+
+      &:last-child:after {
+        content: ', ...'
+      }
     }
   }
 }
@@ -318,7 +330,7 @@ nav.meta {
 
       .day {
         display: block;
-        font-size: .8vw;;
+        font-size: .8vw;
         line-height: 1;
         text-transform: uppercase;
       }

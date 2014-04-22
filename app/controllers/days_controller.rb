@@ -9,8 +9,9 @@ class DaysController < ApplicationController
     storyline_segments_hash = get_storyline_segments_hash(storyline_day)
     if storyline_segments_hash
       @geodata_json = storyline_to_geodata(storyline_segments_hash)
+      @places = all_places(storyline_segments_hash)
     else
-      @geodata_json = []
+      @geodata_json, @places = []
     end
 
     @yesterday = Date.parse(storyline_day) - 1
