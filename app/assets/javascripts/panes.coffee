@@ -19,19 +19,19 @@ $ ->
     mouseleave: untilt_map
   , '.activate-meta-nav'
 
-  $('.activate-upper-nav').on 'click', activate_upper_nav
+  $(document).on 'click', '.activate-upper-nav', activate_upper_nav
 
-  $('.deactivate-upper-nav').on 'click', deactivate_upper_nav
+  $(document).on 'click', '.deactivate-upper-nav', deactivate_upper_nav
 
-  $('.activate-meta-nav').on 'click', activate_meta_nav
+  $(document).on 'click', '.activate-meta-nav', activate_meta_nav
 
-  $('.deactivate-meta-nav').on 'click', deactivate_meta_nav
+  $(document).on 'click', '.deactivate-meta-nav', deactivate_meta_nav
 
-  $('.activate-meta-pane').on 'click', ->
+  $(document).on 'click', '.activate-meta-pane', ->
     target = $(@).data('target')
     activate_meta_pane(".meta.#{target}")
     false
-
+  
   $(document).on 'click', 'div.meta', deactivate_meta_panes
 
   $(document).on 'click', 'div.meta:not(.marker-detail)', activate_meta_nav
