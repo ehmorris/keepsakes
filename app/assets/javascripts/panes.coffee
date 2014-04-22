@@ -1,5 +1,4 @@
 $ ->
-  scroll_to_center '.calendar'
   $('.loading-text').addClass 'show'
   setTimeout ->
     $('.loading-text').removeClass 'show'
@@ -80,6 +79,7 @@ window.deactivate_meta_panes = ->
 
 activate_upper_nav = ->
   push_maps_down()
+  scroll_to_center('.calendar')
   $('.map-today').removeClass 'tilt-up'
   $('.upper-nav').addClass 'processed'
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
@@ -108,7 +108,6 @@ activate_day_loading_animation = (direction, loading_text) ->
 
 window.deactivate_day_loading_animation = ->
   clear_map_classes()
-  scroll_to_center '.calendar'
   $('.loading-text').removeClass 'pulse'
   setTimeout ->
     $('.loading-text').removeClass 'show'
