@@ -24,13 +24,4 @@
 
 #### Ideas
 * On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)
-* Something like swath summaries could allow someone to find interesting seasons more easily, when faced with 10+ years of daily entries: summarize a summer in a few sentences, a school semester, etc.
-* Planar navigation scheme i.e. you zoom into a location to recieve details on it (average time spent there, number of times visited, usual incoming path, etc.) rather than clicking "how long do i usually spend here." Think Iron Man HUD. Zooming in makes the previous content zoom close to you, like you're speeding past it, in perspective with the map. See [The Refugee Project](http://therefugeeproject.org) for a great example:
- 
-![Whole map view](http://i.imgur.com/Cca1deK.png)
-![Map hover view](http://i.imgur.com/DJOgRUg.png)
-![Map detail view](http://i.imgur.com/APHJkj9.png)
-
-More examples:
-* Z-index navigation: ([Orchestra](http://play.lso.co.uk/#/Ravels-Bolero/orchestra) + [Hover States](http://hoverstat.es/posts/lso-play/))
-* [Zoom thumbnail groups](http://hoverstat.es/posts/jake-dinos-chapman/)
+* For viewing lots of days at once, something like day-group summaries could allow someone to find interesting groups of time more easily i.e. seasons, semesters, winter break, vacations, etc. When faced with 10+ years of daily entries, how should the interface change? Textually, could we summarize a summer in a few sentences, a semester?
