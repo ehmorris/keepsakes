@@ -1,5 +1,4 @@
-$ ->
-  window.render_map()
+$ -> window.render_map()
 
 window.render_map = ->
   if window.feature_layer

@@ -1,37 +1,3 @@
-@include keyframes(map-intro) {
-  0% {
-    opacity: 0;
-    @include transform(scale3D(1.1, 1.1, 1));
-    z-index: 1;
-  }
-
-  100% {
-    opacity: 1;
-    @include transform(scale3D(1, 1, 1));
-    z-index: 1;
-  }
-}
-
-@include keyframes(hide-account-nav) {
-  0% {
-    @include transform(translateY(0));
-  }
-
-  100% {
-    @include transform(translateY(80%));
-  }
-}
-
-@include keyframes(fade-in) {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 @include keyframes(pulse) {
   0%, 100% {
     opacity: .5;

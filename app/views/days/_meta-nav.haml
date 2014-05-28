@@ -1,6 +1,4 @@
 %nav.meta
-  = link_to '#' do
-    %span Slept 8 hours
   = link_to '#', class: 'activate-meta-pane sleep', 'data-target' => 'places' do
     %span="Visited #{@places.count} places"
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
@@ -13,7 +11,6 @@
     %span.temp
       %span.low 30&deg;
       %span.high 50&deg;
-    %span.condition Cloudy
   .tilt-hint
     %span At a glance:
     %span.places= "#{@places.count} places"

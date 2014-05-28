@@ -132,12 +132,12 @@ nav.meta, .upper-nav {
         content: ', '
       }
 
-      &:first-child:after {
-        content: ''
-      }
-
       &:last-child:after {
         content: ', ...'
+      }
+
+      &:first-child:after {
+        content: '';
       }
     }
   }
@@ -150,21 +150,35 @@ nav.meta {
   width: 100%;
 
   a {
+    border: .25vw solid #fff;
     color: #fff;
     @include display(flex);
     @include flex(1);
     @include flex-wrap(wrap);
-    font-size: 3vh;
-    padding: 4vh;
+    font-size: 2.25vw;
+    height: 15vh;
+    margin: 0 1vw;
+    padding: .5rem;
     text-decoration: none;
+
+    &:first-child {
+      margin-left: 2vw;
+    }
+
+    &:last-child {
+      margin-right: 2vw;
+    }
 
     &:hover {
       color: #fff;
     }
 
+    &.weather {
+      border-color: transparent;
+    }
+
     span {
       display: block;
-      text-align: center;
       width: 100%;
     }
 
@@ -179,11 +193,6 @@ nav.meta {
 
     .high {
       color: rgb(250, 220, 60);
-    }
-
-    .condition {
-      display: block;
-      width: 100%;
     }
   }
 }

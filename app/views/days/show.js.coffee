@@ -13,5 +13,6 @@ $('.meta.journal').before('<%= escape_javascript(render :partial => "places") %>
 window.render_map()
 window.attach_feature_layer_events()
 window.deactivate_day_loading_animation()
+window.tilt_hint()
 
 window.history.pushState null, null, $('.map-today').data('today')
