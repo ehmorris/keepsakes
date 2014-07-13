@@ -5,7 +5,7 @@ $ ->
 
   $(document).on
     mouseenter: recess_maps
-    mouseleave: clear_map_classes
+    mouseleave: clear_map_position_classes
   , '.yesterday-link, .tomorrow-link'
 
   $(document).on
@@ -79,7 +79,7 @@ activate_meta_pane = (pane_class) ->
   recess_maps()
 
 window.deactivate_meta_panes = ->
-  clear_map_classes()
+  clear_map_position_classes()
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
   $('div.meta').removeClass 'processed'
 
@@ -91,7 +91,7 @@ activate_upper_nav = ->
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 deactivate_upper_nav = ->
-  clear_map_classes()
+  clear_map_position_classes()
   $('.upper-nav').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
@@ -102,18 +102,18 @@ activate_meta_nav = ->
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 deactivate_meta_nav = ->
-  clear_map_classes()
+  clear_map_position_classes()
   $('nav.meta').removeClass 'processed'
   $('.yesterday-link, .tomorrow-link').removeClass 'hide'
 
-activate_day_loading_animation = (direction, loading_text) ->
+activate_day_loading_animation = (direction = 'yesterday', loading_text) ->
   deactivate_upper_nav()
   $('.map').addClass "load-#{direction}"
   $('.loading-text span').text(loading_text).parent().addClass 'show pulse'
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
 
 window.deactivate_day_loading_animation = ->
-  clear_map_classes()
+  clear_map_loading_classes()
   $('.loading-text').removeClass 'pulse'
   setTimeout ->
     $('.loading-text').removeClass 'show'
@@ -141,8 +141,11 @@ push_maps_up = ->
   if $('.yesterday-link').length
     $('.map-yesterday').addClass 'up'
 
-clear_map_classes = ->
-  $('.map').removeClass 'recessed down up tilt-up tilt-down load-tomorrow load-yesterday'
+clear_map_position_classes = ->
+  $('.map').removeClass 'recessed down up tilt-up tilt-down'
+
+clear_map_loading_classes = ->
+  $('.map').removeClass 'load-tomorrow load-yesterday'
 
 scroll_to_center = (container) ->
   $(container).scrollLeft(
