@@ -3,9 +3,12 @@ ruby '2.1.0'
 
 gem 'rails', '3.2.13'
 gem 'pg'
-gem 'sqlite3'
 gem 'high_voltage'
 gem 'clearance'
+
+group :development do
+  gem 'sqlite3'
+end
 
 gem 'haml'
 gem 'sass-rails',   '~> 3.2.3'
