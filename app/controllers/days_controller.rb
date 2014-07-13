@@ -1,5 +1,6 @@
 class DaysController < ApplicationController
   include Moves
+  include Instagram 
   include Maps
 
   before_filter :authorize, :authorized_moves
@@ -14,6 +15,8 @@ class DaysController < ApplicationController
       @geodata_json, @places = []
     end
 
+    @instagram_photos = get_day_photos(storyline_day)
+    
     @yesterday = Date.parse(storyline_day) - 1
     @today = Date.parse(storyline_day)
     @tomorrow = Date.parse(storyline_day) + 1

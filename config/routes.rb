@@ -22,4 +22,7 @@ Journal::Application.routes.draw do
 
   match '/auth/moves/callback' => 'moves#callback'
   match '/moves/logout' => 'moves#destroy'
+
+  match '/auth/instagram/callback' => 'instagram#callback'
+  match '/instagram/logout' => 'instagram#destroy'
 end

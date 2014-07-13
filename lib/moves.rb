@@ -16,13 +16,17 @@ module Moves
       current_user.moves_access_token)
   end
 
-  def valid_moves_access_token? (access_token)
-    uri = URI.parse('https://api.moves-app.com')
-    uri.path = '/oauth/v1/tokeninfo'
-    uri.query = "access_token=#{access_token}"
+  def valid_moves_access_token?(access_token)
+    if access_token.nil?
+      false
+    else
+      uri = URI.parse('https://api.moves-app.com')
+      uri.path = '/oauth/v1/tokeninfo'
+      uri.query = "access_token=#{access_token}"
 
-    response = get_request_to_hash(uri)
-    response['error'].nil?
+      response = get_request_to_hash(uri)
+      response['error'].nil?
+    end
   end
 
   def get_storyline_segments_hash(storyline_day)

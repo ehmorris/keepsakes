@@ -4,7 +4,7 @@
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
     %span Wrote 286 words
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
-    %span Took 5 photos
+    %span="Took #{@instagram_photos.count} photos"
   = link_to '#', class: 'activate-meta-pane', 'data-target' => 'music' do
     %span Played 11 songs
   = link_to '#', class: 'weather' do
@@ -15,6 +15,6 @@
     %span At a glance:
     %span.places= "#{@places.count} places"
     %span.words 286 words
-    %span.photos 5 photos
+    %span.photos="#{@instagram_photos.count} photos"
     %span.music 11 songs
   .deactivate-meta-nav
