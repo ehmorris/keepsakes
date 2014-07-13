@@ -12,17 +12,20 @@
     padding: 0;
 
     li {
-      @extend %pseudo-incomplete-icon;
       background: rgba(255, 255, 255, .5);
-      border-bottom: 2px solid #fff;
       display: block;
       line-height: 1.5rem;
+      margin-bottom: .5rem;
       padding: 1rem 1rem 1rem 3rem;
 
       &:last-child {
-        border-bottom: 0;
+        margin-bottom: 0;
       }
 
+      &.incomplete {
+        @extend %pseudo-incomplete-icon;
+      }
+      
       &.complete {
         @extend %pseudo-complete-check;
       }

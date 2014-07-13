@@ -1,12 +1,11 @@
 - content_for :body_classes, 'user-edit'
 
 .intro-map
-- if current_user.moves_access_token
-  = link_to 'View the map', day_path(Date.today - 1), class: 'view-map'
+
 .authorized-apps
   %ul.app-list
-    - if current_user.moves_access_token.nil?
-      %li
-        = link_to 'Connect with Moves', @moves_authorize_uri
-    - else
+    - if @moves_is_connected
       %li.complete Connect with Moves
+      %li= link_to 'View the map', day_path(Date.today - 1)
+    - else
+      %li.incomplete= link_to 'Connect with Moves', @moves_authorize_uri

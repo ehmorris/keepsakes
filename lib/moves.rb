@@ -1,3 +1,5 @@
+require 'net/http'
+
 module Moves
   def moves_client
     OAuth2::Client.new(
@@ -14,17 +16,35 @@ module Moves
       current_user.moves_access_token)
   end
 
+  def valid_moves_access_token? (access_token)
+    uri = URI.parse('https://api.moves-app.com')
+    uri.path = '/oauth/v1/tokeninfo'
+    uri.query = "access_token=#{access_token}"
+
+    response = get_request_to_hash(uri)
+    response['error'].nil?
+  end
+
+  def get_storyline_segments_hash(storyline_day)
+    moves_access_token.get(
+      "/api/v1/user/storyline/daily/#{storyline_day}?trackPoints=true")
+      .parsed
+      .first['segments']
+  end
+
+  def get_request_to_hash(uri)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+    JSON.parse(response.body)
+  end
+
   def moves_redirect_uri
     uri = URI.parse(request.url)
     uri.path = '/auth/moves/callback'
     uri.query = nil
     uri.to_s
-  end
-
-  def get_storyline_segments_hash(storyline_day)
-    storyline_json = moves_access_token.get(
-      "/api/v1/user/storyline/daily/#{storyline_day}?trackPoints=true")
-      .parsed
-      .first['segments']
   end
 end
