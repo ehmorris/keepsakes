@@ -1,13 +1,7 @@
-.logo-screen.active
-  %h1 keepsakes
-  = link_to 'Your story is here', '#'
+.clearance.sign-in
+  %h2 Sign up
+  = render :partial => '/users/form'
 
-.features
-  %span Keepsake creates an automatic journal from the apps you already use.
-  %span Keepsake brings the information from these apps together to uncover the story that was already there.
-  = link_to 'Show me', '#'
-
-.sign-up-flow
-  %ol.connections
-    %li
-      %span Connect Moves
+  .other-links
+    = link_to t('.sign_in'), sign_in_path
+    = link_to t('.forgot_password'), new_password_path
