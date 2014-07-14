@@ -6,6 +6,13 @@ class DaysController < ApplicationController
   before_filter :authorize, :authorized_moves
 
   def show
+    moves_is_connected = valid_moves_access_token?(current_user.moves_access_token)
+    instagram_is_connected = valid_instagram_access_token?(current_user.instagram_access_token)
+    
+    if !moves_is_connected and !instagram_is_connected
+      redirect_to root_url
+    end
+    
     storyline_day = params['id']
     storyline_segments_hash = get_storyline_segments_hash(storyline_day)
     if storyline_segments_hash
