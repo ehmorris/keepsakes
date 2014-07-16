@@ -27,7 +27,7 @@ module Instagram
       uri.query = "access_token=#{access_token}"
 
       response = get_request_to_hash(uri)
-      response['meta']['error_message'].nil? and response['meta']['error_type'].nil?
+      response['meta']['error_type'].nil?
     end
   end
 
