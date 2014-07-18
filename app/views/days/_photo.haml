@@ -1,0 +1,12 @@
+- if photo['type'] == 'video'
+  .item.video
+    %video{ 'src' => "#{photo['url']}", 'autoplay' => 'true', 'loop' => 'true', 'muted' => true }
+    - if !photo['caption'].empty?
+      .detail
+        %span.desc= photo['caption']
+- else
+  .item.image
+    = image_tag(photo['url'])
+    - if !photo['caption'].empty?
+      .detail
+        %span.desc= photo['caption']

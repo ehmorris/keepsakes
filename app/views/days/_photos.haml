@@ -1,11 +1,4 @@
 .meta.photos
   .gallery
     - @instagram_photos.reverse.each do |photo|
-      .item
-        - if photo['type'] == 'video'
-          %video{ 'src' => "#{photo['url']}", 'autoplay' => 'true', 'loop' => 'true', 'muted' => true }
-        - else
-          = image_tag(photo['url'])
-        - if !photo['caption'].empty?
-          .detail
-            %span.desc= photo['caption']
+      = render 'photo', photo: photo

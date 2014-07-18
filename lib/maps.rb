@@ -18,7 +18,9 @@ module Maps
      'coordinates' => [lon, lat],
      'title' => title,
      'arrival' => arrival,
-     'duration' => duration}
+     'duration' => duration,
+     'starttime' => Time.parse(segment['startTime']).to_i,
+     'endtime' => Time.parse(segment['endTime']).to_i}
   end
 
   def trackpoints_to_geodata_line(trackpoint_1, trackpoint_2, activity)
