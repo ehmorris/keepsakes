@@ -39,12 +39,25 @@ module Instagram
       .parsed['data']
 
     images_and_captions = []
+    
     full_photos_hash.each do |photo|
       caption = photo['caption'].nil? ? '' : photo['caption']['text'] 
-      images_and_captions.push({
-        'url' => photo['images']['standard_resolution']['url'],
-        'caption' => caption
-      })
+      
+      if photo['type'] == 'video'
+        images_and_captions.push({
+          'url' => photo['videos']['standard_resolution']['url'],
+          'caption' => caption,
+          'type' => 'video',
+          'timestamp' => photo['created_time']
+        })
+      else
+        images_and_captions.push({
+          'url' => photo['images']['standard_resolution']['url'],
+          'caption' => caption,
+          'type' => 'image',
+          'timestamp' => photo['created_time']
+        })
+      end
     end
 
     images_and_captions

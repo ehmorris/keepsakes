@@ -2,11 +2,10 @@
   .gallery
     - @instagram_photos.each do |photo|
       .item
-        = image_tag(photo['url'])
+        - if photo['type'] == 'video'
+          %video{ 'src' => "#{photo['url']}", 'autoplay' => 'true', 'loop' => 'true', 'muted' => true }
+        - else
+          = image_tag(photo['url'])
         - if !photo['caption'].empty?
           .detail
             %span.desc= photo['caption']
-    .item
-      %video{ 'src' => '/assets/vid1.m4v', 'autoplay' => 'true', 'loop' => 'true', 'muted' => true }
-      .detail
-        %span.desc @aaron10buuren and @jillianbass seesawing
