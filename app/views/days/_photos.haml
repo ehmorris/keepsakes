@@ -1,6 +1,6 @@
 .meta.photos
   .gallery
-    - @instagram_photos.each do |photo|
+    - @instagram_photos.reverse.each do |photo|
       .item
         - if photo['type'] == 'video'
           %video{ 'src' => "#{photo['url']}", 'autoplay' => 'true', 'loop' => 'true', 'muted' => true }

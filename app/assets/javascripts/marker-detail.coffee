@@ -18,13 +18,13 @@ window.activate_marker_detail = (point) ->
   if window.map.getZoom() != 18 then current_zoom = window.map.getZoom()
   window.map.panTo(point.layer.getLatLng()).setZoom(18)
 
-  $random_marker_detail = $(".meta.marker-detail:eq(#{random_number_between(0, 2)})")
+  $marker_detail = $(".meta.marker-detail")
 
-  $random_marker_detail.data('point', point)
-  $random_marker_detail.data('zoom', current_zoom)
+  $marker_detail.data('point', point)
+  $marker_detail.data('zoom', current_zoom)
 
   $('.yesterday-link, .tomorrow-link').addClass 'hide'
-  $random_marker_detail.addClass 'processed'
+  $marker_detail.addClass 'processed'
   style_active_marker(point)
   arrange_marker_detail_items()
   set_marker_title(point)
