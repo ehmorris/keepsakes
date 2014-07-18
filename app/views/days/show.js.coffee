@@ -4,13 +4,15 @@ $('.tomorrow-link,
    .calendar,
    .meta.places,
    .meta.photos,
+   .meta.marker-detail,
    nav.meta').remove()
 
 $('body').append('<%= escape_javascript(render :partial => "map") %>')
 $('.upper-nav').append('<%= escape_javascript(render :partial => "calendar") %>')
 $('.activate-meta-nav').after('<%= escape_javascript(render :partial => "meta-nav") %>')
-$('.meta.journal').before('<%= escape_javascript(render :partial => "places") %>')
-$('.meta.music').after('<%= escape_javascript(render :partial => "photos") %>')
+$('.partial-anchor').after('<%= escape_javascript(render :partial => "places") %>')
+$('.partial-anchor').after('<%= escape_javascript(render :partial => "photos") %>')
+$('.partial-anchor').after('<%= escape_javascript(render :partial => "marker-details") %>')
 
 window.render_map()
 window.attach_feature_layer_events()
