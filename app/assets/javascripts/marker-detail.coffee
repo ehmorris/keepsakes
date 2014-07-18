@@ -18,7 +18,7 @@ window.activate_marker_detail = (point) ->
   if window.map.getZoom() != 18 then current_zoom = window.map.getZoom()
   window.map.panTo(point.layer.getLatLng()).setZoom(18)
 
-  $marker_detail = $(".meta.marker-detail")
+  $marker_detail = $(".meta.marker-detail[data-starttime=#{point.layer.feature.geometry.starttime}]")
 
   $marker_detail.data('point', point)
   $marker_detail.data('zoom', current_zoom)
@@ -46,7 +46,7 @@ set_marker_time = (point) ->
 set_marker_next_prev_locations = (point) ->
   all_markers = window.get_all_markers()
   for marker, i in all_markers
-    if marker.layer.feature.geometry.arrival == point.layer.feature.geometry.arrival
+    if marker.layer.feature.geometry.starttime == point.layer.feature.geometry.starttime
       if all_markers[i-1]
         $('.marker-detail .detail-previous')
         .text "Came from #{all_markers[i-1].layer.feature.properties.title}"
