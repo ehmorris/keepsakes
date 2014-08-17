@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require mapbox
+//= require mapbox-gl
 //= require moment
 //
 //= require maps

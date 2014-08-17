@@ -4,7 +4,7 @@
 = link_to day_path(@yesterday), class: 'yesterday-link', 'data-loading-text' => "#{@yesterday.strftime('%a %b %e')}", remote: 'true' do
   = @yesterday.strftime('%a %b %e')
 
-%figure.map.map-today#map{ 'data-today' => day_path(@today), 'data-geojson' => @geodata_json }
+%figure.map.map-today#map{ 'data-today' => day_path(@today), 'data-geojson' => @geodata_json, 'data-mapbox-public-token' => @mapbox_public_token }
 %figure.map.map-yesterday
   .image
 %figure.map.map-tomorrow

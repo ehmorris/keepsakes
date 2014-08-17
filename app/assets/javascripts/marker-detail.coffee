@@ -1,4 +1,4 @@
-$ -> window.attach_feature_layer_events()
+# $ -> window.attach_feature_layer_events()
 
 window.attach_feature_layer_events = ->
   window.feature_layer.on 'click', activate_marker_detail

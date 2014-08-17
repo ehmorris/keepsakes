@@ -15,6 +15,8 @@ class DaysController < ApplicationController
       @geodata_json, @places = []
     end
 
+    @mapbox_public_token = ENV['MAPBOX_PUBLIC_TOKEN']
+
     @instagram_photos = get_day_photos(storyline_day)
     
     @yesterday = Date.parse(storyline_day) - 1
