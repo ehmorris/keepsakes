@@ -15,7 +15,7 @@ $(document).on 'click', '.detail-previous, .detail-next', ->
   activate_marker_detail($(@).data('point'))
 
 window.activate_marker_detail = (point) ->
-  if window.map.getZoom() != 18 then current_zoom = window.map.getZoom()
+  current_zoom = window.map.getZoom() unless window.map.getZoom() is 18
   window.map.panTo(point.layer.getLatLng()).setZoom(18)
 
   $marker_detail = $(".meta.marker-detail[data-starttime=#{point.layer.feature.geometry.starttime}]")

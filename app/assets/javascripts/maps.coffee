@@ -1,57 +1,106 @@
 $ -> window.render_map()
 
 window.render_map = ->
-  if window.feature_layer
-    window.map.removeSource('daygeojson')
+  if window.feature_layer?
+    window.map.removeSource('walking')
+    window.map.removeSource('transport')
+    window.map.removeSource('markers')
 
   mapboxgl.accessToken = $('#map').data('mapbox-public-token')
-  window.map = new mapboxgl.Map
-    container: 'map'
-    style: '/assets/bright-v4.json'
+  mapboxgl.util.getJSON '/assets/mapbox-styles.json', (error, style) ->
+    style.layers.push({
+      "id": "markers",
+      "source": "markers",
+      "render": {
+        "$type": "Point",
+        "text-field": "@title"
+      },
+      "type": "symbol"
+    })
+    style.layers.push({
+      "id": "transport",
+      "source": "transport",
+      "render": {
+        "$type": "LineString",
+        "line-join": "round",
+        "line-cap": "round"
+      },
+      "style": {
+        "line-color": "#999",
+        "line-width": 5,
+        "line-opacity": 0.5
+      },
+      "type": "line"
+    })
+    style.layers.push({
+      "id": "walking",
+      "source": "walking",
+      "render": {
+        "$type": "LineString",
+        "line-join": "round",
+        "line-cap": "round"
+      },
+      "style": {
+        "line-color": "#fff",
+        "line-width": 5,
+        "line-opacity": 0.9
+      },
+      "type": "line"
+    })
 
-  geodata_json = $('#map').data('geojson')
+    window.map = new mapboxgl.Map
+      container: 'map'
+      style: style
 
-  if geodata_json.length > 0
-    # initialize empty collection for getGeoJSON function within set_points_boundary
-    window.feature_layer = new mapboxgl.GeoJSONSource
-      data:
-        type: 'FeatureCollection'
-        features: []
+    geodata_json = $('#map').data('geojson')
+    if geodata_json.length > 0
+      new_geojson_source = ->
+        new mapboxgl.GeoJSONSource
+          data:
+            type: 'FeatureCollection'
+            features: []
 
-    # aggregate all geodata into one object to determine boundaries
-    $.each geodata_json, ->
-      if @.activity == 'wlk'
-        properties =
-          'title': @.title
-          'stroke': '#fff'
-          'stroke-opacity': .9
-          'stroke-width': 5
-      else
-        properties =
-          'title': @.title
-          'stroke': '#999'
-          'stroke-opacity': .5
-          'stroke-width': 5
+      window.feature_layer = {}
+      window.feature_layer.walking = new_geojson_source()
+      window.feature_layer.transport = new_geojson_source()
+      window.feature_layer.markers = new_geojson_source()
 
-      window.feature_layer = new mapboxgl.GeoJSONSource
-        data:
-          type: 'FeatureCollection'
-          features: window.feature_layer.data.features.concat
-            type: 'Feature'
-            geometry: @
-            properties: properties
+      add_feature_to_layer = (geometry, layer, properties = {}) ->
+        layer = new mapboxgl.GeoJSONSource
+          data:
+            type: 'FeatureCollection'
+            features: layer.data.features.concat
+              type: 'Feature'
+              geometry: geometry
+              properties: properties
 
-    # zoom the map to fit the boundaries, but don't plot any points
-    # feature_bounds = new mapboxgl.LatLngBounds([southwest, northwest])
-    # window.map.fitBounds(feature_bounds)
+      $.each geodata_json, ->
+        if @.type is 'Point'
+          properties = { 'title': @.title }
+          add_feature_to_layer(@, window.feature_layer.markers, properties)
+        else if @.type is 'LineString' and @.activity is 'wlk'
+          add_feature_to_layer(@, window.feature_layer.walking)
+        else if @.type is 'LineString'
+          add_feature_to_layer(@, window.feature_layer.transport)
 
-    # plot all the points at once
-    window.map.addSource('daygeojson', window.feature_layer)
+      window.map.fitBounds(new mapboxgl.LatLngBounds([
+        [40.66005539269824, -74.0257876666108],
+        [40.721222070257966, -73.9529640990072]]))
+
+      window.map.addSource('walking', window.feature_layer.walking)
+      window.map.addSource('transport', window.feature_layer.transport)
+      window.map.addSource('markers', window.feature_layer.markers)
 
 window.get_all_markers = ->
   markers = []
   $.each window.feature_layer.getLayers(), (index, layer) ->
-    if layer.feature.geometry.type == 'Point'
+    if layer.feature.geometry.type is 'Point'
+      markers.push
+
+window.get_all_markers = ->
+  markers = []
+  $.each window.feature_layer.getLayers(), (index, layer) ->
+    if layer.feature.geometry.type is 'Point'
       markers.push
         layer: layer
   markers
