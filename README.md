@@ -19,6 +19,9 @@
 * [Music | Rdio](http://developer.rdio.com)
 * [Work | Github](http://developer.github.com/v3)
 * [Pictures | Instagram](http://instagram.com/developer)
+* Text messages (will have to include instructions for android / ios / other)
+* [Journal](https://idonethis.com)
+* [Calendar](https://developers.google.com/google-apps/calendar/)
 * [Weather](https://github.com/dlt/yahoo_weatherman)
 * Calendar
 
