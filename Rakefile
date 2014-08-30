@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Journal::Application.load_tasks
+Keepsakes::Application.load_tasks

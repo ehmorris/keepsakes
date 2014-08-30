@@ -15,5 +15,5 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
-dayview_database_development
-dayview_database_testing
+keepsakes_database_development
+keepsakes_database_testing

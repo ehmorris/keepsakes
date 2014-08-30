@@ -1,4 +1,4 @@
-Journal::Application.routes.draw do
+Keepsakes::Application.routes.draw do
   root :to => 'users#edit'
 
   resources :passwords,

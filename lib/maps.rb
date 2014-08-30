@@ -1,6 +1,6 @@
-module Maps
-  include ActionView::Helpers::DateHelper
+include ActionView::Helpers::DateHelper
 
+module Maps
   def place_to_geodata_point(segment)
     lon = segment['place']['location']['lon']
     lat = segment['place']['location']['lat']

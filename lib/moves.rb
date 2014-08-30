@@ -1,6 +1,6 @@
-require 'net/http'
-
 module Moves
+  include Oauth
+  
   def moves_client
     OAuth2::Client.new(
       ENV['MOVES_CLIENT_ID'],
@@ -34,15 +34,6 @@ module Moves
       "/api/v1/user/storyline/daily/#{storyline_day}?trackPoints=true")
       .parsed
       .first['segments']
-  end
-
-  def get_request_to_hash(uri)
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    request = Net::HTTP::Get.new(uri.request_uri)
-    response = http.request(request)
-    JSON.parse(response.body)
   end
 
   def moves_redirect_uri

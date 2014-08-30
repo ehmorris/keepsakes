@@ -1,6 +1,5 @@
-require 'net/http'
-
 module Instagram
+  include Oauth
   include ActionView::Helpers::DateHelper
   
   def instagram_client
@@ -13,9 +12,7 @@ module Instagram
   end
 
   def instagram_access_token
-    OAuth2::AccessToken.new(
-      instagram_client,
-      current_user.instagram_access_token)
+    OAuth2::AccessToken.new(instagram_client, current_user.instagram_access_token)
   end
 
   def valid_instagram_access_token?(access_token)
@@ -61,15 +58,6 @@ module Instagram
     end
 
     images_and_captions
-  end
-
-  def get_request_to_hash(uri)
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    request = Net::HTTP::Get.new(uri.request_uri)
-    response = http.request(request)
-    JSON.parse(response.body)
   end
 
   def instagram_redirect_uri
