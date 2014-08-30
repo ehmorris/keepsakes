@@ -64,9 +64,7 @@ module Maps
   def all_places(storyline_segments_hash)
     places_hash = []
     storyline_segments_hash.each do |segment|
-      if segment['type'] == 'place'
-        places_hash.push(place_to_geodata_point(segment))
-      end
+      places_hash.push(place_to_geodata_point(segment)) if segment['type'] == 'place'
     end
 
     places_hash

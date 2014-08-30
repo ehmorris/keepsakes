@@ -13,7 +13,6 @@
 * [![Code Climate](https://codeclimate.com/github/ehmorris/keepsakes.png)](https://codeclimate.com/github/ehmorris/keepsakes)
 
 #### Potential sources of information
-* [Location | Foursquare](https://github.com/mattmueller/foursquare2)
 * [Location | Moves](https://dev.moves-app.com)
 * [Location | Maps](https://github.com/aai/mapbox-rails)
 * [Music | Rdio](http://developer.rdio.com)
@@ -22,8 +21,7 @@
 * Text messages (will have to include instructions for android / ios / other)
 * [Journal](https://idonethis.com)
 * [Calendar](https://developers.google.com/google-apps/calendar/)
-* [Weather](https://github.com/dlt/yahoo_weatherman)
-* Calendar
+* [Weather](http://openweathermap.org/)
 
 #### Ideas
 * On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)

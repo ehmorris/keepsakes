@@ -9,8 +9,9 @@
     %span Played 11 songs
   = link_to '#', class: 'weather' do
     %span.temp
-      %span.low 30&deg;
-      %span.high 50&deg;
+      %span.low= "#{@weather['low']}&deg;".html_safe
+      %span.high= "#{@weather['high']}&deg;".html_safe
+      %span.city= @weather['city']
   .tilt-hint
     %span At a glance:
     %span.places= "#{@places.count} places"
