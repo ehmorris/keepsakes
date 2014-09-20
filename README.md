@@ -18,10 +18,10 @@
 * [Music | Rdio](http://developer.rdio.com)
 * [Work | Github](http://developer.github.com/v3)
 * [Pictures | Instagram](http://instagram.com/developer)
-* Text messages (will have to include instructions for android / ios / other)
+* [Text messages](http://www.ecamm.com/mac/phoneview/) (will have to include instructions for android / ios / other)
 * [Journal](https://idonethis.com)
 * [Calendar](https://developers.google.com/google-apps/calendar/)
-* [Weather](http://openweathermap.org/)
+* [Weather](http://www.wunderground.com/weather/api)
 
 #### Ideas
 * On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)
