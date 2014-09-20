@@ -21,5 +21,5 @@ gem 'neat'
 
 gem 'mapbox-rails'
 gem 'momentjs-rails'
-gem 'geocoder'
+gem 'wunderground'
 gem 'oauth2'

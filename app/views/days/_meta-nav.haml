@@ -11,7 +11,6 @@
     %span.temp
       %span.low= "#{@weather['low']}&deg;".html_safe
       %span.high= "#{@weather['high']}&deg;".html_safe
-      %span.city= @weather['city']
   .tilt-hint
     %span At a glance:
     %span.places= "#{@places.count} places"

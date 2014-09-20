@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    addressable (2.3.6)
     arel (3.0.3)
     bcrypt (3.1.7)
     bourbon (3.2.0.beta.1)
@@ -51,11 +52,13 @@ GEM
     execjs (2.0.2)
     faraday (0.8.9)
       multipart-post (~> 1.2.0)
-    geocoder (1.2.4)
     haml (4.0.5)
       tilt
     high_voltage (2.1.0)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (3.1.0)
@@ -130,6 +133,10 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    wunderground (1.2.0)
+      addressable
+      httparty (> 0.6.0)
+      json (> 1.4.0)
 
 PLATFORMS
   ruby
@@ -138,7 +145,6 @@ DEPENDENCIES
   bourbon (= 3.2.0.beta.1)
   clearance
   coffee-rails (~> 3.2.1)
-  geocoder
   haml
   high_voltage
   jquery-rails
@@ -151,3 +157,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  wunderground
