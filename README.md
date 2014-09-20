@@ -13,15 +13,15 @@
 * [![Code Climate](https://codeclimate.com/github/ehmorris/keepsakes.png)](https://codeclimate.com/github/ehmorris/keepsakes)
 
 #### Potential sources of information
-* [Location | Moves](https://dev.moves-app.com)
-* [Location | Maps](https://github.com/aai/mapbox-rails)
-* [Music | Rdio](http://developer.rdio.com)
-* [Work | Github](http://developer.github.com/v3)
-* [Pictures | Instagram](http://instagram.com/developer)
-* [Text messages](http://www.ecamm.com/mac/phoneview/) (will have to include instructions for android / ios / other)
-* [Journal](https://idonethis.com)
-* [Calendar](https://developers.google.com/google-apps/calendar/)
-* [Weather](http://www.wunderground.com/weather/api)
+* [x] [Location | Moves](https://dev.moves-app.com)
+* [x] [Location | Maps](https://github.com/aai/mapbox-rails)
+* [] [Music | Rdio](http://developer.rdio.com)
+* [] [Work | Github](http://developer.github.com/v3)
+* [x] [Pictures | Instagram](http://instagram.com/developer)
+* [] [Text messages](http://www.ecamm.com/mac/phoneview/) (will have to include instructions for android / ios / other)
+* [] [Journal](https://idonethis.com)
+* [] [Calendar](https://developers.google.com/google-apps/calendar/)
+* [x] [Weather](http://www.wunderground.com/weather/api)
 
 #### Ideas
 * On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)
