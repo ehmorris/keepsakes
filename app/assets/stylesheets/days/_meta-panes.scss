@@ -83,6 +83,7 @@ div.meta.places {
   font-family: $serif; 
 
   ol {
+    @include align-self(flex-start);
     margin: 0;
     padding: 10vh 5vw;
     width: 100%;
