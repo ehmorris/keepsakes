@@ -119,6 +119,7 @@ div.meta.journal {
   padding: 0 20vw;
 
   article {
+    @include align-self(flex-start);
     cursor: text;
     outline: none;
     padding: 10vh 5vw;
@@ -136,6 +137,10 @@ div.meta.journal {
 
 div.meta.photos {
   overflow-x: scroll;
+
+  img, video {
+    max-height: 80vh;
+  }
 }
 
 div.meta.music {
