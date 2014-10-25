@@ -71,7 +71,6 @@ window.tilt_hint = ->
   setTimeout tilt_map_down, 2600
   setTimeout untilt_map, 4400
 
-
 activate_meta_pane = (pane_class) ->
   # processed as in recessed vs. processed
   $(pane_class).addClass 'processed'
