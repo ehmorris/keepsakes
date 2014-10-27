@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140713204650) do
+ActiveRecord::Schema.define(:version => 20141027013721) do
+
+  create_table "texts", :force => true do |t|
+    t.integer  "text_id",       :null => false
+    t.string   "sent_received", :null => false
+    t.datetime "timestamp",     :null => false
+    t.string   "contacts"
+    t.string   "numbers",       :null => false
+    t.text     "message",       :null => false
+  end
+
+  add_index "texts", ["text_id"], :name => "index_texts_on_text_id"
 
   create_table "users", :force => true do |t|
     t.datetime "created_at",                            :null => false
