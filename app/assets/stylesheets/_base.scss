@@ -5,7 +5,7 @@ body {
   padding: 0;
   @include perspective($perspective-amount);
   @include position(absolute, 0px 0px 0px 0px);
-  @include radial-gradient(#444, #222);
+  @include radial-gradient(#333, #222);
   text-rendering: optimizelegibility;
 }
 

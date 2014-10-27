@@ -14,5 +14,7 @@
     - else
       %li.incomplete= link_to 'Connect with Instagram', @instagram_authorize_uri
 
+    %li= link_to 'Upload texts', new_text_path
+
     - if @moves_is_connected and @instagram_is_connected
-      %li= link_to 'View the map', day_path(Date.today - 1)
+      %li= link_to 'Go', day_path(Date.today - 1)

@@ -18,6 +18,9 @@ Keepsakes::Application.routes.draw do
   resources :days,
     :only => [:show]
 
+  resources :texts,
+    :only => [:create, :new]
+
   match 'account'  => 'users#edit'
 
   match '/auth/moves/callback' => 'moves#callback'
