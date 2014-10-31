@@ -1,3 +1,8 @@
 .upload-texts
   %h2 Upload texts
+  %p Your texts should be in a CSV file that looks something like this:
+  %pre
+    "Sent","Dec 1, 2000 3:00:00 PM","John Doe","+15555555555","What are you up to?"
+    "Received","Dec 1, 2000 3:01:00 PM","Jane Doe","+15555555555","Just trying out Keepsakes"
+
   = render :partial => '/texts/form'
