@@ -8,16 +8,28 @@ class TextsController < ApplicationController
 
   def create
     file = params['text']['texts_csv']
-    @field_names = ['sent_received',
-                    'timestamp',
-                    'contacts',
-                    'numbers',
-                    'message']
     @csv = CSV.parse(file.read)
 
-    if @csv.first.count < @field_names.count
+    if @csv.first.count < 5 
       flash[:error] = t('texts.invalid_file')
       redirect_to new_text_path
+    elsif
+      @csv.each do |text|
+        new_text = Text.new
+        new_text.sent_received = text[0]
+        new_text.timestamp     = text[1]
+        new_text.contacts      = text[2]
+        new_text.numbers       = text[3]
+        new_text.message       = text[4]
+        new_text.save
+      end
+
+      flash[:notice] = t('texts.successful_upload')
+      redirect_to root_url
     end
+  end
+
+  def destroy
+    Text.find(params[:id]).destroy
   end
 end

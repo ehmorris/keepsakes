@@ -1,7 +1,9 @@
-.confirm-fields {
+.upload-texts, .confirm-fields {
   @include content-box;
   color: #fff;
+}
 
+.confirm-fields {
   table {
     width: 100%;
   }
@@ -14,9 +16,4 @@
       width: 100%;
     }
   }
-
-  .confirm {
-    @extend %button;
-    margin-top: 1rem;
-  }    
 }
