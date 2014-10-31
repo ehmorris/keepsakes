@@ -1,19 +1,9 @@
-.upload-texts, .confirm-fields {
+.upload-texts {
   @include content-box;
   color: #fff;
-}
 
-.confirm-fields {
-  table {
-    width: 100%;
-  }
-
-  td, th {
-    border: 1px solid rgba(255, 255, 255, .25);
-    padding: 1rem;
-
-    &.field {
-      width: 100%;
-    }
+  .destroy-all {
+    @extend %button;
+    display: block;
   }
 }

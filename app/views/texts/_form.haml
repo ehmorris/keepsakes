@@ -1,3 +1,4 @@
 = form_for @texts do |form|
   = form.file_field :texts_csv, placeholder: 'texts csv'
   = form.submit 'Upload Texts'
+  = link_to "Delete All", destroy_all_texts_path, :class => 'destroy-all', :method => :get

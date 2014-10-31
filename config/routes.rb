@@ -19,7 +19,13 @@ Keepsakes::Application.routes.draw do
     :only => [:show]
 
   resources :texts,
-    :only => [:create, :new]
+    :only => [:create, :new, :destroy]
+
+  resources :texts do
+    collection do
+      get 'destroy_all'
+    end   
+  end
 
   match 'account'  => 'users#edit'
 

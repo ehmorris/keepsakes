@@ -2,3 +2,4 @@ en:
   texts:
     invalid_file: "Invalid file"
     successful_upload: "Texts uploaded successfully"
+    successful_deletion: "Texts deleted successfully"
