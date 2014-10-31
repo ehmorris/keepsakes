@@ -1,1 +1,16 @@
-= @csv
+.confirm-fields
+  %p Make sure the fields are correctly labeled
+
+  %table
+    - @csv.first.each_with_index do |field, field_index|
+      %tr
+        %td.field= field
+        %td
+          %select
+            - @field_names.each_with_index do |field_name, field_name_index|
+              - if field_index.eql? field_name_index
+                %option{ 'selected' => 'true' }= field_name
+              - else
+                %option= field_name
+
+  = link_to 'Confirm', '#', class: 'confirm'
