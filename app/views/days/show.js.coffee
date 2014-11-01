@@ -4,6 +4,7 @@ $('.tomorrow-link,
    .calendar,
    .meta.places,
    .meta.photos,
+   .meta.texts,
    .meta.marker-detail,
    nav.meta').remove()
 
@@ -12,6 +13,7 @@ $('.upper-nav').append('<%= escape_javascript(render :partial => "calendar") %>'
 $('.activate-meta-nav').after('<%= escape_javascript(render :partial => "meta-nav") %>')
 $('.partial-anchor').after('<%= escape_javascript(render :partial => "places") %>')
 $('.partial-anchor').after('<%= escape_javascript(render :partial => "photos") %>')
+$('.partial-anchor').after('<%= escape_javascript(render :partial => "texts") %>')
 $('.partial-anchor').after('<%= escape_javascript(render :partial => "marker-details") %>')
 
 window.render_map()

@@ -143,17 +143,12 @@ div.meta.photos {
   }
 }
 
-div.meta.music {
+div.meta.texts {
   overflow-x: scroll;
 
   .gallery .item {
-    max-width: 30vw;
-  }
-
-  .item .detail {
-    .album, .arist {
-      font-weight: 700;
-    }
+    overflow-y: scroll;
+    vertical-align: top;
   }
 }
 
