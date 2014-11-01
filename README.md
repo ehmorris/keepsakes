@@ -15,10 +15,10 @@
 #### Potential sources of information
 * [x] [Location | Moves](https://dev.moves-app.com)
 * [x] [Location | Maps](https://github.com/aai/mapbox-rails)
-* [ ] [Music | Rdio](http://developer.rdio.com)
+* [ ] [Music | Rdio](http://developer.rdio.com) (History is unavailable through their API, have to use LastFM)
 * [ ] [Work | Github](http://developer.github.com/v3)
 * [x] [Pictures | Instagram](http://instagram.com/developer)
-* [ ] [Text messages](http://www.ecamm.com/mac/phoneview/) (will have to include instructions for android / ios / other)
+* [x] [Text messages](http://www.ecamm.com/mac/phoneview/) (will have to include instructions for android / ios / other)
 * [ ] [Journal](https://idonethis.com)
 * [ ] [Calendar](https://developers.google.com/google-apps/calendar/)
 * [x] [Weather](http://www.wunderground.com/weather/api)
