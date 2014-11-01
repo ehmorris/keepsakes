@@ -14,15 +14,19 @@ class TextsController < ApplicationController
       flash[:error] = t('texts.invalid_file')
       redirect_to new_text_path
     elsif
+      all_records = []
       @csv.each do |text|
-        new_text = Text.new
-        new_text.user_id       = current_user.id
-        new_text.sent_received = text[0]
-        new_text.timestamp     = text[1]
-        new_text.contacts      = text[2].force_encoding("utf-8")
-        new_text.numbers       = text[3]
-        new_text.message       = text[4].force_encoding("utf-8")
-        new_text.save
+        all_records.push({
+          :sent_received => text[0],
+          :timestamp => text[1],
+          :contacts => text[2].force_encoding("utf-8"),
+          :numbers => text[3],
+          :message => text[4].force_encoding("utf-8")
+        })
+      end
+
+      Text.create(all_records) do |t|
+        t.user_id = current_user.id
       end
 
       flash[:notice] = t('texts.successful_upload')
