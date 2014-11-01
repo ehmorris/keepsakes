@@ -16,11 +16,12 @@ class TextsController < ApplicationController
     elsif
       @csv.each do |text|
         new_text = Text.new
+        new_text.user_id       = current_user.id
         new_text.sent_received = text[0]
         new_text.timestamp     = text[1]
-        new_text.contacts      = text[2]
+        new_text.contacts      = text[2].force_encoding("utf-8")
         new_text.numbers       = text[3]
-        new_text.message       = text[4]
+        new_text.message       = text[4].force_encoding("utf-8")
         new_text.save
       end
 
