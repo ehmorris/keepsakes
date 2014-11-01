@@ -13,6 +13,9 @@ class DaysController < ApplicationController
     @today = Date.parse(storyline_day)
     @tomorrow = Date.parse(storyline_day) + 1
 
+    @texts = current_user.texts.where(
+      timestamp: @today.beginning_of_day..@today.end_of_day)
+
     @instagram_photos = get_day_photos(storyline_day)
     @geodata_json, @places, @weather = nil
     storyline_segments_hash = get_storyline_segments_hash(storyline_day)
