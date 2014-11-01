@@ -1,7 +1,3 @@
-.thing
-  - @texts.each do |t|
-    %span= t.message
-
 .activate-upper-nav
 .upper-nav
   %nav.settings
@@ -25,6 +21,7 @@
 = render :partial => 'photos'
 = render :partial => 'journal'
 = render :partial => 'music'
+= render :partial => 'texts'
 
 .loading-text
   %span= @today.strftime('%a %b %e')

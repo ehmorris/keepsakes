@@ -1,0 +1,9 @@
+.meta.texts
+  - @texts.group_by(&:contacts).each do |contacts, texts|
+    %ol
+      %span.contacts= contacts
+      - texts.each do |t|
+        %li{ class: "#{t.sent_received}" }
+          %span.message= t.timestamp
+          %span.message= t.message
+  
