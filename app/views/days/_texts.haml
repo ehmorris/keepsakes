@@ -2,8 +2,8 @@
   .gallery
     - @texts.group_by(&:contacts).each do |contacts, texts|
       %ol.item
-        %span.contacts= contacts
+        %p.contacts= contacts
         - texts.each do |t|
           %li{ class: "text #{t.sent_received.downcase}" }
             %span.time= t.timestamp.strftime('%H:%M%p').downcase
-            %span.message= t.message
+            %p.message= t.message
