@@ -4,7 +4,6 @@
       %ol.item
         %span.contacts= contacts
         - texts.each do |t|
-          %li{ class: "#{t.sent_received}" }
-            %span.message= t.timestamp
+          %li{ class: "text #{t.sent_received.downcase}" }
+            %span.time= t.timestamp.strftime('%H:%M%p').downcase
             %span.message= t.message
-    

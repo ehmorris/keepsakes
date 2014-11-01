@@ -147,8 +147,36 @@ div.meta.texts {
   overflow-x: scroll;
 
   .gallery .item {
+    list-style-type: none;
+    max-width: 35vw;
     overflow-y: scroll;
+    padding: 0;
+    position: relative;
     vertical-align: top;
+  }
+
+  .contacts {
+    clear: both;
+    display: both;
+  }
+
+  .text {
+    clear: both;
+    margin: 1rem 0;
+    width: 85%;
+
+    &.sent {
+      float: right;
+    }
+
+    &.received {
+      float: left;
+    }
+
+    .time {
+      display: block;
+      font-size: .75rem;
+    }
   }
 }
 
