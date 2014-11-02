@@ -23,6 +23,10 @@
 * [ ] [Calendar](https://developers.google.com/google-apps/calendar/)
 * [x] [Weather](http://www.wunderground.com/weather/api)
 
+### Make available as a native app
+* https://github.com/rogerwang/node-webkit
+* https://sandstorm.io
+
 #### Ideas
 * On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)
 * For viewing lots of days at once, something like day-group summaries could allow someone to find interesting groups of time more easily i.e. seasons, semesters, winter break, vacations, etc. When faced with 10+ years of daily entries, how should the interface change? Textually, could we summarize a summer in a few sentences, a semester?
