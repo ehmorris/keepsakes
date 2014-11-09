@@ -1,4 +1,4 @@
-= form_for :session, :url => session_path do |form|
+= form_for :session, html: { class: 'standard-vertical' }, :url => session_path do |form|
   = form.text_field :email, type: 'email', placeholder: 'email'
   = form.password_field :password, placeholder: 'password'
   = form.submit

@@ -1,6 +1,5 @@
 .upload-texts {
   @include content-box;
-  color: #fff;
 
   .destroy-all {
     @extend %button;

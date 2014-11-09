@@ -1,5 +1,6 @@
 form.standard-vertical {
   @include content-box;
+  top: 0;
 
   input {
     box-sizing: border-box;

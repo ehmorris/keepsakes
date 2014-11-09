@@ -27,7 +27,6 @@
 }
 
 .yesterday-link, .tomorrow-link, .detail-previous, .detail-next {
-  color: rgb(255, 255, 255);
   display: block;
   font: bold 2.5vw/9vw $sans;
   margin: -4.5vw 0 0;
@@ -40,6 +39,10 @@
   @include user-select(none);
   white-space: nowrap;
   z-index: 3;
+
+  &:link, &:visited {
+    color: #fff;
+  }
 
   &.hide {
     opacity: 0;
@@ -99,11 +102,12 @@
 }
 
 nav.meta, .upper-nav {
+  color: #fff;
   height: 30vh;
   opacity: 0;
-  z-index: 1;
-  @include user-select(none);
   @include transition;
+  @include user-select(none);
+  z-index: 1;
 
   &.processed {
     opacity: 1;
@@ -151,7 +155,6 @@ nav.meta {
 
   a {
     border: .25vw solid #fff;
-    color: #fff;
     @include display(flex);
     @include flex(1);
     @include flex-wrap(wrap);
@@ -167,10 +170,6 @@ nav.meta {
 
     &:last-child {
       margin-right: 2vw;
-    }
-
-    &:hover {
-      color: #fff;
     }
 
     &.weather {
@@ -220,7 +219,6 @@ nav.meta {
     }
 
     a {
-      color: #fff;
       display: block;
       line-height: 2.4rem;
       margin-right: 1rem;

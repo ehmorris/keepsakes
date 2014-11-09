@@ -1,12 +1,16 @@
 body {
+  background-color: $background-color;
   font-family: $sans;
   margin: 0;
   overflow: hidden;
   padding: 0;
   @include perspective($perspective-amount);
   @include position(absolute, 0px 0px 0px 0px);
-  @include radial-gradient(#333, #222);
   text-rendering: optimizelegibility;
+}
+
+a, a:hover, a:visited {
+  color: inherit;
 }
 
 .flash {
@@ -18,14 +22,4 @@ body {
   white-space: no-wrap;
   width: 100%;
   z-index: 3;
-}
-
-.intro-map {
-  @include animation(map-intro 1s);
-  @include animation-fill-mode(backwards);
-  background: url('anonymous-map-1.png');
-  background-size: cover;
-  @include position(absolute, 0px 0px 0px 0px);
-  @include transform(scale3D(1, 1, 1));
-  z-index: 1;
 }

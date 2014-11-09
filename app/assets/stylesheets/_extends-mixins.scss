@@ -42,6 +42,7 @@
 }
 
 @mixin content-box {
+  color: #fff;
   margin: 0 auto;
   position: relative;
   top: 10vh;
