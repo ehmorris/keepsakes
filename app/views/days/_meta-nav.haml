@@ -1,4 +1,4 @@
-%nav.meta
+%nav.meta{ :class => ('processed' unless current_user.connected_moves?) }
   - if current_user.connected_moves?
     = link_to '#', class: 'activate-meta-pane', 'data-target' => 'places' do
       %span="Visited #{@places.count} places"
