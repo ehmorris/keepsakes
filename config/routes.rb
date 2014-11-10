@@ -1,5 +1,5 @@
 Keepsakes::Application.routes.draw do
-  root :to => 'days#show'
+  root :to => 'days#show', defaults: { id: Date.yesterday.to_s }
 
   resources :passwords,
     :controller => 'clearance/passwords',
@@ -17,6 +17,8 @@ Keepsakes::Application.routes.draw do
 
   resources :days,
     :only => [:show]
+
+  get 'days/', to: 'days#show', defaults: { id: Date.yesterday.to_s }
 
   resources :texts,
     :only => [:create, :new, :destroy]

@@ -7,7 +7,7 @@ class DaysController < ApplicationController
   before_filter :authorize
 
   def show
-    day = params['id'].nil? ? Date.yesterday.to_s : params['id']
+    day = params['id']
 
     @yesterday = Date.parse(day) - 1
     @today = Date.parse(day)

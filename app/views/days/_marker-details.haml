@@ -1,9 +1,10 @@
 - @places.each do |place|
   .meta.marker-detail{ 'data-starttime' => "#{place['starttime']}" }
     %h2.title
-    - @instagram_photos.reverse.each do |photo|
-      - if timestamp_in_range?(photo['timestamp'], place['starttime'], place['endtime'])
-        = render 'photo', photo: photo
+    - if current_user.connected_instagram?
+      - @instagram_photos.reverse.each do |photo|
+        - if timestamp_in_range?(photo['timestamp'], place['starttime'], place['endtime'])
+          = render 'photo', photo: photo
     .item.music
       = image_tag('music1.jpg')
       .detail
