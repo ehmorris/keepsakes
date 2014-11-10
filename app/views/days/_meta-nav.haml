@@ -1,20 +1,49 @@
 %nav.meta
-  = link_to '#', class: 'activate-meta-pane sleep', 'data-target' => 'places' do
-    %span="Visited #{@places.count} places"
-  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
-    %span Wrote 286 words
-  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
-    %span="Took #{@instagram_photos.count} photos"
-  = link_to '#', class: 'activate-meta-pane', 'data-target' => 'texts' do
-    %span= "Sent #{@texts.count} messages"
-  = link_to '#', class: 'weather' do
-    %span.temp
-      %span.low= "#{@weather['low']}&deg;".html_safe
-      %span.high= "#{@weather['high']}&deg;".html_safe
+  - if current_user.connected_moves?
+    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'places' do
+      %span="Visited #{@places.count} places"
+  - else
+    = link_to account_path do
+      %span="Connect Moves"
+
+  - if current_user.uploaded_journal?
+    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'journal' do
+      %span Wrote 286 words
+  - else
+    = link_to account_path do
+      %span Upload Journal
+
+  - if current_user.connected_instagram?
+    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'photos' do
+      %span="Took #{@instagram_photos.count} photos"
+  - else
+    = link_to account_path do
+      %span="Connect Instagram"
+
+  - if current_user.uploaded_texts?
+    = link_to '#', class: 'activate-meta-pane', 'data-target' => 'texts' do
+      %span= "Sent #{@texts.count} messages"
+  - else
+    = link_to account_path do
+      %span= "Upload Texts"
+
+  - if @weather
+    = link_to '#', class: 'weather' do
+      %span.temp
+        %span.low= "#{@weather['low']}&deg;".html_safe
+        %span.high= "#{@weather['high']}&deg;".html_safe
+
   .tilt-hint
     %span At a glance:
-    %span.places= "#{@places.count} places"
+    - if current_user.connected_moves?
+      %span.places= "#{@places.count} places"
+
     %span.words 286 words
-    %span.photos="#{@instagram_photos.count} photos"
-    %span.texts= "#{@texts.count} messages" 
+
+    - if current_user.connected_instagram?
+      %span.photos="#{@instagram_photos.count} photos"
+
+    - if current_user.uploaded_texts?
+      %span.texts= "#{@texts.count} messages" 
+
   .deactivate-meta-nav

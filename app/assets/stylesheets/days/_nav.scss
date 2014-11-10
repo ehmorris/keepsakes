@@ -164,11 +164,11 @@ nav.meta {
     padding: .5rem;
     text-decoration: none;
 
-    &:first-child {
+    &:first-of-type {
       margin-left: 2vw;
     }
 
-    &:last-child {
+    &:last-of-type {
       margin-right: 2vw;
     }
 

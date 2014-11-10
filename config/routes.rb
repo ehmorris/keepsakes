@@ -1,5 +1,5 @@
 Keepsakes::Application.routes.draw do
-  root :to => 'users#edit'
+  root :to => 'days#show'
 
   resources :passwords,
     :controller => 'clearance/passwords',

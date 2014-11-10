@@ -43,7 +43,9 @@
 
 @mixin content-box {
   color: #fff;
+  list-style-type: none;
   margin: 0 auto;
+  padding: 0;
   position: relative;
   top: 10vh;
   width: 375px;

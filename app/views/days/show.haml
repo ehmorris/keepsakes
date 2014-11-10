@@ -16,12 +16,12 @@
 = render :partial => 'meta-nav'
 
 .partial-anchor
-= render :partial => 'marker-details'
-= render :partial => 'places'
-= render :partial => 'photos'
-= render :partial => 'journal'
-= render :partial => 'texts'
+= render :partial => 'marker-details' if current_user.connected_moves?
+= render :partial => 'places' if current_user.connected_moves?
+= render :partial => 'photos' if current_user.connected_instagram?
+= render :partial => 'journal' if current_user.uploaded_journal?
+= render :partial => 'texts' if current_user.uploaded_texts?
 
 .loading-text
   %span= @today.strftime('%a %b %e')
-= render :partial => 'map'
+= render :partial => 'map' if current_user.connected_moves?

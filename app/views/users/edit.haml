@@ -1,18 +1,14 @@
 - content_for :body_classes, 'user-edit'
 
-.authorized-apps
-  %ul.app-list
-    - if @moves_is_connected
-      %li.complete Connect with Moves
-    - else
-      %li.incomplete= link_to 'Connect with Moves', @moves_authorize_uri
-      
-    - if @instagram_is_connected
-      %li.complete Connect with Instagram
-    - else
-      %li.incomplete= link_to 'Connect with Instagram', @instagram_authorize_uri
+%ul.app-list
+  - if valid_moves_access_token?(current_user.moves_access_token)
+    %li.complete Moves is connected
+  - else
+    %li.incomplete= link_to 'Connect with Moves', @moves_authorize_uri
+    
+  - if valid_instagram_access_token?(current_user.instagram_access_token)
+    %li.complete Instagram is connected 
+  - else
+    %li.incomplete= link_to 'Connect with Instagram', @instagram_authorize_uri
 
-    %li= link_to 'Upload texts', new_text_path
-
-    - if @moves_is_connected and @instagram_is_connected
-      %li= link_to 'Go', day_path(Date.today - 1)
+  %li= link_to 'Manage Texts', new_text_path

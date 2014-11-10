@@ -1,11 +1,5 @@
-.authorized-apps {
-  @include content-box;
-}
-
 .app-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  @include content-box;
 
   li {
     background: rgba(255, 255, 255, .5);
