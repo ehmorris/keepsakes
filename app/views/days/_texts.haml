@@ -1,9 +1,10 @@
 .meta.texts
   .gallery
-    - @texts.group_by(&:contacts).each do |contacts, texts|
-      %ol.item
-        %p.contacts= contacts
-        - texts.each do |t|
-          %li{ class: "text #{t.sent_received.downcase}" }
-            %span.time= t.timestamp.strftime('%H:%M%p').downcase
-            %p.message= t.message
+    - if @texts
+      - @texts.group_by(&:contacts).each do |contacts, texts|
+        %ol.item
+          %p.contacts= contacts
+          - texts.each do |t|
+            %li{ class: "text #{t.sent_received.downcase}" }
+              %span.time= t.timestamp.strftime('%H:%M%p').downcase
+              %p.message= t.message
