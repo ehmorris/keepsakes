@@ -26,6 +26,7 @@
 ### Make available as a native app
 * https://github.com/rogerwang/node-webkit
 * https://sandstorm.io
+* https://github.com/atom/atom-shell
 
 #### Ideas
 * On the broad strokes made possible by this data: [whichlight's post](http://blog.whichlight.com/post/65575793300/how-the-entropy-of-personal-behaviors-and-social)
