@@ -5,6 +5,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'high_voltage'
 gem 'clearance'
+gem 'foreman'
 
 group :development do
   gem 'sqlite3'
