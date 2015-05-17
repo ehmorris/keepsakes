@@ -6,6 +6,10 @@
     = stylesheet_link_tag    '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
+
+    = javascript_include_tag 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.7.0/mapbox-gl.js'
+    %link{ :href => 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.7.0/mapbox-gl.css', :rel => 'stylesheet' }
+
     %link{ :href => '/favicon.png', :rel => 'icon', :type => 'image/png' }
     = csrf_meta_tags
   %body{ class: "#{yield :body_classes}" }

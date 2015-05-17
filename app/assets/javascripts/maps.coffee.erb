@@ -1,0 +1,85 @@
+$ -> window.render_map()
+
+window.render_map = ->
+  if window.feature_layer
+    window.feature_layer.clearLayers()
+
+  geodata_json = initialize_map('map').data('geojson')
+
+  return unless geodata_json.length > 0
+
+  marker_features = []
+  walking_line_features = []
+  other_line_features = []
+
+  $.each geodata_json, ->
+    marker_features.push {
+      type: 'Feature'
+      properties: title: @.title
+      geometry: @
+    } if @.type == 'Point'
+
+    walking_line_features.push {
+      type: 'Feature'
+      geometry: @
+    } if @.type == 'MultiLineString' && @.activity == 'wlk'
+
+    other_line_features.push {
+      type: 'Feature'
+      geometry: @
+    } if @.type == 'MultiLineString' && @.activity != 'wlk'
+
+  map.on 'style.load', ->
+    add_lines_to_map('walking', walking_line_features, '#fff')
+    add_lines_to_map('transit', other_line_features, '#999')
+    add_markers_to_map('markers', marker_features)
+
+window.get_all_markers = ->
+  markers = []
+  $.each window.feature_layer.getLayers(), (index, layer) ->
+    if layer.feature.geometry.type == 'Point'
+      markers.push
+        layer: layer
+  markers
+
+initialize_map = (identifier) ->
+  mapboxgl.accessToken = '<%= ENV['MAPBOX_PUBLIC_TOKEN'] %>'
+  window.map = new mapboxgl.Map
+    container: identifier
+    style: '//www.mapbox.com/mapbox-gl-styles/styles/outdoors-v7.json'
+    center: [55.6761, 12.5683]
+    zoom: 13
+
+  return $("##{identifier}")
+
+add_markers_to_map = (id, marker_features) ->
+  map.addSource id,
+    type: 'geojson'
+    data:
+      type: 'FeatureCollection'
+      features: marker_features
+
+  map.addLayer
+    id: id
+    type: 'symbol'
+    source: id
+    layout: 'text-field': '{title}'
+    paint: 'text-size': 16
+
+add_lines_to_map = (id, line_features, color) ->
+  map.addSource id,
+    type: 'geojson'
+    data:
+      type: 'FeatureCollection'
+      features: line_features
+
+  map.addLayer
+    id: id
+    type: 'line'
+    source: id
+    layout:
+      'line-join': 'round'
+      'line-cap': 'round'
+    paint:
+      'line-color': color
+      'line-width': 8
