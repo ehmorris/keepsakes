@@ -17,7 +17,7 @@ $('.partial-anchor').after('<%= escape_javascript(render :partial => "texts") %>
 $('.partial-anchor').after('<%= escape_javascript(render :partial => "marker-details") %>')
 
 window.render_map()
-window.attach_feature_layer_events()
+# window.attach_feature_layer_events()
 window.deactivate_day_loading_animation()
 window.tilt_hint()
 
