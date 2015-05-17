@@ -2,20 +2,19 @@ include ActionView::Helpers::DateHelper
 
 module Maps
   def place_to_geodata_point(segment)
-    lon = segment['place']['location']['lon']
-    lat = segment['place']['location']['lat']
-    title = segment['place']['name']
-    arrival = Time.parse(segment['startTime'])
-              .in_time_zone('Eastern Time (US & Canada)')
-              .strftime("%I:%M%P")
+    place = segment['place']
+    title = place['name'].nil? ? '(unnamed)' : place['name']
+    arrival = Time.parse(segment['startTime']).
+                in_time_zone('Eastern Time (US & Canada)').
+                strftime("%I:%M%P")
     duration = distance_of_time_in_words(
       Time.parse(segment['startTime']),
       Time.parse(segment['endTime']))
 
-    title = '(unnamed)' if title.nil?
-
     {'type' => 'Point',
-     'coordinates' => [lon, lat],
+     'coordinates' => [
+       place['location']['lon'],
+       place['location']['lat']],
      'title' => title,
      'arrival' => arrival,
      'duration' => duration,
