@@ -30,8 +30,8 @@ window.render_map = ->
     } if @.type == 'MultiLineString' && @.activity != 'wlk'
 
   map.on 'style.load', ->
-    add_lines_to_map('walking', walking_line_features, '#fff')
     add_lines_to_map('transit', other_line_features, '#999')
+    add_lines_to_map('walking', walking_line_features, '#fff')
     add_markers_to_map('markers', marker_features)
 
 window.get_all_markers = ->
