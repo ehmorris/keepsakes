@@ -18,7 +18,7 @@ class TextsController < ApplicationController
       @csv.each do |text|
         all_records.push({
           :sent_received => text[0],
-          :timestamp => text[1],
+          :timestamp => Time.parse(text[1]).utc,
           :contacts => text[2].force_encoding("utf-8"),
           :numbers => text[3],
           :message => text[4].force_encoding("utf-8")
