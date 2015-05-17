@@ -6,5 +6,5 @@
           %p.contacts= contacts
           - texts.each do |t|
             %li{ class: "text #{t.sent_received.downcase}" }
-              %span.time= t.timestamp.in_time_zone(@timezone).strftime('%H:%M%p').downcase
+              %span.time= t.timestamp.in_time_zone(@timezone).strftime('%l:%M%p').downcase
               %p.message= t.message
