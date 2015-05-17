@@ -46,7 +46,7 @@ initialize_map = (identifier) ->
   mapboxgl.accessToken = '<%= ENV['MAPBOX_PUBLIC_TOKEN'] %>'
   window.map = new mapboxgl.Map
     container: identifier
-    style: '//www.mapbox.com/mapbox-gl-styles/styles/outdoors-v7.json'
+    style: '<%= asset_path 'keepsakes_map_theme.json' %>'
     center: [55.6761, 12.5683]
     zoom: 13
 
