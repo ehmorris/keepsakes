@@ -6,6 +6,14 @@
 * Fill the `.env` file in with an actual Moves client ID and secret
 * Run `foreman start` and  `open http://localhost:3000`
 
+#### Required developer accounts
+* [Moves](https://dev.moves-app.com)
+* [Instagram](http://instagram.com/developer)
+* [Mapbox](https://www.mapbox.com/developers)
+* [Wunderground](http://www.wunderground.com/weather/api)
+* [Geonames](http://www.geonames.org)
+  * Note: you need to enable "free web services" on the account: [geonames.org/enablefreewebservice](http://www.geonames.org/enablefreewebservice)
+
 #### Dashboards
 * [Mailgun](https://mailgun.com/cp?)
 * [Mapbox](https://www.mapbox.com/projects)

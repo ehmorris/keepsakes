@@ -1,20 +1,18 @@
 include ActionView::Helpers::DateHelper
 
 module Maps
-  def place_to_geodata_point(segment)
+  def place_to_geodata_point(segment, storyline_timezone)
     place = segment['place']
     title = place['name'].nil? ? '(unnamed)' : place['name']
     arrival = Time.parse(segment['startTime']).
-                in_time_zone('Eastern Time (US & Canada)').
-                strftime("%I:%M%P")
+              in_time_zone(storyline_timezone).
+              strftime("%I:%M%P")
     duration = distance_of_time_in_words(
       Time.parse(segment['startTime']),
       Time.parse(segment['endTime']))
 
     {'type' => 'Point',
-     'coordinates' => [
-       place['location']['lon'],
-       place['location']['lat']],
+     'coordinates' => [place['location']['lon'], place['location']['lat']],
      'title' => title,
      'arrival' => arrival,
      'duration' => duration,
@@ -44,11 +42,21 @@ module Maps
      'activity' => activity}
   end
 
-  def storyline_to_geodata(storyline_segments_hash)
+  def storyline_timezone(storyline_segments_hash)
+    storyline_segments_hash.each do |segment|
+      if segment['type'] == 'place'
+        location = segment['place']['location']
+        timezone = Timezone::Zone.new :latlon => [location['lat'], location['lon']]
+        return timezone.active_support_time_zone
+      end
+    end
+  end
+
+  def storyline_to_geodata(storyline_segments_hash, storyline_timezone)
     geodata_hash = []
     storyline_segments_hash.each do |segment|
       if segment['type'] == 'place'
-        geodata_hash.push(place_to_geodata_point(segment))
+        geodata_hash.push(place_to_geodata_point(segment, storyline_timezone))
       elsif segment['type'] == 'move'
         segment['activities'].each do |activity|
           geodata_hash.push(
@@ -63,10 +71,10 @@ module Maps
   end
 
 
-  def all_places(storyline_segments_hash)
+  def all_places(storyline_segments_hash, storyline_timezone)
     places_hash = []
     storyline_segments_hash.each do |segment|
-      places_hash.push(place_to_geodata_point(segment)) if segment['type'] == 'place'
+      places_hash.push(place_to_geodata_point(segment, storyline_timezone)) if segment['type'] == 'place'
     end
 
     places_hash
