@@ -30,6 +30,7 @@ window.render_map = ->
     } if @.type == 'MultiLineString' && @.activity != 'wlk'
 
   map.on 'style.load', ->
+    map.fitBounds get_all_marker_coordinates(marker_features)
     add_lines_to_map('transit', other_line_features, '#999')
     add_lines_to_map('walking', walking_line_features, '#fff')
     add_markers_to_map('markers', marker_features)
@@ -47,8 +48,6 @@ initialize_map = (identifier) ->
   window.map = new mapboxgl.Map
     container: identifier
     style: '<%= asset_path 'keepsakes_map_theme.json' %>'
-    center: [55.6761, 12.5683]
-    zoom: 13
 
   return $("##{identifier}")
 
@@ -83,3 +82,10 @@ add_lines_to_map = (id, line_features, color) ->
     paint:
       'line-color': color
       'line-width': 8
+
+get_all_marker_coordinates = (marker_features) ->
+  all_coordinates = []
+  $.each marker_features, ->
+    all_coordinates.push(this.geometry.coordinates.slice().reverse())
+
+  all_coordinates
