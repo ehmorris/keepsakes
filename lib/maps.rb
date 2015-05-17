@@ -23,16 +23,25 @@ module Maps
      'endtime' => Time.parse(segment['endTime']).to_i}
   end
 
-  def trackpoints_to_geodata_line(trackpoint_1, trackpoint_2, activity)
-    beginning_lon = trackpoint_1['lon']
-    beginning_lat = trackpoint_1['lat']
-    end_lon = trackpoint_2['lon']
-    end_lat = trackpoint_2['lat']
+  def trackpoints_to_geodata_multiline(activity, trackpoints)
+    coordinates = []
+    trackpoints.each_with_index do |trackpoint, i|
+      unless trackpoints[i + 1].nil?
+        trackpoint_1 = trackpoint
+        trackpoint_2 = trackpoints[i + 1]
 
-    {'type' => 'LineString',
-     'coordinates' => [
-      [beginning_lon, beginning_lat],
-      [end_lon, end_lat]],
+        # http://geojson.org/geojson-spec.html#linestring
+        linestring_coordinate_array = [
+          [trackpoint_1['lon'], trackpoint_1['lat']],
+          [trackpoint_2['lon'], trackpoint_2['lat']]
+        ]
+
+        coordinates.push(linestring_coordinate_array)
+      end
+    end
+
+    {'type' => 'MultiLineString',
+     'coordinates' => coordinates,
      'activity' => activity}
   end
 
@@ -43,16 +52,10 @@ module Maps
         geodata_hash.push(place_to_geodata_point(segment))
       elsif segment['type'] == 'move'
         segment['activities'].each do |activity|
-          activity_type = activity['activity']
-          activity['trackPoints'].each_with_index do |trackpoint, i|
-            unless activity['trackPoints'][i + 1].nil?
-              geodata_hash.push(
-                trackpoints_to_geodata_line(
-                  trackpoint,
-                  activity['trackPoints'][i + 1],
-                  activity_type))
-            end
-          end
+          geodata_hash.push(
+            trackpoints_to_geodata_multiline(
+              activity['activity'],
+              activity['trackPoints']))
         end
       end
     end
