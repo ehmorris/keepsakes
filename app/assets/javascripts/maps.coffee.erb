@@ -27,10 +27,18 @@ window.render_map = ->
     } if @.type == 'MultiLineString' && @.activity != 'wlk'
 
   map.on 'style.load', ->
+    map.setPitch(40)
     map.fitBounds get_all_marker_coordinates(marker_features)
     add_lines_to_map('transit', other_line_features, '#999')
     add_lines_to_map('walking', walking_line_features, '#fff')
     add_markers_to_map('markers', marker_features)
+
+    setTimeout ->
+      map.rotateTo(80, { duration: 5000 })
+    , 5000
+    setTimeout ->
+      map.rotateTo(0, { duration: 5000 })
+    , 10000
 
 window.get_all_markers = ->
   markers = []

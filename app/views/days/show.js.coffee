@@ -19,6 +19,6 @@ $('.partial-anchor').after('<%= escape_javascript(render :partial => "marker-det
 window.render_map()
 # window.attach_feature_layer_events()
 window.deactivate_day_loading_animation()
-window.tilt_hint()
+# setTimeout tilt_hint 5000
 
 window.history.pushState null, null, $('.map-today').data('today')
