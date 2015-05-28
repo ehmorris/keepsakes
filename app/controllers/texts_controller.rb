@@ -35,7 +35,7 @@ class TextsController < ApplicationController
   end
 
   def destroy_all
-    Text.destroy_all
+    current_user.texts.destroy_all
     flash[:notice] = t('texts.successful_deletion')
     redirect_to root_url
   end
