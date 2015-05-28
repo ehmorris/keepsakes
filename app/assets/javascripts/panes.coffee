@@ -1,7 +1,7 @@
 $ ->
   activate_day_loading_animation()
   deactivate_day_loading_animation()
-  tilt_hint()
+  # setTimeout tilt_hint 5000
 
   $(document).on
     mouseenter: recess_maps
@@ -66,10 +66,13 @@ untilt_map = ->
   $('nav.meta, .upper-nav').removeClass 'tilt-expose'
 
 window.tilt_hint = ->
-  setTimeout tilt_map_up, 400
-  setTimeout untilt_map, 2200
-  setTimeout tilt_map_down, 2600
-  setTimeout untilt_map, 4400
+  wait_between_tilts = 1000
+  tilt_duration = 2000
+
+  tilt_map_up()
+  setTimeout untilt_map, tilt_duration
+  setTimeout tilt_map_down, wait_between_tilts + tilt_duration
+  setTimeout untilt_map, wait_between_tilts + tilt_duration * 2
 
 activate_meta_pane = (pane_class) ->
   # processed as in recessed vs. processed

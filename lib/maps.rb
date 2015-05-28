@@ -20,8 +20,9 @@ module Maps
      'endtime' => Time.parse(segment['endTime']).to_i}
   end
 
-  def trackpoints_to_geodata_multiline(activity, trackpoints)
+  def move_to_geodata_multiline(move)
     coordinates = []
+    trackpoints = move['trackPoints']
     trackpoints.each_with_index do |trackpoint, i|
       unless trackpoints[i + 1].nil?
         trackpoint_1 = trackpoint
@@ -38,8 +39,10 @@ module Maps
     end
 
     {'type' => 'MultiLineString',
+     'starttime' => Time.parse(move['startTime']).to_i,
+     'endtime' => Time.parse(move['startTime']).to_i,
      'coordinates' => coordinates,
-     'activity' => activity}
+     'activity' => move['activity']}
   end
 
   def storyline_timezone(storyline_segments_hash)
@@ -59,10 +62,7 @@ module Maps
         geodata_hash.push(place_to_geodata_point(segment, storyline_timezone))
       elsif segment['type'] == 'move'
         segment['activities'].each do |activity|
-          geodata_hash.push(
-            trackpoints_to_geodata_multiline(
-              activity['activity'],
-              activity['trackPoints']))
+          geodata_hash.push(move_to_geodata_multiline(activity))
         end
       end
     end

@@ -24,7 +24,7 @@
     = link_to '#', class: 'activate-meta-pane', 'data-target' => 'texts' do
       %span= "Sent #{@texts.count} messages"
   - else
-    = link_to account_path do
+    = link_to new_texts_path do
       %span= "Upload Texts"
 
   - if @weather
