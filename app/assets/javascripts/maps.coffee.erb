@@ -33,12 +33,15 @@ window.render_map = ->
     add_lines_to_map('walking', walking_line_features, '#fff')
     add_markers_to_map('markers', marker_features)
 
+    spin_animation_duration = 3000
+    spin_animation_delay = 5000
+
     setTimeout ->
-      map.rotateTo(80, { duration: 5000 })
-    , 5000
+      map.rotateTo(80, { duration: spin_animation_duration })
+    , spin_animation_delay
     setTimeout ->
-      map.rotateTo(0, { duration: 5000 })
-    , 10000
+      map.rotateTo(0, { duration: spin_animation_duration })
+    , spin_animation_duration + spin_animation_delay
 
 window.get_all_markers = ->
   markers = []
